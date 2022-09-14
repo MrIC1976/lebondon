@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Utilisateur;
 use App\Form\AvatarFormType;
+use App\Form\ProfilFormType;
 use App\Repository\ImageRepository;
 use App\Repository\AnnonceRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -41,17 +41,21 @@ class DashboardController extends AbstractController
         $style8 = 'active';
         $user = new Utilisateur();
 
+        $formProfil = $this->createForm (ProfilFormType::class, $utilisateur); //création du formulaire
+        //$formProfil->handleRequest($request);
+
         $formAvatar = $this->createForm (AvatarFormType::class, $utilisateur); //création du formulaire
         $formAvatar->handleRequest($request);
 
-
-        if ($formAvatar->isSubmitted() && $formAvatar->isValid()) {
+        if ($formAvatar->isSubmitted()) {
+            
         $avatar = $formAvatar->get('photoUtilisateur')->getData();  // On récupère l'image transmise
         $fichier = md5(uniqid()).'.'.$avatar->guessExtension(); // On génère un nouveau nom de fichier
          // On copie le fichier dans le dossier public image
         $avatar->move(
         $this->getParameter('images_directory'),//images_directory se situe dans service.yaml parameters chemin de l'image
         $fichier //il s'agit ici du nom de l'image
+        
         );
         //dd($fichier);
         $utilisateur -> setPhotoUtilisateur($fichier);
@@ -71,6 +75,7 @@ class DashboardController extends AbstractController
         return $this->render('dashboard/profilUtilisateur.html.twig', [
             'controller_name' => 'DashboardController',
             'formAvatar' => $formAvatar->createView(),
+            'formProfil'=> $formProfil->createView(),
             'pseudo' => $utilisateur->getPseudoUtilisateur(),
             'prenom' => $utilisateur->getPrenomUtilisateur(),
             'nom' => $utilisateur->getNomUtilisateur(),
@@ -99,6 +104,4 @@ class DashboardController extends AbstractController
             'photoUtilisateur' => $utilisateur->getPhotoUtilisateur(),
         ]);
     }
-
-    
 }
