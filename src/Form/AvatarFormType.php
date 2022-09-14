@@ -29,7 +29,7 @@ class AvatarFormType extends AbstractType
                     new Image([
                         'maxSize' => '1M',
                     ])
-                    ],   
+                    ], 
                 'attr' => ['class' => 'card-img-top'],
                 ])
 
