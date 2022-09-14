@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DashboardController!{% endblock %}
+
+{% block body %}
+	
+	
+		 <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+       <div class="preloader"></div>
+		
+        <!-- ============================================================== -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <div id="main-wrapper">
+		<!-- =============================== Dashboard Header ========================== -->
+			{% include 'commun/navbarUtilisateurConnecte.html.twig' %}
+			<!-- =============================== Dashboard Header ========================== -->
+		
+            {% include 'commun/dashboardHeader.html.twig' %}
+			
+			<!-- ======================= dashboard Detail ======================== -->
+			<div class="goodup-dashboard-wrap gray px-4 py-5">
+				<a class="mobNavigation" data-bs-toggle="collapse" href="#MobNav" role="button" aria-expanded="false" aria-controls="MobNav">
+					<i class="fas fa-bars me-2"></i>Dashboard Navigation
+				</a>
+				
+                {% include 'commun/leftNavbarDashboard.html.twig' %}
+				
+				<div class="goodup-dashboard-content">
+					<div class="dashboard-tlbar d-block mb-5">
+						<div class="row">
+							<div class="colxl-12 col-lg-12 col-md-12">
+								<h1 class="ft-medium">Mes annonces</h1>
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item text-muted"><a href="{{ path('app_accueil')}}">Accueil</a></li>
+										<li class="breadcrumb-item text-muted"><a href="{{ path('app_dashboard')}}">Dashboard</a></li>
+										<li class="breadcrumb-item"><a href="#" class="theme-cl">Mes Annonces</a></li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+					
+					<div class="dashboard-widg-bar d-block">
+						<div class="row">
+							<div class="col-xl-12 col-lg-12">
+								<div class="dashboard-list-wraps bg-white rounded mb-4">
+									<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+										<div class="dashboard-list-wraps-flx">
+											<h3 class="mb-0 ft-medium fs-md"><i class="fa fa-file-alt me-2 theme-cl fs-sm"></i>Annonces de {{prenom|capitalize}} {{nom|capitalize}} </h3>
+											<h4 class="mb-0 ft-small fs-sm"> Vous avez {{ contenuAnnonce|length }} annonces en ligne</h4>
+										</div>
+									</div>
+									
+									<div class="dashboard-list-wraps-body py-3 px-3">
+										<div class="dashboard-listing-wraps">
+											
+											<!-- Single Listing Item -->
+                            {% for annonce in imageAnnonce %}
+											<div class="dsd-single-listing-wraps">
+											<div class="dsd-single-lst-thumb border border-secondary">
+											<img src="image/{{annonce.nomImage}}" class="card-img-top" alt="Votre image ici">
+											</div>
+												<div class="dsd-single-lst-caption">
+													<div class="dsd-single-lst-title">
+														<h5>{{annonce.idAnnonce.titreAnnonce|capitalize}}</h5>
+													</div>
+												
+													<span class="agd-location"><i class="lni lni-map-marker me-1"></i>ville</span>
+
+													<div>
+														<div class="Goodup-ft-first">
+															{{annonce.idAnnonce.descriptionAnnonce|raw}}
+														</div>	
+													</div>
+													<div class="dsd-single-lst-footer">
+														<a href="javascript:void(0);" class="btn btn-edit mr-1"><i class="fas fa-edit me-1"></i>Edit</a>
+														<a href="javascript:void(0);" class="btn btn-view mr-1"><i class="fas fa-eye me-1"></i>View</a>
+														<a href="javascript:void(0);" class="btn btn-delete"><i class="fas fa-trash me-1"></i>Delete</a>
+													</div>
+												</div>
+											</div>
+							{% endfor %} 
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+							
+					</div>
+				
+					<!-- footer -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="py-3">© 2022 Goodup. Designd By ThemezHub.</div>
+						</div>
+					</div>
+		
+				</div>
+				
+			</div>
+			<!-- ======================= dashboard Detail End ======================== -->
+			
+			<a id="tops-button" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
+			
+
+		</div>
+
+
+{% endblock %}

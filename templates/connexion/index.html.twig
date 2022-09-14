@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+
+
+{% block body %}
+
+			<!-- ======================= Login Detail ======================== -->
+			<section class="gray">
+				<div class="container">
+					<form method="post" action="{{path('app_connexion')}}">
+						<div class="row align-items-start justify-content-center">
+							<div class="col-xl-5 col-lg-8 col-md-12">
+							
+								<div class="signup-screen-wrap">
+									<div class="signup-screen-single">
+										<div class="text-center mb-4">
+										<h4 class="m-0 ft-medium">Connectez-vous</h4>
+										</div>
+										<div class="form-group">
+											<label class="mb-1">Adresse mail</label>
+											<input type="email" class="form-control rounded" name="_username" id="floatingInput" placeholder="Saisissez votre adresse mail">
+										
+										<div class="input-group">
+											<label id="" class="mb-1">Mot de passe</label>
+										</div>
+										
+
+
+										<div class="input-group mb-5">
+											<input type="password" name="_password" id="floatingPassword" class="form-control rounded" data-toggle="password" placeholder="Saisissez votre mot de passe">
+  												
+    												<span class="input-group-text">
+      													<i class="fa fa-eye"></i>
+    												</span>
+  												
+										</div>
+										
+										<div class="form-group">
+											<div class="d-flex align-items-center justify-content-between">
+												<div class="flex-1">
+													<input id="dd" class="checkbox-custom" name="dd" type="checkbox" checked>
+													<label for="dd" class="checkbox-custom-label">Se souvenir de moi</label>
+												</div>	
+												<div class="eltio_k2">
+													<a href="{{ path('forgotten_password') }}" class="theme-cl">Mot de passe oublié ?</a>
+												</div>	
+											</div>
+										</div>
+										
+										<div class="form-group">
+
+											<input type="hidden" name="_target_path" value="{{path('app_dashboard')}}" />
+											<input type="hidden" name="_csrf_token" value="{{csrf_token('authenticate')}}" >
+
+											<button type="submit" class="btn btn-md full-width theme-bg text-light rounded ft-medium">Connecter</button>
+										</div>
+										
+										<div class="form-group text-center mb-0">
+											<p class="extra">Ou se connecter avec </p>
+											<div class="option-log">
+												<div class="single-log-opt"><a href="javascript:void(0);" class="log-btn"><img src="assets/img/google.png" class="img-fluid" alt="" />Google</a></div>
+												<div class="single-log-opt"><a href="javascript:void(0);" class="log-btn"><img src="assets/img/facebook.png" class="img-fluid" alt="" />Facebook</a></div>
+											</div>
+										</div>
+										
+
+											
+
+										<div class="form-group text-center mt-4 mb-0">
+											<p class="mb-0">Vous n'avez pas encore de compte ? <a href="{{ path('app_inscription') }}" class="ft-medium text-success">S'inscrire</a></p>
+										</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					</form>
+				</div>
+			</section>
+			<!-- ======================= Login End ======================== -->
+	</body>
+</html>
+{% for message1 in app.flashes('message1') %}
+{{ message1|raw }}
+{% endfor %}	
+
+<!-- ICON SCRIPT -->
+<script src="https://unpkg.com/feather-icons"></script>
+<script>feather.replace();</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+        crossorigin="anonymous">
+</script>
+<script  src="/assets/js/bootstrap-show-password.js"></script>
+
+{% endblock %}
+

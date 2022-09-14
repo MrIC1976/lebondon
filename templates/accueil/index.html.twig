@@ -1,0 +1,259 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Le bon don{% endblock %}
+
+
+{% block body %}
+
+
+
+{% include 'commun/navbarNonConnecte.html.twig' %}
+
+<div class="home-banner arriere-plan">			
+	<div class=" container">
+		<div class="row justify-content-center">
+			<div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12">
+
+				<div class="banner_caption text-center mb-5">
+					<h1 class="banner_title ft-bold mb-1">Bienvenue sur LE BON DON</h1>
+					<h2 class="fs-md ft-medium">Donnez une seconde vie à vos objets</h2>
+				</div>
+
+				<form class="main-search-wrap fl-wrap">
+					<div class="main-search-item">
+						<span class="search-tag"><i class="lni lni-keyboard"></i></span>
+						<input type="text" class="form-control radius" placeholder="Objet recherché" />
+					</div>
+					<div class="main-search-item">
+						<span class="search-tag"><i class="lni lni-map-marker"></i></span>
+						<input type="text" class="form-control" placeholder="Saisissez la ville" />
+					</div>
+					<div class="main-search-item">
+						<!--dropdown ===========CATEGORIE============ -->
+
+					</div>
+					<div class="main-search-button">
+						<button class="btn full-width theme-bg text-white" type="button">Search</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+	<!-- ======================= All Types Listing ======================== -->
+		<section class="space min">
+			
+				<div class="container">
+				
+					<div class="row justify-content-center">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+							<div class="sec_title position-relative text-center mb-5">
+								<h2 class="ft-bold">Dernières annonces ...</h2>
+							</div>
+						</div>
+					</div>
+					
+					<!-- row -->
+					<div class="row align-items-center">
+
+						
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="tab-content" id="myTabContent">
+								
+								<!-- Places -->
+								<div class="tab-pane fade show active" id="places" role="tabpanel" aria-labelledby="places-tab">
+									<div class="row justify-content-center">
+		{% for annonce in derniereAnnonce %}	
+				
+										<!-- Single -->
+										<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+											<div class="Goodup-grid-wrap">
+												<div class="Goodup-grid-upper">
+													<div class="Goodup-pos ab-left">
+														<div class="Goodup-status close me-2">Closed</div>
+													</div>
+													<div class="Goodup-grid-thumb">
+														<a href="single-listing-detail-2.html" class="d-block text-center m-auto">{% for image in imageAnnonce %}<img src="image/{{image.nomImage}}"  alt="{{image.idAnnonce.titreAnnonce}}"{% endfor %}></a>
+													</div>
+
+												</div>
+												<div class="Goodup-grid-fl-wrap">
+													<div class="Goodup-caption px-3 py-2">
+														<div class="Goodup-author"><a href="author-detail.html"><img src="https://via.placeholder.com/400x400" class="img-fluid circle" alt=""></a></div>
+														<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2.html" class="text-dark fs-md">{{annonce.titreAnnonce}}</a></h4>
+														<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>{{annonce.idVille.nomVille}}</div> 
+														<div class="Goodup-middle-caption mt-3">
+															<p>{{annonce.descriptionAnnonce|raw}}</p>
+														</div>
+													</div>
+													<div class="Goodup-grid-footer py-2 px-3">
+														<div class="Goodup-ft-first">
+															<a href="half-map-search-2.html"><div class="cats-ico bg-2"></div><span class="cats-title">{{annonce.idSousCategorie.idCategorie.nomCategorie}}</span></a>
+														</div>
+														<div class="Goodup-ft-last">
+															<div class="Goodup-inline">
+																<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-envelope position-absolute"></i></button></div>
+																<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-heart-filled position-absolute"></i></button></div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+		{% endfor %}
+					</div>
+					<!-- /row -->
+					
+				</div>
+			
+		</section>
+	<!-- ======================= All Types Listing ======================== -->
+
+	<!-- ======================= Listing Categories ======================== -->
+	<section class="space min gray">
+		<div class="container">
+
+			<div class="row justify-content-center">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+					<div class="sec_title position-relative text-center mb-5">
+						<h2 class="ft-bold">Top catégories</h2>
+					</div>
+				</div>
+			</div>
+
+			<!-- row -->
+			<div class="row align-items-center">
+
+				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+					<div class="cats-wrap text-center">
+						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
+							<div class="Goodup-catg-city">07 Cities</div>
+							<div class="Goodup-catg-icon"><i class="fas fa-car-alt"></i></div>
+							<div class="Goodup-catg-caption">
+								<h4 class="fs-md mb-0 ft-medium m-catrio">Véhicule</h4>
+								<span class="text-muted">607 Listings</span>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+					<div class="cats-wrap text-center">
+						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
+							<div class="Goodup-catg-city">17 Cities</div>
+							<div class="Goodup-catg-icon"><i class="fas fa-tshirt"></i></div>
+							<div class="Goodup-catg-caption">
+								<h4 class="fs-md mb-0 ft-medium m-catrio">Mode, vêtement, accessoire</h4>
+								<span class="text-muted">76 Listings</span>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+					<div class="cats-wrap text-center">
+						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
+							<div class="Goodup-catg-city">19 Cities</div>
+							<div class="Goodup-catg-icon"><i class="fas fa-house-damage"></i></div>
+							<div class="Goodup-catg-caption">
+								<h4 class="fs-md mb-0 ft-medium m-catrio">Maison</h4>
+								<span class="text-muted">112 Listings</span>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+					<div class="cats-wrap text-center">
+						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
+							<div class="Goodup-catg-city">32 Cities</div>
+							<div class="Goodup-catg-icon"><i class="fas fa-headset"></i></div>
+							<div class="Goodup-catg-caption">
+								<h4 class="fs-md mb-0 ft-medium m-catrio">Multimédia</h4>
+								<span class="text-muted">322 Listings</span>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+					<div class="cats-wrap text-center">
+						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
+							<div class="Goodup-catg-city">27 Cities</div>
+							<div class="Goodup-catg-icon"><i class="fas fa-basketball-ball"></i></div>
+							<div class="Goodup-catg-caption">
+								<h4 class="fs-md mb-0 ft-medium m-catrio">Sport, loisir et culture</h4>
+								<span class="text-muted">161 Listings</span>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+					<div class="cats-wrap text-center">
+						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
+							<div class="Goodup-catg-city">26 Cities</div>
+							<div class="Goodup-catg-icon"><i class="fas fa-cat"></i></div>
+							<div class="Goodup-catg-caption">
+								<h4 class="fs-md mb-0 ft-medium m-catrio">Animaux</h4>
+								<span class="text-muted">172 Listings</span>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+					<div class="cats-wrap text-center">
+						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
+							<div class="Goodup-catg-city">10 Cities</div>
+							<div class="Goodup-catg-icon"><i class="fas fa-carrot"></i></div>
+							<div class="Goodup-catg-caption">
+								<h4 class="fs-md mb-0 ft-medium m-catrio">Jardinage</h4>
+								<span class="text-muted">144 Listings</span>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+					<div class="cats-wrap text-center">
+						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
+							<div class="Goodup-catg-icon"><i class="fas fa-wrench"></i></div>
+							<div class="Goodup-catg-caption">
+								<h4 class="fs-md mb-0 ft-medium m-catrio">Bricolage</h4>
+								<span class="text-muted">210 Listings</span>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+					<div class="cats-wrap text-center">
+						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
+							<div class="Goodup-catg-icon"><i class="fas fa-baby-carriage"></i></div>
+							<div class="Goodup-catg-caption">
+								<h4 class="fs-md mb-0 ft-medium m-catrio">Univers Bébé</h4>
+								<span class="text-muted">241 Listings</span>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+					<div class="cats-wrap text-center">
+						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
+							<div class="Goodup-catg-icon"><i class="fas fa-unlink"></i></div>
+							<div class="Goodup-catg-caption">
+								<h4 class="fs-md mb-0 ft-medium m-catrio">Divers</h4>
+								<span class="text-muted">52 Listings</span>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+	</section>
+	<!-- ======================= Listing Categories End ======================== -->
+
+{% endblock %}

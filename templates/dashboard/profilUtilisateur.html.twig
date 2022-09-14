@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DashboardController!{% endblock %}
+
+{% block body %}
+		<!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+    <div class="preloader"></div>
+		
+        <!-- ============================================================== -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <div id="main-wrapper">
+		
+            <!-- =============================== Dashboard Header ========================== -->
+			{% include 'commun/navbarUtilisateurConnecte.html.twig' %}
+			<!-- =============================== Dashboard Header ========================== -->
+		
+            {% include 'commun/dashboardHeader.html.twig' %}
+			
+			<!-- ======================= dashboard Detail ======================== -->
+			<div class="goodup-dashboard-wrap gray px-4 py-5">
+				<a class="mobNavigation" data-bs-toggle="collapse" href="#MobNav" role="button" aria-expanded="false" aria-controls="MobNav">
+					<i class="fas fa-bars me-2"></i>Dashboard Navigation
+				</a>
+                
+                {% include 'commun/leftNavbarDashboard.html.twig' %}
+				
+				<div class="goodup-dashboard-content">
+					<div class="dashboard-tlbar d-block mb-5">
+						<div class="row">
+							<div class="colxl-12 col-lg-12 col-md-12">
+								<h1 class="ft-medium">Information profil</h1>
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item text-muted"><a href="{{ path('app_accueil')}}">Accueil</a></li>
+										<li class="breadcrumb-item text-muted"><a href="{{ path('app_dashboard')}}">Dashboard</a></li>
+										<li class="breadcrumb-item"><a href="#" class="theme-cl">Mon Profil</a></li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+					<div class="dashboard-widg-bar d-block">
+						<div class="row">
+							<div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 order-xl-last order-lg-last order-md-last">		
+{{ form_start(formAvatar) }}
+								<div class="d-flex bg-white rounded px-3 py-3 mb-3">
+									<div class="dash-figure">
+										<div class="dash-figure-thumb">
+											<img src="image/{{photoUtilisateur}}" class="img-fluid rounded" alt="" />
+										
+										</div>
+										{{ form_row(formAvatar.photoUtilisateur) }}
+										<div class="upload-photo-btn">
+											<div class="Uploadphoto">
+												<span>
+													{{ form_row(formAvatar.save) }}
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+{{ form_end(formAvatar) }}
+
+
+							</div>
+							<div class="col-xl-9 col-lg-9 col-md-8 col-sm-12">
+								<form class="submit-form">
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md"><i class="fa fa-user-check me-2 theme-cl fs-sm"></i>Profil de {{prenom|capitalize}} {{nom|capitalize}}</h4>	
+											</div>
+										</div>
+										
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row">
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Prénom</label>
+														<input type="text" class="form-control rounded" placeholder="{{prenom|capitalize}}" />
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Nom</label>
+														<input type="text" class="form-control rounded" placeholder="{{nom|capitalize}}" />
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Pseudo</label>
+														<input type="text" class="form-control rounded" placeholder="{{pseudo|capitalize}}" />
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Email</label>
+														<input type="text" class="form-control rounded" placeholder="{{mail}}" />
+													</div>
+												</div>
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<button class="btn theme-bg rounded text-light">Sauvegarder les Changements</button>
+														<a href="#" class="btn theme-bg rounded text-light"> Modifier le mot de passe <a/>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+							
+					</div>
+					
+					<!-- footer -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="py-3">© 2022 Goodup. Designd By ThemezHub.</div>
+						</div>
+					</div>
+		
+				</div>
+				
+			</div>
+			<!-- ======================= dashboard Detail End ======================== -->
+			
+			<a id="tops-button" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
+			
+
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== -->
+	
+		<!-- ============================================================== -->
+		<!-- This page plugins -->
+		<!-- ============================================================== -->		
+{% for notice3 in app.flashes('notice') %}
+    {{ notice3|raw }}
+{% endfor %}
+
+<script>
+
+</script>
+
+{% endblock %}
