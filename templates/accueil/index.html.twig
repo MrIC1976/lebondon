@@ -30,8 +30,7 @@
 						<input type="text" class="form-control" placeholder="Saisissez la ville" />
 					</div>
 					<div class="main-search-item">
-						<!--dropdown ===========CATEGORIE============ -->
-
+						<!--dropdown ===========CATEGORIE============ -->			
 					</div>
 					<div class="main-search-button">
 						<button class="btn full-width theme-bg text-white" type="button">Search</button>
@@ -83,9 +82,11 @@
 												</div>
 												<div class="Goodup-grid-fl-wrap">
 													<div class="Goodup-caption px-3 py-2">
-														<div class="Goodup-author"><a href="author-detail.html"><img src="https://via.placeholder.com/400x400" class="img-fluid circle" alt=""></a></div>
+														<div class="Goodup-author"><a href="author-detail.html">
+															{% for photo in photoProfil %}<img src="image/{{photo.photoUtilisateur}}" class="img-fluid circle" alt="{{photo.pseudoUtilisateur}}"{% endfor %}></a>
+														</div>
 														<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2.html" class="text-dark fs-md">{{annonce.titreAnnonce}}</a></h4>
-														<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>{{annonce.idVille.nomVille}}</div> 
+														<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>{{annonce.idVille.nomVille|raw}}</div> 
 														<div class="Goodup-middle-caption mt-3">
 															<p>{{annonce.descriptionAnnonce|raw}}</p>
 														</div>
