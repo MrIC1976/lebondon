@@ -7,7 +7,9 @@ use App\Entity\Image;
 use App\Entity\Annonce;
 use App\Form\AnnonceType;
 use Cocur\Slugify\Slugify;
+use App\Repository\ImageRepository;
 use App\Repository\VilleRepository;
+use App\Repository\AnnonceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\UtilisateurRepository;
 use App\Repository\SousCategorieRepository;
@@ -100,11 +102,21 @@ class AnnonceController extends AbstractController
             'photoUtilisateur' => $utilisateur->getPhotoUtilisateur(),
         ]);
     }
+
+    //pour afficher la vue de l'annonce dans mes annonces du dashboard
     #[Route('/annonce/view_annonce', name: 'view_annonce')]
-    public function vueAnnnonce(UserInterface $utilisateur): Response
+    public function vueAnnnonce(AnnonceRepository $repoAnnonce, EntityManagerInterface $entityManager, ImageRepository $repoImage, UserInterface $utilisateur): Response
     {
-        return $this->render('annonce/view_annonce.html.twig', [
-            
+      /*  $vueAnnonce = $repoAnnonce->findOneByIdAnnonce($id);
+        dd($vueAnnonce);
+        $imageAnnonce = $repoImage->findByIdAnnonce($id);*/
+
+        return $this->render('/annonce/view_annonce.html.twig', [
+            'controller_name' => 'AnnonceController',
+        /*"vueAnnonce" => $vueAnnonce,
+        "imageAnnonce" => $imageAnnonce,
+        dd($vueAnnonce),
+        //dd($imageAnnonce)*/
         ]);
     }
 }
