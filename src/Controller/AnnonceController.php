@@ -32,9 +32,8 @@ class AnnonceController extends AbstractController
         $form->handleRequest($request); //permet de récupérer les données saisis dans le formulaire
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $utilisateur = $tokenStorage->getToken()->getUser(); //obtenir l'utilisateur connecté
             
+            //$utilisateur = $tokenStorage->getToken()->getUser(); //obtenir l'utilisateur connecté
             $slugify = new Slugify();
             $slug = $slugify->slugify($annonce->getTitreAnnonce()); 
             $annonce->setSlugAnnonce($slug);
@@ -45,17 +44,10 @@ class AnnonceController extends AbstractController
 
             $villeSaisieCodeInsee = $form->get('codeInsee')->getData(); //on a récupérer le code insee de la ville saisi ou code postal saisi
             $ville = $repoVille->findOneByCodeInsee($villeSaisieCodeInsee); //on va chercher les info de cette ville dans notre base de donnée
-            //dd($villeSaisieCodeInsee);
-            //if $villeSaisieCodeInsee
-            //$idVilleSaisie = ($ville->getIdVille());//on récupére seulement l'idVille de la ville saisi par l'utilisateur 
-            //il faut maintenant set($idVilleSaisie) dans $annonce;
-            //dd('')
             $annonce->setIdVille($ville);
             
             $manager->persist($annonce);
             $manager->flush();
-            
-            //si code insee = 75056 on prends le code postal plutot (on cast)
 
             // On récupère les images transmises
             $images = $form->get('images')->getData();
@@ -65,7 +57,7 @@ class AnnonceController extends AbstractController
             foreach($images as $image){ //nombre d'image transmise non connu -> foreach
                 // On génère un nouveau nom de fichier
                 $fichier = md5(uniqid()).'.'.$image->guessExtension();
-                
+
                 // On copie le fichier dans le dossier public image
                 $image->move(
                     $this->getParameter('images_directory'),//images_directory se situe dans service.yaml parameters chemin de l'image

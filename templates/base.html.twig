@@ -23,7 +23,7 @@
 
         {% endblock %}
 
-
+{% block javascripts %}
         
         <script src="/assets/js/jquery.min.js"></script>
         <script src="/assets/js/popper.min.js"></script>
@@ -37,19 +37,18 @@
         <script src="/assets/js/lightbox.js"></script>
         <script src="/assets/js/jQuery.style.switcher.js"></script>
         <script src="/assets/js/custom.js"></script>
-        <script src="YourJquery source path"></script>
         <script src="http://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.js" ></script>
         <!-- Date Booking Script -->
         <script src="/assets/js/moment.min.js"></script>
         <script src="/assets/js/daterangepicker.js"></script>
         <!-- Morris.js charts -->
         <script src="/assets/js/plugins/raphael/raphael.min.js"></script>
-        <script src="/assets/js/plugins/morris.js/morris.min.js"></script>
+        <script src="/assets/js/plugins/morris.js/morris.js"></script>
 
         <!-- Custom Chart JavaScript -->
         <script src="/assets/js/plugins/dashboard-2.js"></script>
-        {% block javascripts %}
+        
 
         {% endblock %}
-    </body>
+    
 </html>

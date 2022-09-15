@@ -38,44 +38,57 @@ class DashboardController extends AbstractController
     #[Route('/mon_profil', name: 'app_myProfile')]
     public function pageProfil(Request $request, UtilisateurRepository $repoUser,UserInterface $utilisateur, EntityManagerInterface $manager, TokenStorageInterface $tokenStorage): Response
     {
+
         $style8 = 'active';
-        $user = new Utilisateur();
-
-        $formProfil = $this->createForm (ProfilFormType::class, $utilisateur); //création du formulaire
-        //$formProfil->handleRequest($request);
-
         $formAvatar = $this->createForm (AvatarFormType::class, $utilisateur); //création du formulaire
         $formAvatar->handleRequest($request);
 
-        if ($formAvatar->isSubmitted()) {
-            
+
+
+        /*if ($formProfil->isSubmitted() && $formProfil->isValid()) {
+
+            dd($profil);
+            $manager->persist($utilisateur);
+            $manager->flush();
+            $this->addFlash('notice3', "<script>Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Bravo, Avatar modifié !',
+                showConfirmButton: false,
+                timer: 2500
+                })</script>");
+        
+            return $this->redirectToRoute('app_dashboard'); 
+        }    */
+
+
+        if ($formAvatar->isSubmitted() && $formAvatar->isValid()) {
+        
         $avatar = $formAvatar->get('photoUtilisateur')->getData();  // On récupère l'image transmise
         $fichier = md5(uniqid()).'.'.$avatar->guessExtension(); // On génère un nouveau nom de fichier
          // On copie le fichier dans le dossier public image
         $avatar->move(
         $this->getParameter('images_directory'),//images_directory se situe dans service.yaml parameters chemin de l'image
         $fichier //il s'agit ici du nom de l'image
-        
         );
-        //dd($fichier);
-        $utilisateur -> setPhotoUtilisateur($fichier);
+        $utilisateur->setPhotoUtilisateur($fichier);
         $manager->persist($utilisateur );
         $manager->flush();
 
-    $this->addFlash('notice3', "<script>Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Bravo, Avatar modifié !',
-        showConfirmButton: false,
-        timer: 2500
-        })</script>");
+        $this->addFlash('notice3', "<script>Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Bravo, Avatar modifié !',
+            showConfirmButton: false,
+            timer: 2500
+            })</script>");
 
-    return $this->redirectToRoute('app_dashboard'); 
-}
+        return $this->redirectToRoute('app_dashboard'); 
+
+        }
         return $this->render('dashboard/profilUtilisateur.html.twig', [
             'controller_name' => 'DashboardController',
             'formAvatar' => $formAvatar->createView(),
-            'formProfil'=> $formProfil->createView(),
             'pseudo' => $utilisateur->getPseudoUtilisateur(),
             'prenom' => $utilisateur->getPrenomUtilisateur(),
             'nom' => $utilisateur->getNomUtilisateur(),
