@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Vue de l'annonce{% endblock %}
 
 {% block body %}
-	
-{% include 'commun/navbarUtilisateurConnecte.html.twig' %}
+{% include 'commun/navbarUtilisateurConnecte.html.twig' %}	
+
 			<div class="clearfix"></div>
 			
 			<!-- ======================= Searchbar Banner ======================== -->
 			<div class="featured-slick">
 				<div class="featured-gallery-slide">
-					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
+				
+					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}"" class="img-fluid mx-auto" alt="" /></a></div>
 					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
 					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
 					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
@@ -23,7 +25,7 @@
 				<div class="Goodup-ops-bhri">
 					<div class="Goodup-lkp-flex d-flex align-items-start justify-content-start">
 						<div class="Goodup-lkp-caption ps-3">
-							<div class="Goodup-lkp-title"><h1 class="text-light mb-0 ft-bold">Titre de l'annonce</h4></div>
+							<div class="Goodup-lkp-title"><h1 class="text-light mb-0 ft-bold">{{viewAnnonce.titreAnnonce}}</h4></div>
 						</div>
 					</div>
 				</div>
@@ -41,9 +43,7 @@
 								<div class="jbd-01 px-4 py-4">
 									<div class="jbd-details">
 										<h5 class="ft-bold fs-lg">Description de l'annonce</h5>
-										<div class="d-block mt-3">
-											<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur</p>
-											<p class="p-0 m-0">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur</p>
+										<div class="d-block mt-3">{{viewAnnonce.descriptionAnnonce|raw}}	
 										</div>
 									</div>								
 								</div>
