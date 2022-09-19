@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Image;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Annonce;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Image>
@@ -82,9 +83,13 @@ public function obtenirImageParAnnonce(): array
     return $this->createQueryBuilder('i')
         ->groupBy('i.idAnnonce')
         -> join('App\Entity\Annonce', 'annonce', 'WITH', 'annonce.idAnnonce = i.idAnnonce' )
+        ->setMaxResults(1)
         ->getQuery()
         ->getResult()
     ;
-}
+} 
+
+
+
 
 }
