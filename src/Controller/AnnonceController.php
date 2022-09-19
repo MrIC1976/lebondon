@@ -74,12 +74,14 @@ class AnnonceController extends AbstractController
             $manager->persist($img);
             $manager->flush();
 
+
 $this->addFlash('notice', "<script>Swal.fire({
                 text: 'Ton annonce a été créée.',
                 imageUrl: ('/assets/img/logoComplet.png'),
                 imageWidth: 300,
                 imageHeight: 200,
                 imageAlt: 'logo Lebondon',
+
                 })</script>");
 
             return $this->redirectToRoute('app_dashboard'); //redirection vers dashboard  
@@ -110,6 +112,7 @@ $this->addFlash('notice', "<script>Swal.fire({
     $entityManager->remove($annonce);
     $entityManager->flush();//supprime l'annonce de la bdd
 
+
 $this->addFlash('message', "<script>Swal.fire({
                 text: 'Ton annonce a bien été supprimée.',
                 imageUrl: ('/assets/img/logoComplet.png'),
@@ -118,6 +121,7 @@ $this->addFlash('message', "<script>Swal.fire({
                 imageAlt: 'logo Lebondon',
                 })</script>");
                 
+
     return $this->redirectToRoute('app_dashboard');
 }
     //pour afficher la vue de l'annonce dans mes annonces du dashboard
@@ -135,6 +139,5 @@ $this->addFlash('message', "<script>Swal.fire({
         //dd($imageAnnonce)
         ]);
     }
-
-    
 }
+

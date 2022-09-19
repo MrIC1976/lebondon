@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Image;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Annonce;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Image>
@@ -86,6 +87,9 @@ public function obtenirImageParAnnonce(): array
         ->getQuery()
         ->getResult()
     ;
-}
+} 
+
+
+
 
 }

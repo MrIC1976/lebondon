@@ -1,0 +1,271 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Vue de l'annonce{% endblock %}
+
+{% block body %}
+{% include 'commun/navbarUtilisateurConnecte.html.twig' %}	
+
+			<div class="clearfix"></div>
+			
+			<!-- ======================= Searchbar Banner ======================== -->
+			<div class="featured-slick">
+				<div class="featured-gallery-slide">
+				
+					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}"" class="img-fluid mx-auto" alt="" /></a></div>
+					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
+					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
+					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
+					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
+					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
+					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
+					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
+				</div>
+				
+				<div class="Goodup-ops-bhri">
+					<div class="Goodup-lkp-flex d-flex align-items-start justify-content-start">
+						<div class="Goodup-lkp-caption ps-3">
+							<div class="Goodup-lkp-title"><h1 class="text-light mb-0 ft-bold">{{viewAnnonce.titreAnnonce}}</h4></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ======================= Searchbar Banner ======================== -->
+			
+			<!-- ============================ Listing Details Start ================================== -->
+			<section class="gray py-5 position-relative">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+							
+							<!-- About The Business -->
+							<div class="bg-white rounded mb-4">
+								<div class="jbd-01 px-4 py-4">
+									<div class="jbd-details">
+										<h5 class="ft-bold fs-lg">Description de l'annonce</h5>
+										<div class="d-block mt-3">{{viewAnnonce.descriptionAnnonce|raw}}	
+										</div>
+									</div>								
+								</div>
+							</div>						
+						</div>				
+					</div>
+				</div>
+			</section>
+			<!-- ======================= Related Listings ======================== -->
+			<section class="space min">
+				<div class="container">	
+					<div class="row justify-content-center">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+							<div class="sec_title position-relative text-center mb-5">
+								<h2 class="ft-bold">Mes dernières annonces consultées</h2>
+							</div>
+						</div>
+					</div>
+					
+					<!-- row -->
+					<div class="row justify-content-center">
+					
+						<!-- Single -->
+						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+							<div class="Goodup-grid-wrap">
+								<div class="Goodup-grid-upper">
+									<div class="Goodup-pos ab-left">
+										<div class="Goodup-status close me-2">Closed</div>
+									</div>
+									<div class="Goodup-grid-thumb">
+										<a href="single-listing-detail-2.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/1200x850" class="img-fluid" alt=""></a>
+									</div>
+									<div class="Goodup-rating overlay">
+										<div class="Goodup-pr-average high">4.8</div>
+										<div class="Goodup-aldeio">
+											<div class="Goodup-rates">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+											<div class="Goodup-all-review"><span>46 Reviews</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="Goodup-grid-fl-wrap">
+									<div class="Goodup-caption px-3 py-2">
+										<div class="Goodup-author"><a href="author-detail.html"><img src="https://via.placeholder.com/400x400" class="img-fluid circle" alt=""></a></div>
+										<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2.html" class="text-dark fs-md">Pretty Woman Smart Batra</a></h4>
+										<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>California, USA</div>
+										<div class="Goodup-middle-caption mt-3">
+											<p>At vero eos et accusamus et iusto odio dignissimos ducimus</p>
+									</div>
+								</div>
+									<div class="Goodup-grid-footer py-2 px-3">
+										<div class="Goodup-ft-first">
+											<a href="half-map-search-2.html" class="Goodup-cats-wrap"><div class="cats-ico bg-2"><i class="lni lni-slim"></i></div><span class="cats-title">Beauty &amp; Makeup</span></a>
+										</div>
+										<div class="Goodup-ft-last">
+											<div class="Goodup-inline">
+												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-envelope position-absolute"></i></button></div>
+												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-heart-filled position-absolute"></i></button></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Single -->
+						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+							<div class="Goodup-grid-wrap">
+								<div class="Goodup-grid-upper">
+									<div class="Goodup-pos ab-left">
+										<div class="Goodup-status open me-2">Open</div>
+										<div class="Goodup-featured-tag">Featured</div>
+									</div>
+									<div class="Goodup-grid-thumb">
+										<a href="single-listing-detail-2.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/1200x850" class="img-fluid" alt=""></a>
+									</div>
+									<div class="Goodup-rating overlay">
+										<div class="Goodup-pr-average high">4.1</div>
+										<div class="Goodup-aldeio">
+											<div class="Goodup-rates">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+											<div class="Goodup-all-review"><span>17 Reviews</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="Goodup-grid-fl-wrap">
+									<div class="Goodup-caption px-3 py-2">
+										<div class="Goodup-author"><a href="author-detail.html"><img src="https://via.placeholder.com/400x400" class="img-fluid circle" alt=""></a></div>
+										<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2.html" class="text-dark fs-md">The Sartaj Blue Night</a></h4>
+										<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>San Francisco, USA</div>
+										<div class="Goodup-middle-caption mt-3">
+											<p>At vero eos et accusamus et iusto odio dignissimos ducimus</p>
+										</div>
+									</div>
+									<div class="Goodup-grid-footer py-2 px-3">
+										<div class="Goodup-ft-first">
+											<a href="half-map-search-2.html" class="Goodup-cats-wrap"><div class="cats-ico bg-3"><i class="lni lni-cake"></i></div><span class="cats-title">Night Party</span></a>
+										</div>
+										<div class="Goodup-ft-last">
+											<div class="Goodup-inline">
+												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-envelope position-absolute"></i></button></div>
+												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-heart-filled position-absolute"></i></button></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Single -->
+						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+							<div class="Goodup-grid-wrap">
+								<div class="Goodup-grid-upper">
+									<div class="Goodup-pos ab-left">
+										<div class="Goodup-status open me-2">Open</div>
+									</div>
+									<div class="Goodup-grid-thumb">
+										<a href="single-listing-detail-2.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/1200x850" class="img-fluid" alt=""></a>
+									</div>
+									<div class="Goodup-rating overlay">
+										<div class="Goodup-pr-average mid">3.6</div>
+										<div class="Goodup-aldeio">
+											<div class="Goodup-rates">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+											<div class="Goodup-all-review"><span>30 Reviews</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="Goodup-grid-fl-wrap">
+									<div class="Goodup-caption px-3 py-2">
+										<div class="Goodup-author"><a href="author-detail.html"><img src="https://via.placeholder.com/400x400" class="img-fluid circle" alt=""></a></div>
+										<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2.html" class="text-dark fs-md">Pizza Delight Cafe Shop</a></h4>
+										<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>102 Satirio, Canada</div>
+										<div class="Goodup-middle-caption mt-3">
+											<p>At vero eos et accusamus et iusto odio dignissimos ducimus</p>
+										</div>
+									</div>
+									<div class="Goodup-grid-footer py-2 px-3">
+										<div class="Goodup-ft-first">
+											<a href="half-map-search-2.html" class="Goodup-cats-wrap"><div class="cats-ico bg-4"><i class="lni lni-coffee-cup"></i></div><span class="cats-title">Coffee &amp; Bars</span></a>
+										</div>
+										<div class="Goodup-ft-last">
+											<div class="Goodup-inline">
+												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-envelope position-absolute"></i></button></div>
+												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-heart-filled position-absolute"></i></button></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Single -->
+						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+							<div class="Goodup-grid-wrap">
+								<div class="Goodup-grid-upper">
+									<div class="Goodup-pos ab-left">
+										<div class="Goodup-status close me-2">Closed</div>
+										<div class="Goodup-featured-tag">Featured</div>
+									</div>
+									<div class="Goodup-grid-thumb">
+										<a href="single-listing-detail-2.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/1200x850" class="img-fluid" alt=""></a>
+									</div>
+									<div class="Goodup-rating overlay">
+										<div class="Goodup-pr-average poor">2.3</div>
+										<div class="Goodup-aldeio">
+											<div class="Goodup-rates">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+											<div class="Goodup-all-review"><span>42 Reviews</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="Goodup-grid-fl-wrap">
+									<div class="Goodup-caption px-3 py-2">
+										<div class="Goodup-author"><a href="author-detail.html"><img src="https://via.placeholder.com/400x400" class="img-fluid circle" alt=""></a></div>
+										<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2.html" class="text-dark fs-md">The Great Allante Shop</a></h4>
+										<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>Oliy Denver, USA</div>
+										<div class="Goodup-middle-caption mt-3">
+											<p>At vero eos et accusamus et iusto odio dignissimos ducimus</p>
+										</div>
+									</div>
+									<div class="Goodup-grid-footer py-2 px-3">
+										<div class="Goodup-ft-first">
+											<a href="half-map-search-2.html" class="Goodup-cats-wrap"><div class="cats-ico bg-5"><i class="lni lni-shopping-basket"></i></div><span class="cats-title">Shopping Mall</span></a>
+										</div>
+										<div class="Goodup-ft-last">
+											<div class="Goodup-inline">
+												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-envelope position-absolute"></i></button></div>
+												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-heart-filled position-absolute"></i></button></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					<!-- row -->
+					
+				</div>
+			</section>
+			
+{% endblock %}
+
+
