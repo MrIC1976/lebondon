@@ -63,13 +63,13 @@ class AnnonceRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-    public function getAnnonceByUtilisateur($value): array
+    public function getAnnonceByImage(): array
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.idUtilisateur = :val')
-            ->setParameter('val', $value)
-            ->addSelect('image.idImage')
+            
+            ->addSelect('image.nomImage')
             ->Join('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
+            ->setMaxResults(8)
             ->getQuery()
             ->getResult()
         ;

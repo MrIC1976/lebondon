@@ -66,12 +66,26 @@ class ConnexionController extends AbstractController
                     $context
                 );
 
-                $this->addFlash('success', 'Email envoyé avec succès');
-                return $this->redirectToRoute('app_connexions');
+                $this->addFlash('success', "<script>Swal.fire({
+                    title: 'Email envoyé avec succès.',
+                    text: 'Vous allez le reçevoir dans quelques instants sur votre boite mail.',
+                    imageUrl: ('/assets/img/logoComplet.png'),
+                    imageWidth: 300,
+                    imageHeight: 200,
+                    imageAlt: 'logo Lebondon',
+                    })</script>");
+                return $this->redirectToRoute('app_connexion');
             }
             // $user est null
-            $this->addFlash('danger', 'Un problème est survenu');
-            return $this->redirectToRoute('app_connexio');
+            $this->addFlash('success', "<script>Swal.fire({
+                title: 'Attention.',
+                text: 'Un problème est survenu.',
+                imageUrl: ('/assets/img/logoComplet.png'),
+                imageWidth: 300,
+                imageHeight: 200,
+                imageAlt: 'logo Lebondon',
+                })</script>");
+            return $this->redirectToRoute('app_connexion');
         }
 
         return $this->render('security/reset_password_request.html.twig', [

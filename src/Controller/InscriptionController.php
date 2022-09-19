@@ -53,18 +53,16 @@ class InscriptionController extends AbstractController
             $manager->persist($utilisateur); // si donnée persiste
             $manager->flush();  //envoi bbd
 
-            $this->addFlash(
-                'message1',
-                "<script> Swal.fire({
+            $this->addFlash ('message1', "<script>Swal.fire({
+                title: 'Génial !',
+                text: 'Vous venez de recevoir un email. Merci de cliquer sur le lien pour confirmer votre inscription.',
+                imageUrl: ('/assets/img/logoComplet.png'),
+                imageWidth: 300,
+                imageHeight: 200,
+                imageAlt: 'logo Lebondon',
+                })</script>");
 
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Vous venez de recevoir un email. Merci de cliquer sur le lien pour confirmer votre inscription.',
-                        showConfirmButton: false,
-                        timer: 6000
 
-                    })</script>"
-            );
             $signatureComponents = $this->verifyEmailHelper->generateSignature(
                 'app_email_verifier',
                 $utilisateur->getIdUtilisateur(),
@@ -112,17 +110,16 @@ class InscriptionController extends AbstractController
             $manager->flush();
         }
         //dd($utilisateur);
-        $this->addFlash('message1',
-            "<script> Swal.fire({
 
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Votre inscription est confirmée! Vous pouvez désormais vous connecter.',
-                    showConfirmButton: true,
-                    timer: 3000
+        $this->addFlash ('message1', "<script>Swal.fire({
+            title: 'Génial !',
+            text: 'Votre inscription est confirmée! Vous pouvez désormais vous connecter.',
+            imageUrl: ('/assets/img/logoComplet.png'),
+            imageWidth: 300,
+            imageHeight: 200,
+            imageAlt: 'logo Lebondon',
+            })</script>");
 
-                })</script>"
-        );
         return $this->redirectToRoute('app_connexion');
     }
 }

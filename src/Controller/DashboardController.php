@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-
 use App\Entity\Utilisateur;
 use App\Form\AvatarFormType;
 use App\Form\ProfilFormType;
@@ -43,25 +42,6 @@ class DashboardController extends AbstractController
         $formAvatar = $this->createForm (AvatarFormType::class, $utilisateur); //création du formulaire
         $formAvatar->handleRequest($request);
 
-
-
-        /*if ($formProfil->isSubmitted() && $formProfil->isValid()) {
-
-            dd($profil);
-            $manager->persist($utilisateur);
-            $manager->flush();
-            $this->addFlash('notice3', "<script>Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Bravo, Avatar modifié !',
-                showConfirmButton: false,
-                timer: 2500
-                })</script>");
-        
-            return $this->redirectToRoute('app_dashboard'); 
-        }    */
-
-
         if ($formAvatar->isSubmitted() && $formAvatar->isValid()) {
         
         $avatar = $formAvatar->get('photoUtilisateur')->getData();  // On récupère l'image transmise
@@ -75,13 +55,14 @@ class DashboardController extends AbstractController
         $manager->persist($utilisateur );
         $manager->flush();
 
-        $this->addFlash('notice3', "<script>Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Bravo, Avatar modifié !',
-            showConfirmButton: false,
-            timer: 2500
-            })</script>");
+        $this->addFlash ('notice3', "<script>Swal.fire({
+                title: 'Génial !',
+                text: 'Votre photo de profil a été modifiée.',
+                imageUrl: ('/assets/img/logoComplet.png'),
+                imageWidth: 300,
+                imageHeight: 200,
+                imageAlt: 'logo Lebondon',
+                })</script>");
 
         return $this->redirectToRoute('app_dashboard'); 
 
@@ -117,4 +98,7 @@ class DashboardController extends AbstractController
             'photoUtilisateur' => $utilisateur->getPhotoUtilisateur(),
         ]);
     }
+
+
+    
 }
