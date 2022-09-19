@@ -22,40 +22,12 @@ class AccueilController extends AbstractController
     public function index(EntityManagerInterface $manager, AnnonceRepository $annonceRepo, ImageRepository $imageRepo, UtilisateurRepository $utilisateurRepo, VilleRepository $villeRepo, CategorieRepository $categorieRepo): Response
     {
         $annonces = $annonceRepo->findAll();
-        $utilisateurAnnonce = $utilisateurRepo->findAll();
-       
-        $imageAnnonce = $imageRepo->obtenirImageParAnnonce();
-        //dd( $imageAnnonce);
-        
-        $villeAnnonce = $villeRepo->obtenirVilleParAnnonce();
-        $derniere = $annonceRepo->getHuitDernieresAnnonces();
-        //dd($derniere);
-        $categories = $categorieRepo->findAll();
-        $photoUser = $utilisateurRepo->findAll();
-        //dd($photoUser);
-        //dd($derniere);
-        
+        $derniereAnnonce=$annonceRepo->getAnnonceByImage();
+
         return $this->render('Accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
-            // 'pseudo' => $utilisateur->getPseudo(),
-            'contenuAnnonce' => $annonces,
-            'imageAnnonce' => $imageAnnonce,
-            'utilisateurAnnonce' => $utilisateurAnnonce,
-            'villeAnnonce' => $villeAnnonce,
-            'derniereAnnonce' => $derniere,
-            'categorieAnnonce' => $categories,
-            'photoProfil' => $photoUser,
-        ]);
-
-
-
-
-
-
-
-
-
-        
+            'derniereAnnonce' => $derniereAnnonce,
+            ]);     
     }
 }
 

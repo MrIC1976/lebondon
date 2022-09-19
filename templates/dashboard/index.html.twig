@@ -322,7 +322,7 @@
 {% endfor %}
 
 {% for message in app.flashes('message') %}
-{{ message|raw }}
+    {{ message|raw }}
 {% endfor %}
 
 {% endblock %}

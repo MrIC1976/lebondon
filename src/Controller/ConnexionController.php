@@ -47,6 +47,7 @@ public function forgottenPassword(
 
     $form->handleRequest($request);
 
+
     if($form->isSubmitted() && $form->isValid()){
         //On va chercher l'utilisateur par son email
         $user = $UtilisateurRepo->findOneByMailUtilisateur($form->get('mailUtilisateur')->getData());
@@ -73,16 +74,17 @@ public function forgottenPassword(
                 $context
             );
 
-            $this->addFlash(
-                'message',
-                "<script> Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Email envoyé avec succès',
-                        showConfirmButton: true,
-                        
-                })</script>"
+                $this->addFlash('success', "<script>Swal.fire({
+                    title: 'Email envoyé avec succès.',
+                    text: 'Vous allez le reçevoir dans quelques instants sur votre boite mail.',
+                    imageUrl: ('/assets/img/logoComplet.png'),
+                    imageWidth: 300,
+                    imageHeight: 200,
+                    imageAlt: 'logo Lebondon',
+                    })</script>");
+                return $this->redirectToRoute('app_connexion');
             );
+
             return $this->redirectToRoute('app_connexion');
         }
         // $user est null
