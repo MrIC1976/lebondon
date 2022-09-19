@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Annonce;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,7 +46,7 @@ class Image
      *
      * @return  int
      */ 
-    public function getIdImage()
+    public function getIdImage(): ?int
     {
         return $this->idImage;
     }
@@ -69,7 +70,7 @@ class Image
      *
      * @return  string
      */ 
-    public function getNomImage()
+    public function getNomImage(): ?string
     {
         return $this->nomImage;
     }
@@ -81,7 +82,7 @@ class Image
      *
      * @return  self
      */ 
-    public function setNomImage(string $nomImage)
+    public function setNomImage(string $nomImage): self
     {
         $this->nomImage = $nomImage;
 
@@ -93,7 +94,7 @@ class Image
      *
      * @return  \Annonce
      */ 
-    public function getIdAnnonce()
+    public function getIdAnnonce(): ?Annonce
     {
         return $this->idAnnonce;
     }
@@ -105,7 +106,7 @@ class Image
      *
      * @return  self
      */ 
-    public function setIdAnnonce(?Annonce $idAnnonce)
+    public function setIdAnnonce(?Annonce $idAnnonce): self
     {
         $this->idAnnonce = $idAnnonce;
 

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use id;
 use DateTime;
 use App\Entity\Image;
 use App\Entity\Annonce;
@@ -42,8 +43,8 @@ class AnnonceController extends AbstractController
             
             $annonce->setDateCreation(new DateTime());
 
-            $villeSaisieCodeInsee = $form->get('codeInsee')->getData(); //on a récupérer le code insee de la ville saisi ou code postal saisi
-            $ville = $repoVille->findOneByCodeInsee($villeSaisieCodeInsee); //on va chercher les info de cette ville dans notre base de donnée
+            $villeSaisieCodeInsee = $form->get('codeInsee')->getData(); //on a récupérer le code insee de la ville saisie ou code postal saisi
+            $ville = $repoVille->findOneByCodeInsee($villeSaisieCodeInsee); //on va chercher les infos de cette ville dans notre base de données
             $annonce->setIdVille($ville);
             
             $manager->persist($annonce);
@@ -76,9 +77,9 @@ class AnnonceController extends AbstractController
             $this->addFlash('notice', "<script>Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: 'Bravo, votre annonce a bien été créé !',
+                title: 'Bravo, votre annonce a bien été créée !',
                 showConfirmButton: false,
-                timer: 2500
+                timer: 3000
                 })</script>");
 
             return $this->redirectToRoute('app_dashboard'); //redirection vers dashboard  
@@ -86,29 +87,55 @@ class AnnonceController extends AbstractController
 
 
 
-        return $this->render('annonce/index.html.twig', [ //voir methode php 'compact' pour alléger le code. Rendreform inclut la methode createView
+        return $this->render('annonce/index.html.twig', [ //voir methode php 'compact' pour alléger le code. Renderform inclut la methode createView
 
             'controller_name' => 'AnnonceController',
-            'form' => $form->createView(),//création de la vue associé à notre formulaire, méthode renderForm supportée, elle appelle automatiquement la méthode createView
+            'form' => $form->createView(),//création de la vue associée à notre formulaire, méthode renderForm supportée, elle appelle automatiquement la méthode createView
             'pseudo' => $utilisateur->getPseudoUtilisateur(),
             'photoUtilisateur' => $utilisateur->getPhotoUtilisateur(),
         ]);
     }
 
-    //pour afficher la vue de l'annonce dans mes annonces du dashboard
-    #[Route('/annonce/view_annonce', name: 'view_annonce')]
-    public function vueAnnnonce(AnnonceRepository $repoAnnonce, EntityManagerInterface $entityManager, ImageRepository $repoImage, UserInterface $utilisateur): Response
+    //pour supprimer une annonce dans mes annonces du dashboard
+    #[Route('/dashboard/delete-article/{id}', name: 'delete_annonce')]
+    public function deleteAnnonce($id, EntityManagerInterface $entityManager, AnnonceRepository $repoAnnonce, ImageRepository $repoImage, UserInterface $utilisateur,): Response
     {
-      /*  $vueAnnonce = $repoAnnonce->findOneByIdAnnonce($id);
-        dd($vueAnnonce);
-        $imageAnnonce = $repoImage->findByIdAnnonce($id);*/
 
-        return $this->render('/annonce/view_annonce.html.twig', [
-            'controller_name' => 'AnnonceController',
-        /*"vueAnnonce" => $vueAnnonce,
+    //pour supprimer l'image d'une annonce
+    $imageAnnonce = $repoImage->findOneByIdAnnonce($id);
+    $entityManager->remove($imageAnnonce);
+    $entityManager->flush();//supprime l'image de la bdd
+    //pour supprimer l'annonce de mes annonces
+    $annonce = $repoAnnonce->findOneByIdAnnonce($id);
+    $entityManager->remove($annonce);
+    $entityManager->flush();//supprime l'annonce de la bdd
+    $this->addFlash(
+        'message',
+        "<script> Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Votre annonce a bien été supprimée!',
+                showConfirmButton: false,
+                timer: 2500
+        })</script>"
+    );
+    return $this->redirectToRoute('app_dashboard');
+}
+    //pour afficher la vue de l'annonce dans mes annonces du dashboard
+    #[Route('/view-annonce/{id}', name: 'view-annonce')]
+    public function vueAnnnonce($id, AnnonceRepository $repoAnnonce, EntityManagerInterface $entityManager, ImageRepository $repoImage, UserInterface $utilisateur): Response
+    {
+        $viewAnnonce = $repoAnnonce->findOneByIdAnnonce($id);
+        $imageAnnonce = $repoImage->findByIdAnnonce($id);
+
+        return $this->render('annonce/view-annonce.html.twig', [
+        'controller_name' => 'AnnonceController',
+        "viewAnnonce" => $viewAnnonce,
         "imageAnnonce" => $imageAnnonce,
-        dd($vueAnnonce),
-        //dd($imageAnnonce)*/
+        //dd($viewAnnonce),
+        //dd($imageAnnonce)
         ]);
     }
+
+    
 }
