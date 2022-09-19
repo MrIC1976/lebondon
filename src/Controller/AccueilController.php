@@ -22,14 +22,10 @@ class AccueilController extends AbstractController
     {
         $annonces = $annonceRepo->findAll();
         $derniereAnnonce=$annonceRepo->getAnnonceByImage();
-        //dd($derniereAnnonce);
-        $photoUser = $utilisateurRepo->findAll();
-        //dd($photoUser);
 
         return $this->render('Accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
             'derniereAnnonce' => $derniereAnnonce,
-            'photoProfil' => $photoUser,
         ]);
     }
 }
