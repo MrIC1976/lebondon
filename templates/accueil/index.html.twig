@@ -83,7 +83,7 @@
 												<div class="Goodup-grid-fl-wrap">
 													<div class="Goodup-caption px-3 py-2">
 														<div class="Goodup-author"><a href="author-detail.html">
-															{% for photo in photoProfil %}<img src="image/{{photo.photoUtilisateur}}" class="img-fluid circle" alt="{{photo.pseudoUtilisateur}}"{% endfor %}></a>
+															{% for photo in photoProfil %}<img src="image/{{annonce.idUtilisateur.photoUtilisateur}}" class="img-fluid circle" alt="{{annonce.idUtilisateur.pseudoUtilisateur}}"{% endfor %}></a>
 														</div>
 														<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2.html" class="text-dark fs-md">{{annonce.titreAnnonce}}</a></h4>
 														<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>{{annonce.idVille.nomVille|raw}}</div> 

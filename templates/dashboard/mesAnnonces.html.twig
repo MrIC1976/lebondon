@@ -43,7 +43,6 @@
 							</div>
 						</div>
 					</div>
-					
 					<div class="dashboard-widg-bar d-block">
 						<div class="row">
 							<div class="col-xl-12 col-lg-12">
@@ -76,11 +75,13 @@
 															{{annonce.idAnnonce.descriptionAnnonce|raw}}
 														</div>	
 													</div>
+									
 													<div class="dsd-single-lst-footer">
 														<a href="javascript:void(0);" class="btn btn-edit mr-1"><i class="fas fa-edit me-1"></i>Modifier</a>
-														<a href="javascript:void(0);" class="btn btn-view mr-1"><i class="fas fa-eye me-1"></i>Voir</a>
-														<a href="javascript:void(0);" class="btn btn-delete"><i class="fas fa-trash me-1"></i>Supprimer</a>
+														<a href="/view-annonce/{{annonce.idAnnonce}}" class="btn btn-view mr-1"><i class="fas fa-eye me-1"></i>Voir</a>
+														<a href="/dashboard/delete-article/{{annonce.idAnnonce}}" class="btn btn-delete"><i class="fas fa-trash me-1" onclick="return confirm('Etes-vous sûr de vouloir supprimer cette annonce?')"></i>Supprimer</a>
 													</div>
+									
 												</div>
 											</div>
 							{% endfor %} 

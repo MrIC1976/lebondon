@@ -43,25 +43,6 @@ class DashboardController extends AbstractController
         $formAvatar = $this->createForm (AvatarFormType::class, $utilisateur); //création du formulaire
         $formAvatar->handleRequest($request);
 
-
-
-        /*if ($formProfil->isSubmitted() && $formProfil->isValid()) {
-
-            dd($profil);
-            $manager->persist($utilisateur);
-            $manager->flush();
-            $this->addFlash('notice3', "<script>Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Bravo, Avatar modifié !',
-                showConfirmButton: false,
-                timer: 2500
-                })</script>");
-        
-            return $this->redirectToRoute('app_dashboard'); 
-        }    */
-
-
         if ($formAvatar->isSubmitted() && $formAvatar->isValid()) {
         
         $avatar = $formAvatar->get('photoUtilisateur')->getData();  // On récupère l'image transmise
@@ -78,7 +59,7 @@ class DashboardController extends AbstractController
         $this->addFlash('notice3', "<script>Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Bravo, Avatar modifié !',
+            title: 'Bravo, votre photo de profil a été modifiée !',
             showConfirmButton: false,
             timer: 2500
             })</script>");
