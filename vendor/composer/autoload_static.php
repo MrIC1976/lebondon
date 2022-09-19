@@ -651,7 +651,6 @@ class ComposerStaticInit684f003dd2f8bf0f248af24b88bd2a34
         'App\\Entity\\Ville' => __DIR__ . '/../..' . '/src/Entity/Ville.php',
         'App\\Form\\AnnonceType' => __DIR__ . '/../..' . '/src/Form/AnnonceType.php',
         'App\\Form\\AvatarFormType' => __DIR__ . '/../..' . '/src/Form/AvatarFormType.php',
-        'App\\Form\\ProfilFormType' => __DIR__ . '/../..' . '/src/Form/ProfilFormType.php',
         'App\\Form\\RegistrationFormType' => __DIR__ . '/../..' . '/src/Form/RegistrationFormType.php',
         'App\\Form\\ResetPassType' => __DIR__ . '/../..' . '/src/Form/ResetPassType.php',
         'App\\Form\\ResetPasswordFormType' => __DIR__ . '/../..' . '/src/Form/ResetPasswordFormType.php',

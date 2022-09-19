@@ -320,5 +320,9 @@
 {% for notice3 in app.flashes('notice3') %}
     {{ notice3|raw }}
 {% endfor %}
+
+{% for message in app.flashes('message') %}
+    {{ message|raw }}
+{% endfor %}
 	
 {% endblock %}

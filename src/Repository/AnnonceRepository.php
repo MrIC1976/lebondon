@@ -77,7 +77,7 @@ class AnnonceRepository extends ServiceEntityRepository
 
 
 
-    public function getHuitDernieresAnnonces(): array
+   /* public function getHuitDernieresAnnonces(): array
     {
         return $this->createQueryBuilder('a')
             ->orderBy('a.idAnnonce', 'DESC')
@@ -85,6 +85,6 @@ class AnnonceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
-    }
+    }*/
 
 }

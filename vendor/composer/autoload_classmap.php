@@ -27,7 +27,6 @@ return array(
     'App\\Entity\\Ville' => $baseDir . '/src/Entity/Ville.php',
     'App\\Form\\AnnonceType' => $baseDir . '/src/Form/AnnonceType.php',
     'App\\Form\\AvatarFormType' => $baseDir . '/src/Form/AvatarFormType.php',
-    'App\\Form\\ProfilFormType' => $baseDir . '/src/Form/ProfilFormType.php',
     'App\\Form\\RegistrationFormType' => $baseDir . '/src/Form/RegistrationFormType.php',
     'App\\Form\\ResetPassType' => $baseDir . '/src/Form/ResetPassType.php',
     'App\\Form\\ResetPasswordFormType' => $baseDir . '/src/Form/ResetPasswordFormType.php',
