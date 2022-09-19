@@ -76,7 +76,7 @@
 														<div class="Goodup-status close me-2">Closed</div>
 													</div>
 													<div class="Goodup-grid-thumb">
-														<a href="single-listing-detail-2.html" class="d-block text-center m-auto">{% for image in imageAnnonce %}<img src="image/{{image.nomImage}}"  alt="{{image.idAnnonce.titreAnnonce}}"{% endfor %}></a>
+														<a href="single-listing-detail-2.html" class="d-block text-center m-auto">{% for image in imageAnnonce %}<img src="image/{{image.nomImage}}"  alt="...">{% endfor %}</a>
 													</div>
 
 												</div>
@@ -85,7 +85,7 @@
 														<div class="Goodup-author"><a href="author-detail.html">
 															{% for photo in photoProfil %}<img src="image/{{annonce.idUtilisateur.photoUtilisateur}}" class="img-fluid circle" alt="{{annonce.idUtilisateur.pseudoUtilisateur}}"{% endfor %}></a>
 														</div>
-														<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2.html" class="text-dark fs-md">{{annonce.titreAnnonce}}</a></h4>
+														<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2.html" class="text-dark fs-md">{{annonce.titreAnnonce|capitalize}}</a></h4>
 														<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>{{annonce.idVille.nomVille|raw}}</div> 
 														<div class="Goodup-middle-caption mt-3">
 															<p>{{annonce.descriptionAnnonce|raw}}</p>

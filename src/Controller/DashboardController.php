@@ -98,4 +98,7 @@ class DashboardController extends AbstractController
             'photoUtilisateur' => $utilisateur->getPhotoUtilisateur(),
         ]);
     }
+
+
+    
 }
