@@ -58,11 +58,8 @@
 					
 					<!-- row -->
 					<div class="row align-items-center">
-
-						
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 							<div class="tab-content" id="myTabContent">
-								
 								<!-- Places -->
 								<div class="tab-pane fade show active" id="places" role="tabpanel" aria-labelledby="places-tab">
 									<div class="row justify-content-center">
@@ -83,7 +80,7 @@
 													<div class="Goodup-caption px-3 py-2">
 														<div class="Goodup-author">
 															<a href="author-detail.html">
-                                <img src="image/{{annonce[0].idUtilisateur.photoUtilisateur}}" class="img-fluid circle" alt="{{annonce[0].idUtilisateur.pseudoUtilisateur}}">
+																<img src="image/{{annonce[0].idUtilisateur.photoUtilisateur}}" class="img-fluid circle" alt="{{annonce[0].idUtilisateur.pseudoUtilisateur}}">
 															</a>
 														</div>
 														<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2.html" class="text-dark fs-md">{{annonce[0].titreAnnonce}}</a></h4>
@@ -119,7 +116,6 @@
 	<!-- ======================= Listing Categories ======================== -->
 	<section class="space min gray">
 		<div class="container">
-
 			<div class="row justify-content-center">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 					<div class="sec_title position-relative text-center mb-5">
@@ -127,134 +123,54 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- row -->
 			<div class="row align-items-center">
+{% for annonce in NbreAnnonceParCategorie %}
+				<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+					<div class="cats-wrap text-center">
+					{% if annonce.nomCategorie == 'Bricolage' %}
+								<div class="Goodup-catg-icon"><i class="fas fa-wrench"></i></div>{% endif %}
 
-				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
-					<div class="cats-wrap text-center">
-						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
-							<div class="Goodup-catg-city">07 Cities</div>
-							<div class="Goodup-catg-icon"><i class="fas fa-car-alt"></i></div>
-							<div class="Goodup-catg-caption">
-								<h4 class="fs-md mb-0 ft-medium m-catrio">Véhicule</h4>
-								<span class="text-muted">607 Listings</span>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
-					<div class="cats-wrap text-center">
-						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
-							<div class="Goodup-catg-city">17 Cities</div>
-							<div class="Goodup-catg-icon"><i class="fas fa-tshirt"></i></div>
-							<div class="Goodup-catg-caption">
-								<h4 class="fs-md mb-0 ft-medium m-catrio">Mode, vêtement, accessoire</h4>
-								<span class="text-muted">76 Listings</span>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
-					<div class="cats-wrap text-center">
-						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
-							<div class="Goodup-catg-city">19 Cities</div>
-							<div class="Goodup-catg-icon"><i class="fas fa-house-damage"></i></div>
-							<div class="Goodup-catg-caption">
-								<h4 class="fs-md mb-0 ft-medium m-catrio">Maison</h4>
-								<span class="text-muted">112 Listings</span>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
-					<div class="cats-wrap text-center">
-						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
-							<div class="Goodup-catg-city">32 Cities</div>
-							<div class="Goodup-catg-icon"><i class="fas fa-headset"></i></div>
-							<div class="Goodup-catg-caption">
-								<h4 class="fs-md mb-0 ft-medium m-catrio">Multimédia</h4>
-								<span class="text-muted">322 Listings</span>
-							</div>
-						</a>
-					</div>
-				</div>
+								{% if annonce.nomCategorie == 'Divers' %}
+								<div class="Goodup-catg-icon"><i class="fas fa-unlink"></i></div>{% endif %}
 
-				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
-					<div class="cats-wrap text-center">
-						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
-							<div class="Goodup-catg-city">27 Cities</div>
-							<div class="Goodup-catg-icon"><i class="fas fa-basketball-ball"></i></div>
-							<div class="Goodup-catg-caption">
-								<h4 class="fs-md mb-0 ft-medium m-catrio">Sport, loisir et culture</h4>
-								<span class="text-muted">161 Listings</span>
-							</div>
-						</a>
-					</div>
-				</div>
+								{% if annonce.nomCategorie == 'Jardinage' %}
+								<div class="Goodup-catg-icon"><i class="fas fa-carrot"></i></div>{% endif %}
 
-				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
-					<div class="cats-wrap text-center">
-						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
-							<div class="Goodup-catg-city">26 Cities</div>
-							<div class="Goodup-catg-icon"><i class="fas fa-cat"></i></div>
-							<div class="Goodup-catg-caption">
-								<h4 class="fs-md mb-0 ft-medium m-catrio">Animaux</h4>
-								<span class="text-muted">172 Listings</span>
-							</div>
-						</a>
-					</div>
-				</div>
+								{% if annonce.nomCategorie == 'Maison' %}
+								<div class="Goodup-catg-icon"><i class="fas fa-house-damage"></i></div>{% endif %}
 
-				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
-					<div class="cats-wrap text-center">
-						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
-							<div class="Goodup-catg-city">10 Cities</div>
-							<div class="Goodup-catg-icon"><i class="fas fa-carrot"></i></div>
-							<div class="Goodup-catg-caption">
-								<h4 class="fs-md mb-0 ft-medium m-catrio">Jardinage</h4>
-								<span class="text-muted">144 Listings</span>
-							</div>
-						</a>
-					</div>
-				</div>
+								{% if annonce.nomCategorie == 'Mode, vêtement, accessoire' %}
+								<div class="Goodup-catg-icon"><i class="fas fa-tshirt"></i></div>{% endif %}
 
-				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
-					<div class="cats-wrap text-center">
-						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
-							<div class="Goodup-catg-icon"><i class="fas fa-wrench"></i></div>
-							<div class="Goodup-catg-caption">
-								<h4 class="fs-md mb-0 ft-medium m-catrio">Bricolage</h4>
-								<span class="text-muted">210 Listings</span>
-							</div>
-						</a>
-					</div>
-				</div>
+								{% if annonce.nomCategorie == 'Multimédia' %}
+								<div class="Goodup-catg-icon"><i class="fas fa-headset"></i></div>{% endif %}
 
-				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
-					<div class="cats-wrap text-center">
-						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
-							<div class="Goodup-catg-icon"><i class="fas fa-baby-carriage"></i></div>
-							<div class="Goodup-catg-caption">
-								<h4 class="fs-md mb-0 ft-medium m-catrio">Univers Bébé</h4>
-								<span class="text-muted">241 Listings</span>
-							</div>
-						</a>
-					</div>
-				</div>
+								{% if annonce.nomCategorie == 'Sport, loisir et culture' %}
+								<div class="Goodup-catg-icon"><i class="fas fa-basketball-ball"></i></div>{% endif %}
 
-				<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
-					<div class="cats-wrap text-center">
-						<a href="half-map-search-1.html" class="Goodup-catg-wrap">
-							<div class="Goodup-catg-icon"><i class="fas fa-unlink"></i></div>
+								{% if annonce.nomCategorie == 'Univers Bébé' %}
+								<div class="Goodup-catg-icon"><i class="fas fa-baby-carriage"></i></div>{% endif %}
+
+								{% if annonce.nomCategorie == 'Véhicule' %}
+								<div class="Goodup-catg-icon"><i class="fas fa-car-alt"></i></div>{% endif %}
+
+								{% if annonce.nomCategorie == 'Animaux' %} 
+								<div class="Goodup-catg-icon"><i class="fas fa-cat"></i></div>{% endif %}
+						<a href="" class="Goodup-catg-wrap">
+
+								
+
 							<div class="Goodup-catg-caption">
-								<h4 class="fs-md mb-0 ft-medium m-catrio">Divers</h4>
-								<span class="text-muted">52 Listings</span>
+								<h4 class="fs-md mb-0 ft-medium m-catrio">{{annonce.nomCategorie}}</h4>
+								<span class="text-muted"><p> {{annonce.tot}} Annonces</p>
+								</span>
+								
 							</div>
 						</a>
 					</div>
 				</div>
-			</div>
+{% endfor %}
+</div>
 	</section>
 	<!-- ======================= Listing Categories End ======================== -->
 

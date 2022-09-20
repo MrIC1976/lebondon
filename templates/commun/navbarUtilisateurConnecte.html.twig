@@ -73,12 +73,12 @@
 										<li><a href="{{ path('app_dashboard')}}"><i class="lni lni-dashboard me-2"></i>Dashboard</a></li>
 
 
-										<li><a href="dashboard-my-listings.html"><i class="lni lni-files me-2"></i>Mes annonces</a></li>
-										<li><a href="{{ path('app_annonce')}}"><i class="lni lni-add-files me-2"></i>Faire un don</a></li>
-										<li><a href="dashboard-saved-listings.html"><i class="lni lni-bookmark me-2"></i>Annonces favorites</a></li>
-										<li><a href="dashboard-my-bookings.html"><i class="lni lni-briefcase me-2"></i>My Bookings<span class="count-tag bg-warning">4</span></a></li>
+										<li><a href="{{path('app_mesAnnonces')}}"><i class="lni lni-files me-2"></i>Mes annonces</a></li>
+										<li><a href="{{path('app_annonce')}}"><i class="lni lni-add-files me-2"></i>Faire un don</a></li>
+										<li><a href=""><i class="lni lni-bookmark me-2"></i>Annonces favorites</a></li>
+										<li><a href=""><i class="lni lni-briefcase me-2"></i>My Bookings<span class="count-tag bg-warning">4</span></a></li>
 										<li><a href="dashboard-wallet.html"><i class="lni lni-mastercard me-2"></i>Wallet</a></li>
-										<li><a href="dashboard-messages.html"><i class="lni lni-envelope me-2"></i>Messages<span class="count-tag bg-sky">4</span></a></li>
+										<li><a href=""><i class="lni lni-envelope me-2"></i>Messages<span class="count-tag bg-sky">4</span></a></li>
 										<li><a href="{{ path('app_myProfile')}}"><i class="lni lni-user me-2"></i>Mon Profil </a></li>
 										<li><a href="dashboard-change-password.html"><i class="lni lni-lock-alt me-2"></i>Changer le mot de passe</a></li>								</ul>
 								</li>
@@ -89,17 +89,10 @@
 										<li><a href="about-us.html">About Us</a></li>
 										<li><a href="contact.html">Contact</a></li>
 										<li><a href="checkout.html">Checkout</a></li>
-										<li><a href="pricing.html">Pricing</a></li>
-
-										<li><a href="signup.html">S'inscrire</a></li>
-
 										<li><a href="{{ path('app_inscription')}}">S'inscrire</a></li>
-
 										<li><a href="{{ path('app_connexion')}}">Se connecter</a></li>
 										<li><a href="privacy.html">Privacy Policy</a></li>
 										<li><a href="faq.html">FAQs</a></li>
-										
-										<li><a href="404.html">404 Page</a></li>
 									</ul>
 								</li>
 								
@@ -107,11 +100,8 @@
 							
 							<ul class="nav-menu nav-menu-social align-to-right">
 								<li class="add-listing gray">
-
 									<a href="login.html" >
-
 									<a href="{{ path('app_logout')}}" >
-
 										<i class="lni lni-power-switch mr-1"></i> Se déconnecter
 									</a>
 								</li>
