@@ -35,6 +35,7 @@ class ComposerStaticInit684f003dd2f8bf0f248af24b88bd2a34
         'T' => 
         array (
             'Twig\\Extra\\TwigExtraBundle\\' => 27,
+            'Twig\\Extra\\String\\' => 18,
             'Twig\\' => 5,
         ),
         'S' => 
@@ -110,7 +111,6 @@ class ComposerStaticInit684f003dd2f8bf0f248af24b88bd2a34
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
             'SymfonyCasts\\Bundle\\VerifyEmail\\' => 32,
-            'SymfonyCasts\\Bundle\\ResetPassword\\' => 34,
             'Stof\\DoctrineExtensionsBundle\\' => 30,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
         ),
@@ -193,6 +193,10 @@ class ComposerStaticInit684f003dd2f8bf0f248af24b88bd2a34
         'Twig\\Extra\\TwigExtraBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/extra-bundle',
+        ),
+        'Twig\\Extra\\String\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/string-extra',
         ),
         'Twig\\' => 
         array (
@@ -481,10 +485,6 @@ class ComposerStaticInit684f003dd2f8bf0f248af24b88bd2a34
         'SymfonyCasts\\Bundle\\VerifyEmail\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src',
-        ),
-        'SymfonyCasts\\Bundle\\ResetPassword\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src',
         ),
         'Stof\\DoctrineExtensionsBundle\\' => 
         array (
@@ -3531,28 +3531,6 @@ class ComposerStaticInit684f003dd2f8bf0f248af24b88bd2a34
         'Stof\\DoctrineExtensionsBundle\\Uploadable\\UploadableManager' => __DIR__ . '/..' . '/stof/doctrine-extensions-bundle/src/Uploadable/UploadableManager.php',
         'Stof\\DoctrineExtensionsBundle\\Uploadable\\UploadedFileInfo' => __DIR__ . '/..' . '/stof/doctrine-extensions-bundle/src/Uploadable/UploadedFileInfo.php',
         'Stof\\DoctrineExtensionsBundle\\Uploadable\\ValidatorConfigurator' => __DIR__ . '/..' . '/stof/doctrine-extensions-bundle/src/Uploadable/ValidatorConfigurator.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Command\\ResetPasswordRemoveExpiredCommand' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Command/ResetPasswordRemoveExpiredCommand.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Controller\\ResetPasswordControllerTrait' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Controller/ResetPasswordControllerTrait.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\DependencyInjection\\Configuration' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/DependencyInjection/Configuration.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\DependencyInjection\\SymfonyCastsResetPasswordExtension' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/DependencyInjection/SymfonyCastsResetPasswordExtension.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Exception\\ExpiredResetPasswordTokenException' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Exception/ExpiredResetPasswordTokenException.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Exception\\FakeRepositoryException' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Exception/FakeRepositoryException.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Exception\\InvalidResetPasswordTokenException' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Exception/InvalidResetPasswordTokenException.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Exception\\ResetPasswordExceptionInterface' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Exception/ResetPasswordExceptionInterface.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Exception\\TooManyPasswordRequestsException' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Exception/TooManyPasswordRequestsException.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Generator\\ResetPasswordRandomGenerator' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Generator/ResetPasswordRandomGenerator.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Generator\\ResetPasswordTokenGenerator' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Generator/ResetPasswordTokenGenerator.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Model\\ResetPasswordRequestInterface' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Model/ResetPasswordRequestInterface.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Model\\ResetPasswordRequestTrait' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Model/ResetPasswordRequestTrait.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Model\\ResetPasswordToken' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Model/ResetPasswordToken.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Model\\ResetPasswordTokenComponents' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Model/ResetPasswordTokenComponents.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Persistence\\Fake\\FakeResetPasswordInternalRepository' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Persistence/Fake/FakeResetPasswordInternalRepository.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Persistence\\Repository\\ResetPasswordRequestRepositoryTrait' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Persistence/Repository/ResetPasswordRequestRepositoryTrait.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Persistence\\ResetPasswordRequestRepositoryInterface' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Persistence/ResetPasswordRequestRepositoryInterface.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\ResetPasswordHelper' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/ResetPasswordHelper.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\ResetPasswordHelperInterface' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/ResetPasswordHelperInterface.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\SymfonyCastsResetPasswordBundle' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/SymfonyCastsResetPasswordBundle.php',
-        'SymfonyCasts\\Bundle\\ResetPassword\\Util\\ResetPasswordCleaner' => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src/Util/ResetPasswordCleaner.php',
         'SymfonyCasts\\Bundle\\VerifyEmail\\DependencyInjection\\Configuration' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/DependencyInjection/Configuration.php',
         'SymfonyCasts\\Bundle\\VerifyEmail\\DependencyInjection\\SymfonyCastsVerifyEmailExtension' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/DependencyInjection/SymfonyCastsVerifyEmailExtension.php',
         'SymfonyCasts\\Bundle\\VerifyEmail\\Exception\\ExpiredSignatureException' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/Exception/ExpiredSignatureException.php',
@@ -6522,6 +6500,7 @@ class ComposerStaticInit684f003dd2f8bf0f248af24b88bd2a34
         'Twig\\Extension\\SandboxExtension' => __DIR__ . '/..' . '/twig/twig/src/Extension/SandboxExtension.php',
         'Twig\\Extension\\StagingExtension' => __DIR__ . '/..' . '/twig/twig/src/Extension/StagingExtension.php',
         'Twig\\Extension\\StringLoaderExtension' => __DIR__ . '/..' . '/twig/twig/src/Extension/StringLoaderExtension.php',
+        'Twig\\Extra\\String\\StringExtension' => __DIR__ . '/..' . '/twig/string-extra/StringExtension.php',
         'Twig\\Extra\\TwigExtraBundle\\DependencyInjection\\Compiler\\MissingExtensionSuggestorPass' => __DIR__ . '/..' . '/twig/extra-bundle/DependencyInjection/Compiler/MissingExtensionSuggestorPass.php',
         'Twig\\Extra\\TwigExtraBundle\\DependencyInjection\\Configuration' => __DIR__ . '/..' . '/twig/extra-bundle/DependencyInjection/Configuration.php',
         'Twig\\Extra\\TwigExtraBundle\\DependencyInjection\\TwigExtraExtension' => __DIR__ . '/..' . '/twig/extra-bundle/DependencyInjection/TwigExtraExtension.php',

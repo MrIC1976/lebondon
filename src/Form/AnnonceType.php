@@ -75,7 +75,7 @@ class AnnonceType extends AbstractType
                     new Length([
                         'min' => 10,
                         'minMessage' => 'La description ne peux pas faire moins de {{ limit }} caractères',
-                        'max' => 1500,
+                        'max' => 2500,
                         'maxMessage' => 'La description ne peux pas faire plus de {{ limit }} caractères',  
                 ]),
                 ])

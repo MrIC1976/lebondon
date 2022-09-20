@@ -168,7 +168,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface, 
      *
      * @return  int
      */
-    public function getIdUtilisateur()
+    public function getIdUtilisateur(): ?int
     {
         return $this->idUtilisateur;
     }

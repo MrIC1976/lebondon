@@ -55,6 +55,7 @@ class DashboardController extends AbstractController
         $manager->persist($utilisateur );
         $manager->flush();
 
+
         $this->addFlash ('notice3', "<script>Swal.fire({
                 title: 'Génial !',
                 text: 'Votre photo de profil a été modifiée.',
@@ -63,6 +64,7 @@ class DashboardController extends AbstractController
                 imageHeight: 200,
                 imageAlt: 'logo Lebondon',
                 })</script>");
+
 
         return $this->redirectToRoute('app_dashboard'); 
 
@@ -98,7 +100,4 @@ class DashboardController extends AbstractController
             'photoUtilisateur' => $utilisateur->getPhotoUtilisateur(),
         ]);
     }
-
-
-    
 }

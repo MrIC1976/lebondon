@@ -8210,3 +8210,13 @@ Bottom To top Button Design
     -webkit-background-size: cover; /* pour anciens Chrome et Safari /
     background-size: cover; / version standardisée */
 }
+
+.reinit {
+    padding: 30px;
+}
+
+.centrer {
+    position: relative;
+     top: 50%;
+     transform: perspective(1px) translateY(-50%);
+}
