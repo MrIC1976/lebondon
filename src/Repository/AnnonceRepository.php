@@ -75,7 +75,22 @@ class AnnonceRepository extends ServiceEntityRepository
         ;
     }
 
-
+    public function categorieSelonAnnonce(): array
+    {
+        return $this->createQueryBuilder('a')
+            
+            ->addSelect('COUNT(a.idAnnonce) AS tot')
+            ->addSelect('categorie.nomCategorie')
+            //->andWhere('categorie.nomCategorie = :val')
+            //->setParameter('val', $value)
+            ->Join('App\Entity\SousCategorie', 'sousCategorie', 'WITH', 'sousCategorie.idSousCategorie = a.idSousCategorie')
+            ->Join('App\Entity\Categorie', 'categorie', 'WITH', 'categorie.idCategorie = sousCategorie.idCategorie')
+            ->groupBy('categorie.nomCategorie')
+            ->orderBy('tot', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
    /* public function getHuitDernieresAnnonces(): array
     {

@@ -64,7 +64,7 @@ class AnnonceType extends AbstractType
                         'min' => 5,
                         'minMessage' => 'La titre ne peux pas faire moins de {{ limit }} caractères',
                         'max' => 30,
-                        'maxMessage' => 'La description ne peux pas faire plus de {{ limit }} caractères',  
+                        'maxMessage' => 'La titre ne peux pas faire plus de {{ limit }} caractères',  
                 ]),
                 ])
 
