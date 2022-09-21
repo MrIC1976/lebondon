@@ -1,0 +1,202 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bonjour {{pseudo}}{% endblock %}
+
+{% block body %}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
+	
+		<!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        <div class="preloader"></div>
+		
+        <!-- ============================================================== -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <div id="main-wrapper">
+		
+            <!-- ============================================================== -->
+            <!-- Top header  -->
+            <!-- ============================================================== -->
+            <!-- Start Navigation -->
+			{% include 'commun/navbarUtilisateurConnecte.html.twig' %}
+			<div class="clearfix"></div>
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+
+			<!-- =============================== Dashboard Header ========================== -->
+			{% include 'commun/DashboardHeader.html.twig' %}
+			<!-- =============================== Dashboard Header ========================== -->
+
+			<!-- ======================= dashboard Detail ======================== -->
+			<div class="goodup-dashboard-wrap gray px-4 py-5">
+				<a class="mobNavigation" data-bs-toggle="collapse" href="#MobNav" role="button" aria-expanded="false" aria-controls="MobNav">
+					<i class="fas fa-bars me-2"></i>Dashboard Navigation
+				</a>
+				
+				{% include 'commun/leftNavbarDashboard.html.twig' %}
+
+				<div class="goodup-dashboard-content">
+					<div class="dashboard-tlbar d-block mb-5">
+						<div class="row">
+							<div class="colxl-12 col-lg-12 col-md-12">
+								<h1 class="ft-medium">Ajouter une annonce</h1>
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item text-muted"><a href="{{ path('app_accueil')}}">Accueil</a></li>
+										<li class="breadcrumb-item text-muted"><a href="{{ path('app_dashboard')}}">Tableau de bord</a></li>
+										<li class="breadcrumb-item"><a href="{{ path('app_annonce')}}" class="theme-cl">Ajouter une annonce</a></li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+{{ form_start(form) }}
+					<div class="dashboard-widg-bar d-block">
+						<div class="row">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+								<div class="submit-form">
+									
+									<!-- Listing Info -->
+
+
+
+<!-- la méthode form permet d'afficher un objet de type formView -->
+
+
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md"><i class="fa fa-file me-2 theme-cl fs-sm"></i>Informations du don</h4>	
+											</div>
+										</div>
+										
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row">
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+
+
+														<label class="mb-1">Titre : </label>
+														{{ form_row(form.titreAnnonce) }}
+
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+
+														<label class="mb-1">Catégories :</label>
+														
+														
+													</div>
+												</div>
+															<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1"></label>
+														{{ form_row(form.idSousCategorie) }}
+														
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">État du don :</label>
+														{{ form_row(form.idEtat) }}
+													</div>
+												</div>
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Description du don :</label>
+														{{ form_row(form.descriptionAnnonce|raw) }}
+														
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<!-- Location Info -->
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md">
+													<i class="fas fa-map-marker-alt me-2 theme-cl fs-sm">
+													</i>
+												Localisation du don
+												</h4>	
+											</div>
+										</div>
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row">
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Adresse</label>
+														{{ form_row(form.adresse) }}
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Code postal</label>
+														{{ form_row(form.cp) }}
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Ville</label>
+														{{ form_row(form.ville) }}
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														{{ form_row(form.codeInsee) }}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<!-- Image & Gallery Option -->
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md"><i class="fa fa-camera me-2 theme-cl fs-sm"></i>Image(s)</h4>	
+											</div>
+										</div>	
+												
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row">
+											{{ form_row(form.images) }}
+											<img src="form.images" alt="images de l'annonce">
+											</div>
+										</div>
+										
+									</div>
+								</div>
+								{{ form_row(form.save) }}
+							</div>
+						</div>
+					</div>
+{{ form_end(form) }}					
+					<!-- footer -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="py-3">© 2022 Lebondon.</div>
+						</div>
+					</div>
+		
+				</div>
+				
+			</div>
+			<!-- ======================= dashboard Detail End ======================== -->
+			
+			<a id="tops-button" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>	
+		</div>
+
+		<script src="assets/js/annonce.js"></script>
+{% endblock %}
+
+
+
+

@@ -635,6 +635,7 @@ class ComposerStaticInit684f003dd2f8bf0f248af24b88bd2a34
         'App\\Controller\\ConnexionController' => __DIR__ . '/../..' . '/src/Controller/ConnexionController.php',
         'App\\Controller\\DashboardController' => __DIR__ . '/../..' . '/src/Controller/DashboardController.php',
         'App\\Controller\\InscriptionController' => __DIR__ . '/../..' . '/src/Controller/InscriptionController.php',
+        'App\\Controller\\SearchController' => __DIR__ . '/../..' . '/src/Controller/SearchController.php',
         'App\\Entity\\Annonce' => __DIR__ . '/../..' . '/src/Entity/Annonce.php',
         'App\\Entity\\Categorie' => __DIR__ . '/../..' . '/src/Entity/Categorie.php',
         'App\\Entity\\Conversation' => __DIR__ . '/../..' . '/src/Entity/Conversation.php',

@@ -32,7 +32,6 @@ class ConnexionController extends AbstractController
 public function deconnexion()
 {
 }
- 
 
 #[Route('/oubli-pass', name:'forgotten_password')]
 public function forgottenPassword(
@@ -83,12 +82,6 @@ public function forgottenPassword(
                     imageAlt: 'logo Lebondon',
                     })</script>");
                 return $this->redirectToRoute('app_connexion');
-<<<<<<< Updated upstream
-=======
-         
-
-            return $this->redirectToRoute('app_connexion');
->>>>>>> Stashed changes
         }
         // $user est null
         $this->addFlash(
@@ -96,7 +89,7 @@ public function forgottenPassword(
             "<script> Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'l'adresse mail n\'a pas été reconnu',
+                    title: 'l'adresse mail n\'a pas été reconnue',
                     showConfirmButton: true,
                     
             })</script>"

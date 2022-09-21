@@ -58,30 +58,27 @@
 										<div class="dashboard-listing-wraps">
 											
 											<!-- Single Listing Item -->
-                            {% for annonce in imageAnnonce %}
+                            {% for annonce in derniereAnnonce %}	
 											<div class="dsd-single-listing-wraps">
 											<div class="dsd-single-lst-thumb border border-secondary">
 											<img src="image/{{annonce.nomImage}}" class="card-img-top" alt="Votre image ici">
 											</div>
 												<div class="dsd-single-lst-caption">
 													<div class="dsd-single-lst-title">
-														<h5>{{annonce.idAnnonce.titreAnnonce|capitalize}}</h5>
+														<h5>{{annonce[0].titreAnnonce|capitalize}}</h5>
 													</div>
-												
 													<span class="agd-location"><i class="lni lni-map-marker me-1"></i>ville</span>
-
 													<div>
 														<div class="Goodup-ft-first">
-															{{annonce.idAnnonce.descriptionAnnonce|raw}}
+															{{annonce[0].descriptionAnnonce|raw}}
 														</div>	
 													</div>
-									
 													<div class="dsd-single-lst-footer">
-														<a href="/update-annonce/{{annonce.idAnnonce}};" class="btn btn-edit mr-1"><i class="fas fa-edit me-1"></i>Modifier</a>
-														<a href="/view-annonce/{{annonce.idAnnonce}}" class="btn btn-view mr-1"><i class="fas fa-eye me-1"></i>Voir</a>
-														<a href="/dashboard/delete-annonce/{{annonce.idAnnonce}}" class="btn btn-delete"><i class="fas fa-trash me-1"></i>Supprimer</a>
+														<a href="/update-annonce/{{annonce[0].idAnnonce}};" class="btn btn-edit mr-1"><i class="fas fa-edit me-1"></i>Modifier</a>
+														<a href="/view-annonce/{{annonce[0].idAnnonce}}" class="btn btn-view mr-1"><i class="fas fa-eye me-1"></i>Voir</a>
+														<a href="/dashboard/delete-annonce/{{annonce[0].idAnnonce}}" class="btn btn-delete"><i class="fas fa-trash me-1"></i>Supprimer</a>
 													</div>
-									
+
 												</div>
 											</div>
 							{% endfor %} 
@@ -107,8 +104,6 @@
 			
 			<a id="tops-button" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
 			
-
 		</div>
-
 
 {% endblock %}
