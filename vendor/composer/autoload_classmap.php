@@ -11,6 +11,7 @@ return array(
     'App\\Controller\\ConnexionController' => $baseDir . '/src/Controller/ConnexionController.php',
     'App\\Controller\\DashboardController' => $baseDir . '/src/Controller/DashboardController.php',
     'App\\Controller\\InscriptionController' => $baseDir . '/src/Controller/InscriptionController.php',
+    'App\\Controller\\SearchController' => $baseDir . '/src/Controller/SearchController.php',
     'App\\Entity\\Annonce' => $baseDir . '/src/Entity/Annonce.php',
     'App\\Entity\\Categorie' => $baseDir . '/src/Entity/Categorie.php',
     'App\\Entity\\Conversation' => $baseDir . '/src/Entity/Conversation.php',

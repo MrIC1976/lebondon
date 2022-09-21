@@ -10,17 +10,11 @@
 			
 			<!-- ======================= Searchbar Banner ======================== -->
 			<div class="featured-slick">
-			{% for image in imageAnnonce %}
 				<div class="featured-gallery-slide">
-				
-					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}" class="img-fluid mx-auto" /></a></div>
-					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}" class="img-fluid mx-auto" /></a></div>
-					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}" class="img-fluid mx-auto" /></a></div>
-					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}" class="img-fluid mx-auto" /></a></div>
-					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}" class="img-fluid mx-auto" /></a></div>
-					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}" class="img-fluid mx-auto" /></a></div>
+				{% for image in imageAnnonce %}
+					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{image.nomImage}}" alt="{{viewAnnonce.titreAnnonce}}" class="img-fluid mx-auto" /></a></div>
+				{% endfor %}
 				</div>
-			{% endfor %}	
 				<div class="Goodup-ops-bhri">
 					<div class="Goodup-lkp-flex d-flex align-items-start justify-content-start">
 						<div class="Goodup-lkp-caption ps-3">
@@ -41,8 +35,8 @@
 							<div class="bg-white rounded mb-4">
 								<div class="jbd-01 px-4 py-4">
 									<div class="jbd-details">
-										<h5 class="ft-bold fs-lg">Description de l'annonce</h5>
-										<div class="d-block mt-3">{{viewAnnonce.descriptionAnnonce|raw}}	
+										<h5 class="ft-bold fs-2 mt-3">Description de l'annonce</h5>
+										<div class=" titreAnnonce d-block fs-4">{{viewAnnonce.descriptionAnnonce|raw}}	
 										</div>
 									</div>								
 								</div>
@@ -57,7 +51,7 @@
 					<div class="row justify-content-center">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 							<div class="sec_title position-relative text-center mb-5">
-								<h2 class="ft-bold">Mes dernières annonces consultées</h2>
+								<h2 class="ft-bold fs-1">Mes dernières annonces consultées</h2>
 							</div>
 						</div>
 					</div>
