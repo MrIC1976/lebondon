@@ -169,7 +169,7 @@ class AnnonceType extends AbstractType
                 ] ] );
         };
 
-        $builder->addEventListener( //ligne 150 à 157 a voir si obligatoire car le code fonctionne sans
+        $builder->addEventListener( 
             FormEvents::PRE_SET_DATA,
             function (FormEvent $event) use ($formModifier) {
                 $data = $event->getData();

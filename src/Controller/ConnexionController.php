@@ -83,6 +83,12 @@ public function forgottenPassword(
                     imageAlt: 'logo Lebondon',
                     })</script>");
                 return $this->redirectToRoute('app_connexion');
+<<<<<<< Updated upstream
+=======
+         
+
+            return $this->redirectToRoute('app_connexion');
+>>>>>>> Stashed changes
         }
         // $user est null
         $this->addFlash(
