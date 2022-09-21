@@ -67,12 +67,13 @@ class AnnonceController extends AbstractController
                 // On crée l'image dans la base de données
                 $img = new Image();
                 $img->setNomImage($fichier);
-                $img->setIdAnnonce($annonce);  
-                $manager->persist($img);
+                $img->setIdAnnonce($annonce);
+                 $manager->persist($img);
+                $manager->flush();
             }
-            
             $manager->persist($img);
-            $manager->flush();
+            $manager->flush(); 
+            
 
 
 $this->addFlash('notice', "<script>Swal.fire({
@@ -95,18 +96,19 @@ $this->addFlash('notice', "<script>Swal.fire({
             'form' => $form->createView(),//création de la vue associée à notre formulaire, méthode renderForm supportée, elle appelle automatiquement la méthode createView
             'pseudo' => $utilisateur->getPseudoUtilisateur(),
             'photoUtilisateur' => $utilisateur->getPhotoUtilisateur(),
+            
         ]);
     }
 
     //pour supprimer une annonce dans mes annonces du dashboard
-    #[Route('/dashboard/delete-article/{id}', name: 'delete_annonce')]
+    #[Route('/dashboard/delete-annonce/{id}', name: 'delete_annonce')]
     public function deleteAnnonce($id, EntityManagerInterface $entityManager, AnnonceRepository $repoAnnonce, ImageRepository $repoImage, UserInterface $utilisateur,): Response
     {
 
     //pour supprimer l'image d'une annonce
     $imageAnnonce = $repoImage->findOneByIdAnnonce($id);
     $entityManager->remove($imageAnnonce);
-    $entityManager->flush();//supprime l'image de la bdd
+    $entityManager->flush();
     //pour supprimer l'annonce de mes annonces
     $annonce = $repoAnnonce->findOneByIdAnnonce($id);
     $entityManager->remove($annonce);
@@ -137,6 +139,64 @@ $this->addFlash('message', "<script>Swal.fire({
         "imageAnnonce" => $imageAnnonce,
         //dd($viewAnnonce),
         //dd($imageAnnonce)
+        ]);
+    }
+
+    //pour afficher la vue de l'annonce dans mes annonces du dashboard
+    #[Route('/update-annonce/{id}', name: 'update-article')]
+public function modificationAnnonce(UserInterface $utilisateur, Request $request, $id, AnnonceRepository $repoAnnonce, ImageRepository $repoImage, EntityManagerInterface $entityManager): Response{
+        
+        $annonce = $repoAnnonce->findOneByIdAnnonce($id);
+        $form = $this->createForm (AnnonceType::class,$annonce);
+
+        $form ->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $annonce->setDateCreationAnnonce(new DateTime());
+
+            if ($annonce) {
+                $annonce->setDateCreationAnnonce(new DateTime());
+            }
+
+            $images = $form->get('images')->getData();
+
+            foreach($images as $image){
+            
+            //on génère un nouveau nom de fichier
+            $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+
+            //on copie le fichier dans le dossier uploads
+            $image->move(
+                $this->getParameter('images_directory'),  $fichier );
+
+                $img = new Image();
+                $img->setNomImage($fichier);
+                $img->setIdAnnonce($article);
+                $entityManager->persist($img);
+                $entityManager->flush();
+
+            } 
+            
+            $entityManager->persist($annonce);
+            $entityManager->flush();
+
+            
+            $this->addFlash('message', "<script>Swal.fire({
+                text: 'Ton annonce a bien été modifiée.',
+                imageUrl: ('/assets/img/logoComplet.png'),
+                imageWidth: 300,
+                imageHeight: 200,
+                imageAlt: 'logo Lebondon',
+                })</script>");
+
+            return $this->redirectToRoute("app_dashboard");
+        }
+
+        return $this->render('annonce/update-annonce.html.twig', [
+            'annonce' => $annonce,
+            'form' => $form->createView(),
+            'pseudo' => $utilisateur->getPseudoUtilisateur(),
+            'photoUtilisateur' => $utilisateur->getPhotoUtilisateur(),
         ]);
     }
 }

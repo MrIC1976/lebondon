@@ -10,18 +10,17 @@
 			
 			<!-- ======================= Searchbar Banner ======================== -->
 			<div class="featured-slick">
+			{% for image in imageAnnonce %}
 				<div class="featured-gallery-slide">
 				
-					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}"" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="https://via.placeholder.com/1200x850" class="mfp-gallery"><img src="https://via.placeholder.com/1200x850" class="img-fluid mx-auto" alt="" /></a></div>
+					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}" class="img-fluid mx-auto" /></a></div>
+					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}" class="img-fluid mx-auto" /></a></div>
+					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}" class="img-fluid mx-auto" /></a></div>
+					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}" class="img-fluid mx-auto" /></a></div>
+					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}" class="img-fluid mx-auto" /></a></div>
+					<div class="dlf-flew"><a class="mfp-gallery"><img src="/image/{{imageAnnonce[0].nomImage}}" alt="{{viewAnnonce.titreAnnonce}}" class="img-fluid mx-auto" /></a></div>
 				</div>
-				
+			{% endfor %}	
 				<div class="Goodup-ops-bhri">
 					<div class="Goodup-lkp-flex d-flex align-items-start justify-content-start">
 						<div class="Goodup-lkp-caption ps-3">
