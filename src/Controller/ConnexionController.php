@@ -83,9 +83,6 @@ public function forgottenPassword(
                     imageAlt: 'logo Lebondon',
                     })</script>");
                 return $this->redirectToRoute('app_connexion');
-            );
-
-            return $this->redirectToRoute('app_connexion');
         }
         // $user est null
         $this->addFlash(

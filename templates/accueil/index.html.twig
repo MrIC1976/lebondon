@@ -1,12 +1,8 @@
 {% extends 'base.html.twig' %}
 
-
 {% block title %}Lebondon{% endblock %}
 
-
 {% block body %}
-
-
 
 {% include 'commun/navbarNonConnecte.html.twig' %}
 
@@ -86,7 +82,7 @@
 														<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2.html" class="text-dark fs-md">{{annonce[0].titreAnnonce}}</a></h4>
 														<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>{{annonce[0].idVille.nomVille}}</div> 
 														<div class="Goodup-middle-caption mt-3">
-															<p>{{annonce[0].descriptionAnnonce|raw}}</p>
+															{{ annonce[0].descriptionAnnonce|length > 75 ? annonce[0].descriptionAnnonce|striptags|slice(0, 75) ~ '...' : annonce[0].descriptionAnnonce|raw  }}
 														</div>
 													</div>
 													<div class="Goodup-grid-footer py-2 px-3">
@@ -129,37 +125,25 @@
 					<div class="cats-wrap text-center">
 					{% if annonce.nomCategorie == 'Bricolage' %}
 								<div class="Goodup-catg-icon"><i class="fas fa-wrench"></i></div>{% endif %}
-
 								{% if annonce.nomCategorie == 'Divers' %}
 								<div class="Goodup-catg-icon"><i class="fas fa-unlink"></i></div>{% endif %}
-
 								{% if annonce.nomCategorie == 'Jardinage' %}
 								<div class="Goodup-catg-icon"><i class="fas fa-carrot"></i></div>{% endif %}
-
 								{% if annonce.nomCategorie == 'Maison' %}
 								<div class="Goodup-catg-icon"><i class="fas fa-house-damage"></i></div>{% endif %}
-
 								{% if annonce.nomCategorie == 'Mode, vêtement, accessoire' %}
 								<div class="Goodup-catg-icon"><i class="fas fa-tshirt"></i></div>{% endif %}
-
 								{% if annonce.nomCategorie == 'Multimédia' %}
 								<div class="Goodup-catg-icon"><i class="fas fa-headset"></i></div>{% endif %}
-
 								{% if annonce.nomCategorie == 'Sport, loisir et culture' %}
 								<div class="Goodup-catg-icon"><i class="fas fa-basketball-ball"></i></div>{% endif %}
-
 								{% if annonce.nomCategorie == 'Univers Bébé' %}
 								<div class="Goodup-catg-icon"><i class="fas fa-baby-carriage"></i></div>{% endif %}
-
 								{% if annonce.nomCategorie == 'Véhicule' %}
 								<div class="Goodup-catg-icon"><i class="fas fa-car-alt"></i></div>{% endif %}
-
 								{% if annonce.nomCategorie == 'Animaux' %} 
 								<div class="Goodup-catg-icon"><i class="fas fa-cat"></i></div>{% endif %}
 						<a href="" class="Goodup-catg-wrap">
-
-								
-
 							<div class="Goodup-catg-caption">
 								<h4 class="fs-md mb-0 ft-medium m-catrio">{{annonce.nomCategorie}}</h4>
 								<span class="text-muted"><p> {{annonce.tot}} Annonces</p>

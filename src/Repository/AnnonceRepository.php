@@ -68,8 +68,26 @@ class AnnonceRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('a')
             
             ->addSelect('image.nomImage')
+            //->addSelect('sousCategorie.nomSousCategorie')
             ->Join('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
-            ->setMaxResults(8)
+            //->Join('App\Entity\SousCategorie', 'sousCategorie', 'WITH', 'sousCategorie.idSousCategorie = a.idSousCategorie')
+            ->setMaxResults(12)
+            ->orderBy('a.dateCreationAnnonce', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function infoAnnonce(): array  // En cours de realisation pour page de recherche
+    {
+        return $this->createQueryBuilder('a')
+            
+            ->addSelect('image.nomImage')
+            ->addSelect('categorie.nomCategorie')
+            ->Join('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
+            ->Join('App\Entity\SousCategorie', 'sousCategorie', 'WITH', 'sousCategorie.idSousCategorie = a.idSousCategorie')
+            ->Join('App\Entity\Categorie', 'categorie', 'WITH', 'categorie.idCategorie = sousCategorie.idCategorie')
+            ->orderBy('a.dateCreationAnnonce', 'DESC')
             ->getQuery()
             ->getResult()
         ;

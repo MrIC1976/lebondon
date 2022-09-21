@@ -28,7 +28,6 @@ return array(
     'App\\Form\\AnnonceType' => $baseDir . '/src/Form/AnnonceType.php',
     'App\\Form\\AvatarFormType' => $baseDir . '/src/Form/AvatarFormType.php',
     'App\\Form\\RegistrationFormType' => $baseDir . '/src/Form/RegistrationFormType.php',
-    'App\\Form\\ResetPassType' => $baseDir . '/src/Form/ResetPassType.php',
     'App\\Form\\ResetPasswordFormType' => $baseDir . '/src/Form/ResetPasswordFormType.php',
     'App\\Form\\ResetPasswordRequestFormType' => $baseDir . '/src/Form/ResetPasswordRequestFormType.php',
     'App\\Form\\UtilisateurType' => $baseDir . '/src/Form/UtilisateurType.php',
