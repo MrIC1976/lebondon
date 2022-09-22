@@ -67,6 +67,7 @@
     height: 100%;
     z-index: 9999999;
     background:url(../img/loader.gif) center no-repeat #ffffff;
+    
 }
 
 /*------------------------------------------------------------
@@ -211,6 +212,7 @@ p, ul, ol, dl, dt, dd, blockquote, address {
 .banner_caption h2 {
 	color:white;
 	font-weight:400;
+    
 }
 
 h2,
@@ -8225,4 +8227,14 @@ Bottom To top Button Design
     
     padding-bottom: 60px;
     padding-top: 60px;
+}
+
+.changementMDPform{
+    background-color: white;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 7px;
+    width: 90vw;
 }

@@ -632,6 +632,7 @@ class ComposerStaticInit684f003dd2f8bf0f248af24b88bd2a34
     public static $classMap = array (
         'App\\Controller\\AccueilController' => __DIR__ . '/../..' . '/src/Controller/AccueilController.php',
         'App\\Controller\\AnnonceController' => __DIR__ . '/../..' . '/src/Controller/AnnonceController.php',
+        'App\\Controller\\CompteMDPController' => __DIR__ . '/../..' . '/src/Controller/CompteMDPController.php',
         'App\\Controller\\ConnexionController' => __DIR__ . '/../..' . '/src/Controller/ConnexionController.php',
         'App\\Controller\\DashboardController' => __DIR__ . '/../..' . '/src/Controller/DashboardController.php',
         'App\\Controller\\InscriptionController' => __DIR__ . '/../..' . '/src/Controller/InscriptionController.php',
@@ -652,6 +653,7 @@ class ComposerStaticInit684f003dd2f8bf0f248af24b88bd2a34
         'App\\Entity\\Ville' => __DIR__ . '/../..' . '/src/Entity/Ville.php',
         'App\\Form\\AnnonceType' => __DIR__ . '/../..' . '/src/Form/AnnonceType.php',
         'App\\Form\\AvatarFormType' => __DIR__ . '/../..' . '/src/Form/AvatarFormType.php',
+        'App\\Form\\ChangementMDPType' => __DIR__ . '/../..' . '/src/Form/ChangementMDPType.php',
         'App\\Form\\RegistrationFormType' => __DIR__ . '/../..' . '/src/Form/RegistrationFormType.php',
         'App\\Form\\ResetPasswordFormType' => __DIR__ . '/../..' . '/src/Form/ResetPasswordFormType.php',
         'App\\Form\\ResetPasswordRequestFormType' => __DIR__ . '/../..' . '/src/Form/ResetPasswordRequestFormType.php',

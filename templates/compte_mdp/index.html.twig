@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon mot de passe{% endblock %}
+
+{% block body %}
+
+<div class="goodup-dashboard-wrap gray px-4 py-5">
+	<div class="dashboard-tlbar d-block mb-5">
+
+		<div class="row ">
+			<div class="colxl-12 col-lg-12 col-md-12">
+				<a href="{{ path('app_dashboard') }}"> <button type="submit"
+						class="btn btn-sm ft-medium text-light rounded theme-bg">Retour vers mon compte</button> </a>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-lg-12 mx-auto">
+				<div class="goodup-dashboard-content mt-3">
+
+					<div class="dashboard-widg-bar d-block">
+						<div class="row">
+							<div class="col-xl-12 col-lg-12 col-md-12">
+								<div class="_dashboard_content bg-white rounded mb-4">
+									<div class="_dashboard_content_header br-bottom py-3 px-3">
+										<div class="_dashboard__header_flex">
+											<h4 class="mb-0 ft-medium fs-md"><i
+													class="fa fa-lock me-2 theme-cl fs-sm"></i>Modifier mon mot de passe
+											</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="changementMDPform">
+						{% if notification %}
+						{{ notification }}
+						{% endif %}
+						{{ form(form) }}
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
+	</div>
+
+</div>
+
+
+
+	<!-- ============================================================== -->
+	<!-- All Jquery -->
+	<!-- ============================================================== -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/slick.js"></script>
+	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="assets/js/dropzone.js"></script>
+	<script src="assets/js/counterup.js"></script>
+	<script src="assets/js/lightbox.js"></script>
+	<script src="assets/js/moment.min.js"></script>
+	<script src="assets/js/daterangepicker.js"></script>
+	<script src="assets/js/lightbox.js"></script>
+	<script src="assets/js/jQuery.style.switcher.js"></script>
+	<script src="assets/js/custom.js"></script>
+	<!-- ============================================================== -->
+	<!-- This page plugins -->
+	<!-- ============================================================== -->
+
+
+	{% endblock %}

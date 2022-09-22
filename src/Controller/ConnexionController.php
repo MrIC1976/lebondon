@@ -66,7 +66,7 @@ public function forgottenPassword(
 
             // Envoi du mail
             $mail->send(
-                'no-reply@e-commerce.fr',
+                'no-reply@lebondon.fr',
                 $user->getMailUtilisateur(),
                 'Réinitialisation de mot de passe',
                 'password_reset',
