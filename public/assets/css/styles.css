@@ -6093,6 +6093,7 @@ div#myTabContent {
 .goodup-dashboard-nav ul li.active a, .goodup-dashboard-nav ul li:hover a{
     color:#F41b3b;
 }
+
 .goodup-dashboard-nav ul li a {
     color:#555962;
     display: block;
@@ -8208,7 +8209,7 @@ Bottom To top Button Design
 }
 
 .arriere-plan{
-    background: url(../img/image-site.jpg) no-repeat center fixed; 
+    background: url(../img/image-site2.jpg) no-repeat center fixed; 
     -webkit-background-size: cover; /* pour anciens Chrome et Safari /
     background-size: cover; / version standardisée */
 }
@@ -8221,6 +8222,10 @@ Bottom To top Button Design
     position: relative;
      top: 50%;
      transform: perspective(1px) translateY(-50%);
+}
+
+.blackColor{
+    color:black;
 }
 
 .titreAnnonce{

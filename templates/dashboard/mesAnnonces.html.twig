@@ -43,6 +43,7 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="dashboard-widg-bar d-block">
 						<div class="row">
 							<div class="col-xl-12 col-lg-12">
@@ -53,24 +54,30 @@
 											<h4 class="mb-0 ft-small fs-sm"> Vous avez {{ contenuAnnonce|length }} annonce(s) en ligne</h4>
 										</div>
 									</div>
-									
+								{% for annonce in derniereAnnonce %}	
 									<div class="dashboard-list-wraps-body py-3 px-3">
 										<div class="dashboard-listing-wraps">
 											
-											<!-- Single Listing Item -->
-                            {% for annonce in derniereAnnonce %}	
+											<!-- Single Listing Item -->	
 											<div class="dsd-single-listing-wraps">
 											<div class="dsd-single-lst-thumb border border-secondary">
-											<img src="image/{{annonce.nomImage}}" class="card-img-top" alt="Votre image ici">
+											{% if annonce.nomImage == null %}
+											<img src="assets/img/logoComplet.png" class="card-img-top" alt="">
+												{% else %}
+												<img src="image/{{annonce.nomImage}}" class="card-img-top" alt="">
+											{% endif %}
 											</div>
 												<div class="dsd-single-lst-caption">
 													<div class="dsd-single-lst-title">
 														<h5>{{annonce[0].titreAnnonce|capitalize}}</h5>
 													</div>
-													<span class="agd-location"><i class="lni lni-map-marker me-1"></i>ville</span>
+													<span class="agd-location"><i class="lni lni-map-marker me-1"></i>{{annonce.nomVille|capitalize}} </span>
+													<br>
+													<span><i class="fas fa-list"></i> {{annonce.nomCategorie|capitalize}} {{annonce.nomSousCategorie|capitalize}}</span>
 													<div>
 														<div class="Goodup-ft-first">
-															{{annonce[0].descriptionAnnonce|raw}}
+															
+															{{ annonce[0].descriptionAnnonce|length > 75 ? annonce[0].descriptionAnnonce|striptags|slice(0, 100) ~ '...' : annonce[0].descriptionAnnonce|raw  }}
 														</div>	
 													</div>
 													<div class="dsd-single-lst-footer">
@@ -81,10 +88,12 @@
 
 												</div>
 											</div>
-							{% endfor %} 
+							
 										</div>
 									</div>
+									{% endfor %} 
 								</div>
+								
 							</div>
 						</div>
 							

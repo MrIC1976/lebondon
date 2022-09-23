@@ -27,47 +27,10 @@
 						<div class="nav-menus-wrapper" style="transition-property: none;">
 							<ul class="nav-menu">
 								<li class="active"><a href="{{ path('app_accueil')}}">Accueil</a></li>								
-								<li><a href="javascript:void(0);">Listings</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="javascript:void(0);">Grid Layout</a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="listing-search-v1.html">With Sidebar V1</a></li>
-												<li><a href="listing-search-v2.html">With Sidebar V2</a></li>
-												<li><a href="listing-search-v3.html">With Sidebar V3</a></li>
-												<li><a href="listing-search-with-map.html">Full Width + Map</a></li>
-											</ul>
-										</li>
-										<li><a href="javascript:void(0);">List Layout</a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="listing-search-v4.html">With Sidebar</a></li>
-												<li><a href="listing-search-v5.html">Full Width</a></li>
-												<li><a href="listing-search-with-map.html">Full Width With Map</a></li>
-											</ul>
-										</li>
-										<li><a href="javascript:void(0);">Map Styles</a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="half-map-search-1.html">Search On Map V1</a></li>
-												<li><a href="half-map-search-2.html">Search On Map V2</a></li>
-												<li><a href="half-map-search-3.html">Search On Map V3</a></li>
-											</ul>
-										</li>
-										<li><a href="javascript:void(0);">Single Listing</a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="single-listing-detail-1.html">Single Listing V1</a></li>
-												<li><a href="single-listing-detail-2.html">Single Listing V2</a></li>
-												<li><a href="single-listing-detail-3.html">Single Listing V3</a></li>
-												<li><a href="single-listing-detail-4.html">Single Listing V4</a></li>
-												<li><a href="single-listing-detail-5.html">Single Listing V5</a></li>
-												<li><a href="single-listing-detail-6.html">Single Listing V6</a></li>
-												<li><a href="single-listing-detail-7.html">Single Listing V7</a></li>
-												<li><a href="single-listing-detail-8.html">Single Listing V8</a></li>
-											</ul>
-										</li>
-										<li><a href="author-detail.html">Author Detail</a>
-									</ul>
+								<li><a href="{{ path('app_search')}}"><span class="blackColor">Recherche</span></a>
 								</li>
 								
-								<li><a href="javascript:void(0);">User Dashboard</a>
+								<li><a href="{{ path('app_dashboard')}}"><span class="blackColor">Tableau de bord</span></a>
 									<ul class="nav-dropdown nav-submenu">
 										<li><a href="{{ path('app_dashboard')}}"><i class="lni lni-dashboard me-2"></i>Mon compte</a></li>
 										<li><a href="{{ path('app_mesAnnonces')}}"><i class="lni lni-files me-2"></i>Mes annonces</a></li>
@@ -81,7 +44,7 @@
 									</ul>
 								</li>
 								
-								<li><a href="javascript:void(0);">Pages</a>
+								<li><a href="javascript:void(0);"><span class="blackColor">Pages</span></a>
 									<ul class="nav-dropdown nav-submenu">
 										<li><a href="blog.html">Blog Style</a></li>
 										<li><a href="about-us.html">About Us</a></li>
@@ -97,18 +60,20 @@
 								</li>
 								
 							</ul>
-							
 							<ul class="nav-menu nav-menu-social align-to-right">
-								<li>
+								
 									<a href="{{ path('app_connexion')}}" data-bs-toggle="modal" data-bs-target="{{ path('app_connexion')}}" class="ft-bold">
-										<i class="fas fa-sign-in-alt me-1 theme-cl"></i>Se connecter
+										<i class="fas fa-sign-in-alt me-1 theme-cl"></i><span class="blackColor">Se connecter</span>
 									</a>
-								</li>
+								
+								
+									<a href="{{ path('app_inscription')}}" data-bs-toggle="modal" data-bs-target="{{ path('app_inscription')}}" class="ft-bold">
+										<i class="fas fa-sign-in-alt me-1 theme-cl"></i><span class="blackColor">S'inscrire</span>
+									</a>
+								
 								<li class="add-listing">
 									<a href="{{ path('app_annonce')}}" >
 										<i class="fas fa-plus me-2"></i>Faire un don
-									<a href="{{ path('app_inscription')}}" >
-										<i class="fas fa-plus me-2"></i>S'inscrire
 									</a>
 								</li>
 							</ul>

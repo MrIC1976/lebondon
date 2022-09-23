@@ -69,20 +69,36 @@
 														<div class="Goodup-status close me-2">Closed</div>
 													</div>
 													<div class="Goodup-grid-thumb">
-														<a href="single-listing-detail-2.html" class="d-block text-center m-auto"><img src="image/{{annonce.nomImage}}"  alt="image"></a>
+														<a href="single-listing-detail-2.html" class="d-block text-center m-auto">
+															{% if annonce.nomImage == null %}
+																<img src="assets/img/logoComplet.png" class="card-img-top" alt="">
+															{% else %}
+																<img src="image/{{annonce.nomImage}}" class="card-img-top" alt="">
+															{% endif %}
+														</a>
 													</div>
 												</div>
 												<div class="Goodup-grid-fl-wrap">
 													<div class="Goodup-caption px-3 py-2">
 														<div class="Goodup-author">
 															<a href="author-detail.html">
-																<img src="image/{{annonce[0].idUtilisateur.photoUtilisateur}}" class="img-fluid circle" alt="{{annonce[0].idUtilisateur.pseudoUtilisateur}}">
+																<img src="image/{{annonce[0].idUtilisateur.photoUtilisateur}}" 
+																		class="img-fluid circle" 
+																		alt="{{annonce[0].idUtilisateur.pseudoUtilisateur}}">
 															</a>
 														</div>
-														<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2.html" class="text-dark fs-md">{{annonce[0].titreAnnonce}}</a></h4>
-														<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>{{annonce[0].idVille.nomVille}}</div> 
+														<h4 class="mb-0 ft-medium medium">
+															<a href="single-listing-detail-2.html" 
+																class="text-dark fs-md">{{annonce[0].titreAnnonce}}
+																</a>
+														</h4>
+														<div class="Goodup-location">
+															<i class="fas fa-map-marker-alt me-1 theme-cl">
+															</i>
+															{{annonce[0].idVille.nomVille}}
+														</div> 
 														<div class="Goodup-middle-caption mt-3">
-															{{ annonce[0].descriptionAnnonce|length > 75 ? annonce[0].descriptionAnnonce|striptags|slice(0, 75) ~ '...' : annonce[0].descriptionAnnonce|raw  }}
+															{{ annonce[0].descriptionAnnonce|length > 75 ? annonce[0].descriptionAnnonce|striptags|slice(0, 100) ~ '...' : annonce[0].descriptionAnnonce|raw  }}
 														</div>
 													</div>
 													<div class="Goodup-grid-footer py-2 px-3">
@@ -123,7 +139,7 @@
 {% for annonce in NbreAnnonceParCategorie %}
 				<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
 					<div class="cats-wrap text-center">
-					{% if annonce.nomCategorie == 'Bricolage' %}
+								{% if annonce.nomCategorie == 'Bricolage' %}
 								<div class="Goodup-catg-icon"><i class="fas fa-wrench"></i></div>{% endif %}
 								{% if annonce.nomCategorie == 'Divers' %}
 								<div class="Goodup-catg-icon"><i class="fas fa-unlink"></i></div>{% endif %}

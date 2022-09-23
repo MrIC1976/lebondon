@@ -89,9 +89,10 @@ class DashboardController extends AbstractController
         //dd($annonces);
         //$imageAnnonces = $repoImage->findByIdAnnonce($annonces);
        //dd($imageAnnonces);
-        $annonces = $annonceRepo->findAll();
-        $derniereAnnonce = $annonceRepo->getAnnonceByImage($utilisateur);
-        $categorieParAnnonce = $annonceRepo->categorieSelonAnnonce($utilisateur);
+        $annonces = $annonceRepo->findAll($utilisateur);
+        $annonceUtilisateur = $annonceRepo->infoAnnonce($utilisateur);
+        //dd($annonceUtilisateur);
+
         return $this->render('dashboard/mesAnnonces.html.twig', [
             'controller_name' => 'DashboardController',
             'pseudo' => $utilisateur->getPseudoUtilisateur(),
@@ -101,7 +102,7 @@ class DashboardController extends AbstractController
             //'imageAnnonce' => $imageAnnonces,
             'style2' => $style2,
             'photoUtilisateur' => $utilisateur->getPhotoUtilisateur(),
-            'derniereAnnonce' => $derniereAnnonce,
+            'derniereAnnonce' => $annonceUtilisateur,
         ]);
     }
 }

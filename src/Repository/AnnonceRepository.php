@@ -63,20 +63,31 @@ class AnnonceRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-    public function getAnnonceByImage(): array
+    
+
+    public function getAnnonceByImage(): array  // En cours de realisation pour page de recherche
     {
         return $this->createQueryBuilder('a')
             
             ->addSelect('image.nomImage')
-            //->addSelect('sousCategorie.nomSousCategorie')
-            ->Join('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
-            //->Join('App\Entity\SousCategorie', 'sousCategorie', 'WITH', 'sousCategorie.idSousCategorie = a.idSousCategorie')
-            ->setMaxResults(12)
-            ->orderBy('a.dateCreationAnnonce', 'DESC')
+            ->addSelect('categorie.nomCategorie')
+            ->addSelect('sousCategorie.nomSousCategorie')
+            ->addSelect('ville.nomVille')
+            ->addSelect('etatObjet.nomEtat')
+            ->leftJoin('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
+            ->Join('App\Entity\SousCategorie', 'sousCategorie', 'WITH', 'sousCategorie.idSousCategorie = a.idSousCategorie')
+            ->Join('App\Entity\Categorie', 'categorie', 'WITH', 'categorie.idCategorie = sousCategorie.idCategorie')
+            ->Join('App\Entity\Ville', 'ville', 'WITH', 'a.idVille = ville.idVille')
+            ->Join('App\Entity\EtatObjet', 'etatObjet', 'WITH', 'a.idEtat = etatObjet.idEtat')
+            
+            //->setFirstResult(10)
+            ->orderBy('a.dateCreationAnnonce', 'DESC')   
+            ->setMaxResults(24)     
             ->getQuery()
             ->getResult()
         ;
     }
+
 
     public function infoAnnonce(): array  // En cours de realisation pour page de recherche
     {
@@ -84,9 +95,14 @@ class AnnonceRepository extends ServiceEntityRepository
             
             ->addSelect('image.nomImage')
             ->addSelect('categorie.nomCategorie')
-            ->Join('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
+            ->addSelect('sousCategorie.nomSousCategorie')
+            ->addSelect('ville.nomVille')
+            ->addSelect('etatObjet.nomEtat')
+            ->leftJoin('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
             ->Join('App\Entity\SousCategorie', 'sousCategorie', 'WITH', 'sousCategorie.idSousCategorie = a.idSousCategorie')
             ->Join('App\Entity\Categorie', 'categorie', 'WITH', 'categorie.idCategorie = sousCategorie.idCategorie')
+            ->Join('App\Entity\Ville', 'ville', 'WITH', 'a.idVille = ville.idVille')
+            ->Join('App\Entity\EtatObjet', 'etatObjet', 'WITH', 'a.idEtat = etatObjet.idEtat')
             ->orderBy('a.dateCreationAnnonce', 'DESC')
             ->getQuery()
             ->getResult()
@@ -105,10 +121,51 @@ class AnnonceRepository extends ServiceEntityRepository
             ->Join('App\Entity\Categorie', 'categorie', 'WITH', 'categorie.idCategorie = sousCategorie.idCategorie')
             ->groupBy('categorie.nomCategorie')
             ->orderBy('tot', 'DESC')
+            ->setMaxResults(4) 
             ->getQuery()
             ->getResult()
         ;
     }
+ /**
+     * Recherche les annonces en fonction du formulaire
+     * @return void 
+     */
+    public function rechercheAnnonce($mots = null){
+        $query = $this->createQueryBuilder('a');
+        //$query->where('a.active = 1'); si on active cettte ligne il faut mettre and Where 2 ligne en
+        if($mots != null){
+            $query->where('MATCH_AGAINST(a.titreAnnonce, a.descriptionAnnonce) AGAINST 
+            (:mots boolean)>0') //MATCH_AGAINST on le retrouve dans config/doctrine.yaml
+                ->setParameter('mots', $mots);
+        }
+        /*if($sousCategorie != null){
+            $query->leftJoin('a.idSousCategorie', 's');
+            $query->andWhere('s.id = :id')
+                ->setParameter('id', $sousCategorie);
+        }
+        return $query->getQuery()->getResult();*/
+    }
+
+
+   /* public function rechercheAnnonce($critere): array
+    {
+        return $this->createQueryBuilder('a')
+            
+            //->Join('App\Entity\SousCategorie', 'sousCategorie', 'WITH', 'sousCategorie.idSousCategorie = a.idSousCategorie')
+            ->leftJoin('a.EtatObjet','etat')
+            ->where('etat.nomEtat=:etatNomEtat')
+            ->setParameter("etatNomEtat", $critere['idEtat']->getNomEtat())
+            ->andWhere("a.idSouscategorie.nomSousCategorie = :nomSousCategorie")
+            ->setParameter("nomSousCategorie", $critere['nomSousCategorie']->getnomSousCategorie())
+            //->where('reservation.nomReservation'=)
+            //->addSelect('sousCategorie.nomSousCategorie')
+            //->Join('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
+            //->Join('App\Entity\SousCategorie', 'sousCategorie', 'WITH', 'sousCategorie.idSousCategorie = a.idSousCategorie')
+            ->orderBy('a.dateCreationAnnonce', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }*/
 
    /* public function getHuitDernieresAnnonces(): array
     {
