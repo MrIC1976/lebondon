@@ -108,10 +108,10 @@ source: function (request, response) {
               // Ici on est obligé d'ajouter les villes dans un array pour ne pas avoir plusieurs fois la même
               if ($.inArray(item.properties.postcode, cities) == -1) {
                   cities.push(item.properties.postcode);
-                  return { label: item.properties.city+ " - " + item.properties.postcode, 
-                           postcode: item.properties.postcode,
-                           citycode: item.properties.citycode,
-                           value: item.properties.city
+                  return {  label: item.properties.city+ " - " + item.properties.postcode, 
+                            postcode: item.properties.postcode,
+                            citycode: item.properties.citycode,
+                            value: item.properties.city
                   };
               }
           }));

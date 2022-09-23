@@ -23,56 +23,13 @@
 						</div>
 						<div class="nav-menus-wrapper" style="transition-property: none;">
 							<ul class="nav-menu">
-							
 								<li class="active"><a href="{{ path('app_accueil')}}">Accueil</a>
-
 								</li>
-								
-								<li><a href="javascript:void(0);">Listings</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="javascript:void(0);">Grid Layout</a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="listing-search-v1.html">With Sidebar V1</a></li>
-												<li><a href="listing-search-v2.html">With Sidebar V2</a></li>
-												<li><a href="listing-search-v3.html">With Sidebar V3</a></li>
-												<li><a href="listing-search-with-map.html">Full Width + Map</a></li>
-											</ul>
-										</li>
-										<li><a href="javascript:void(0);">List Layout</a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="listing-search-v4.html">With Sidebar</a></li>
-												<li><a href="listing-search-v5.html">Full Width</a></li>
-												<li><a href="listing-search-with-map.html">Full Width With Map</a></li>
-											</ul>
-										</li>
-										<li><a href="javascript:void(0);">Map Styles</a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="half-map-search-1.html">Search On Map V1</a></li>
-												<li><a href="half-map-search-2.html">Search On Map V2</a></li>
-												<li><a href="half-map-search-3.html">Search On Map V3</a></li>
-											</ul>
-										</li>
-										<li><a href="javascript:void(0);">Single Listing</a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="single-listing-detail-1.html">Single Listing V1</a></li>
-												<li><a href="single-listing-detail-2.html">Single Listing V2</a></li>
-												<li><a href="single-listing-detail-3.html">Single Listing V3</a></li>
-												<li><a href="single-listing-detail-4.html">Single Listing V4</a></li>
-												<li><a href="single-listing-detail-5.html">Single Listing V5</a></li>
-												<li><a href="single-listing-detail-6.html">Single Listing V6</a></li>
-												<li><a href="single-listing-detail-7.html">Single Listing V7</a></li>
-												<li><a href="single-listing-detail-8.html">Single Listing V8</a></li>
-											</ul>
-										</li>
-										<li><a href="author-detail.html">Author Detail</a>
-									</ul>
+								<li><a href="{{ path('app_search')}}">Recherche</a>
 								</li>
-								
 								<li><a href="javascript:void(0);">User Dashboard</a>
 									<ul class="nav-dropdown nav-submenu">
 										<li><a href="{{ path('app_dashboard')}}"><i class="lni lni-dashboard me-2"></i>Dashboard</a></li>
-
-
 										<li><a href="{{path('app_mesAnnonces')}}"><i class="lni lni-files me-2"></i>Mes annonces</a></li>
 										<li><a href="{{path('app_annonce')}}"><i class="lni lni-add-files me-2"></i>Faire un don</a></li>
 										<li><a href=""><i class="lni lni-bookmark me-2"></i>Annonces favorites</a></li>
@@ -100,9 +57,8 @@
 							
 							<ul class="nav-menu nav-menu-social align-to-right">
 								<li class="add-listing gray">
-									<a href="login.html" >
-									<a href="{{ path('app_logout')}}" >
-										<i class="lni lni-power-switch mr-1"></i> Se déconnecter
+									<a href="{{ path('app_logout')}}" >Se déconnecter
+										<i class="lni lni-power-switch mr-1"></i> 
 									</a>
 								</li>
 							</ul>

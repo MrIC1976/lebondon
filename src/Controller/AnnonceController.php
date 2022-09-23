@@ -71,7 +71,7 @@ class AnnonceController extends AbstractController
                  $manager->persist($img);
                 $manager->flush();
             }
-            $manager->persist($img);
+            $manager->persist($annonce);
             $manager->flush(); 
             
 
@@ -88,8 +88,6 @@ $this->addFlash('notice', "<script>Swal.fire({
             return $this->redirectToRoute('app_dashboard'); //redirection vers dashboard  
         }
 
-
-
         return $this->render('annonce/index.html.twig', [ //voir methode php 'compact' pour alléger le code. Renderform inclut la methode createView
 
             'controller_name' => 'AnnonceController',
@@ -99,6 +97,11 @@ $this->addFlash('notice', "<script>Swal.fire({
             
         ]);
     }
+
+
+
+
+
 
     //pour supprimer une annonce dans mes annonces du dashboard
     #[Route('/dashboard/delete-annonce/{id}', name: 'delete_annonce')]
@@ -126,6 +129,13 @@ $this->addFlash('message', "<script>Swal.fire({
 
     return $this->redirectToRoute('app_dashboard');
 }
+
+
+
+
+
+
+
     //pour afficher la vue de l'annonce dans mes annonces du dashboard
     #[Route('/view-annonce/{id}', name: 'view-annonce')]
     public function vueAnnnonce($id, AnnonceRepository $repoAnnonce, EntityManagerInterface $entityManager, ImageRepository $repoImage, UserInterface $utilisateur): Response
@@ -141,6 +151,12 @@ $this->addFlash('message', "<script>Swal.fire({
         //dd($imageAnnonce)
         ]);
     }
+
+
+
+
+
+
 
     //pour afficher la vue de l'annonce dans mes annonces du dashboard
     #[Route('/update-annonce/{id}', name: 'update-article')]
