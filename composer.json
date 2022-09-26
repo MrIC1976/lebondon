@@ -109,7 +109,7 @@
         "symfony/css-selector": "6.0.*",
         "symfony/debug-bundle": "6.0.*",
         "symfony/form": "6.0.*",
-        "symfony/maker-bundle": "^1.45",
+        "symfony/maker-bundle": "^1.46",
         "symfony/phpunit-bridge": "^6.1",
         "symfony/security-bundle": "6.0.*",
         "symfony/stopwatch": "6.0.*",

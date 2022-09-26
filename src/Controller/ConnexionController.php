@@ -91,7 +91,6 @@ public function forgottenPassword(
                     icon: 'success',
                     title: 'l'adresse mail n\'a pas été reconnue',
                     showConfirmButton: true,
-                    
             })</script>"
         );
         

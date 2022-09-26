@@ -26,21 +26,16 @@ class AnnonceController extends AbstractController
     #[Route('annonce', name: 'app_annonce')]
     public function ajouterAnnonce(Request $request,EntityManagerInterface $manager, UserInterface $utilisateur, TokenStorageInterface $tokenStorage, VilleRepository $repoVille): Response
     {
-
         $annonce = new Annonce();
-
         $form = $this->createForm (AnnonceType::class, $annonce); //création du formulaire
         $form->handleRequest($request); //permet de récupérer les données saisis dans le formulaire
 
         if ($form->isSubmitted() && $form->isValid()) {
             
-            //$utilisateur = $tokenStorage->getToken()->getUser(); //obtenir l'utilisateur connecté
             $slugify = new Slugify();
             $slug = $slugify->slugify($annonce->getTitreAnnonce()); 
             $annonce->setSlugAnnonce($slug);
-            
             $annonce->setIdUtilisateur($utilisateur);
-            
             $annonce->setDateCreation(new DateTime());
 
             $villeSaisieCodeInsee = $form->get('codeInsee')->getData(); //on a récupérer le code insee de la ville saisie ou code postal saisi
@@ -56,27 +51,25 @@ class AnnonceController extends AbstractController
             $manager->flush();
             // On boucle sur les images
             foreach($images as $image){ //nombre d'image transmise non connu -> foreach
-                // On génère un nouveau nom de fichier
-                $fichier = md5(uniqid()).'.'.$image->guessExtension();
+            // On génère un nouveau nom de fichier
+            $fichier = md5(uniqid()).'.'.$image->guessExtension();
 
                 // On copie le fichier dans le dossier public image
-                $image->move(
+            $image->move(
                     $this->getParameter('images_directory'),//images_directory se situe dans service.yaml parameters chemin de l'image
                     $fichier
-                );
-                // On crée l'image dans la base de données
-                $img = new Image();
-                $img->setNomImage($fichier);
-                $img->setIdAnnonce($annonce);
-                 $manager->persist($img);
-                $manager->flush();
+            );
+            // On crée l'image dans la base de données
+            $img = new Image();
+            $img->setNomImage($fichier);
+            $img->setIdAnnonce($annonce);
+            $manager->persist($img);
+            $manager->flush();
             }
             $manager->persist($annonce);
             $manager->flush(); 
-            
 
-
-$this->addFlash('notice', "<script>Swal.fire({
+            $this->addFlash('notice', "<script>Swal.fire({
                 text: 'Ton annonce a été créée.',
                 imageUrl: ('/assets/img/logoComplet.png'),
                 imageWidth: 300,
@@ -118,7 +111,7 @@ $this->addFlash('notice', "<script>Swal.fire({
     $entityManager->flush();//supprime l'annonce de la bdd
 
 
-$this->addFlash('message', "<script>Swal.fire({
+    $this->addFlash('message', "<script>Swal.fire({
                 text: 'Ton annonce a bien été supprimée.',
                 imageUrl: ('/assets/img/logoComplet.png'),
                 imageWidth: 300,
@@ -160,7 +153,8 @@ $this->addFlash('message', "<script>Swal.fire({
 
     //pour afficher la vue de l'annonce dans mes annonces du dashboard
     #[Route('/update-annonce/{id}', name: 'update-article')]
-public function modificationAnnonce(UserInterface $utilisateur, Request $request, $id, AnnonceRepository $repoAnnonce, ImageRepository $repoImage, EntityManagerInterface $entityManager): Response{
+    public function modificationAnnonce(UserInterface $utilisateur, Request $request, $id, AnnonceRepository $repoAnnonce, ImageRepository $repoImage, EntityManagerInterface $entityManager): Response
+    {
         
         $annonce = $repoAnnonce->findOneByIdAnnonce($id);
         $form = $this->createForm (AnnonceType::class,$annonce);
