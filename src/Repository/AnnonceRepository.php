@@ -74,22 +74,30 @@ class AnnonceRepository extends ServiceEntityRepository
             ->addSelect('sousCategorie.nomSousCategorie')
             ->addSelect('ville.nomVille')
             ->addSelect('etatObjet.nomEtat')
-            ->leftJoin('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
+            ->Join('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
             ->Join('App\Entity\SousCategorie', 'sousCategorie', 'WITH', 'sousCategorie.idSousCategorie = a.idSousCategorie')
             ->Join('App\Entity\Categorie', 'categorie', 'WITH', 'categorie.idCategorie = sousCategorie.idCategorie')
             ->Join('App\Entity\Ville', 'ville', 'WITH', 'a.idVille = ville.idVille')
             ->Join('App\Entity\EtatObjet', 'etatObjet', 'WITH', 'a.idEtat = etatObjet.idEtat')
-            
+            ->setMaxResults(8)
             //->setFirstResult(10)
-            ->orderBy('a.dateCreationAnnonce', 'DESC')   
-            ->setMaxResults(24)     
+            ->orderBy('a.idAnnonce', 'desc')        
             ->getQuery()
             ->getResult()
         ;
     }
-
-
-    public function infoAnnonce(): array  // En cours de realisation pour page de recherche
+    public function getHuitDernieresAnnonces(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->addSelect('image.nomImage')
+            ->LeftJoin('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
+            ->orderBy('a.idAnnonce', 'DESC')
+            ->setMaxResults(8)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    public function infoAnnonce2(): array  // En cours de realisation pour page de recherche
     {
         return $this->createQueryBuilder('a')
             
@@ -98,11 +106,38 @@ class AnnonceRepository extends ServiceEntityRepository
             ->addSelect('sousCategorie.nomSousCategorie')
             ->addSelect('ville.nomVille')
             ->addSelect('etatObjet.nomEtat')
+            ->andWhere('utilisateur.idUtilisateur = :val')
+            ->setParameter('val', $value)
             ->leftJoin('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
             ->Join('App\Entity\SousCategorie', 'sousCategorie', 'WITH', 'sousCategorie.idSousCategorie = a.idSousCategorie')
             ->Join('App\Entity\Categorie', 'categorie', 'WITH', 'categorie.idCategorie = sousCategorie.idCategorie')
             ->Join('App\Entity\Ville', 'ville', 'WITH', 'a.idVille = ville.idVille')
             ->Join('App\Entity\EtatObjet', 'etatObjet', 'WITH', 'a.idEtat = etatObjet.idEtat')
+            ->Join('App\Entity\Utilisateur', 'utilisateur', 'WITH', 'a.idUtilisateur = utilisateur.idUtilisateur')
+            ->orderBy('a.dateCreationAnnonce', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }   
+
+
+    public function infoAnnonce($value): array  // En cours de realisation pour page de recherche
+    {
+        return $this->createQueryBuilder('a')
+            
+            ->addSelect('image.nomImage')
+            ->addSelect('categorie.nomCategorie')
+            ->addSelect('sousCategorie.nomSousCategorie')
+            ->addSelect('ville.nomVille')
+            ->addSelect('etatObjet.nomEtat')
+            ->andWhere('utilisateur.idUtilisateur = :val')
+            ->setParameter('val', $value)
+            ->leftJoin('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
+            ->Join('App\Entity\SousCategorie', 'sousCategorie', 'WITH', 'sousCategorie.idSousCategorie = a.idSousCategorie')
+            ->Join('App\Entity\Categorie', 'categorie', 'WITH', 'categorie.idCategorie = sousCategorie.idCategorie')
+            ->Join('App\Entity\Ville', 'ville', 'WITH', 'a.idVille = ville.idVille')
+            ->Join('App\Entity\EtatObjet', 'etatObjet', 'WITH', 'a.idEtat = etatObjet.idEtat')
+            ->Join('App\Entity\Utilisateur', 'utilisateur', 'WITH', 'a.idUtilisateur = utilisateur.idUtilisateur')
             ->orderBy('a.dateCreationAnnonce', 'DESC')
             ->getQuery()
             ->getResult()
@@ -121,7 +156,7 @@ class AnnonceRepository extends ServiceEntityRepository
             ->Join('App\Entity\Categorie', 'categorie', 'WITH', 'categorie.idCategorie = sousCategorie.idCategorie')
             ->groupBy('categorie.nomCategorie')
             ->orderBy('tot', 'DESC')
-            ->setMaxResults(4) 
+            ->setMaxResults(4)
             ->getQuery()
             ->getResult()
         ;
@@ -167,15 +202,7 @@ class AnnonceRepository extends ServiceEntityRepository
         ;
     }*/
 
-   /* public function getHuitDernieresAnnonces(): array
-    {
-        return $this->createQueryBuilder('a')
-            ->orderBy('a.idAnnonce', 'DESC')
-            ->setMaxResults(8)
-            ->getQuery()
-            ->getResult()
-        ;
-    }*/
+
 
 
     
