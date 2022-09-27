@@ -139,6 +139,7 @@ class AnnonceRepository extends ServiceEntityRepository
             ->Join('App\Entity\EtatObjet', 'etatObjet', 'WITH', 'a.idEtat = etatObjet.idEtat')
             ->Join('App\Entity\Utilisateur', 'utilisateur', 'WITH', 'a.idUtilisateur = utilisateur.idUtilisateur')
             ->orderBy('a.dateCreationAnnonce', 'DESC')
+            ->setMaxResults(12)
             ->getQuery()
             ->getResult()
         ;

@@ -1708,7 +1708,7 @@ nav a:hover {
     padding: 23px 18px;
     display: inline-block;
     font-weight: 500;
-    font-size: 13px;
+    font-size: 20px;
     color: #202838;
 }
 .nav-menu.nav-menu-social>li>a {
@@ -2080,6 +2080,7 @@ nav a:hover {
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 	font-family: 'Jost', sans-serif;
+    font-size: 20px;
 }
 .nav-dropdown>li:last-child>a{
 	border-bottom:none;
@@ -8242,4 +8243,11 @@ Bottom To top Button Design
     padding-bottom: 30px;
     border-radius: 7px;
     width: 90vw;
+}
+
+.police{
+    font-size :20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    font-family: 'Jost', sans-serif;
 }
