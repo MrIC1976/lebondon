@@ -22,8 +22,12 @@ class AccueilController extends AbstractController
     public function index(EntityManagerInterface $manager, AnnonceRepository $annonceRepo, ImageRepository $imageRepo, UtilisateurRepository $utilisateurRepo, VilleRepository $villeRepo, CategorieRepository $categorieRepo): Response
     {
         $annonces = $annonceRepo->findAll();
-        $derniereAnnonce = $annonceRepo->getAnnonceByImage();
+        $derniereAnnonce = $annonceRepo->getHuitDernieresAnnonces();
         $categorieParAnnonce = $annonceRepo->categorieSelonAnnonce();
+
+
+        
+        //dd($derniereAnnonce);
        //dd($categorieParAnnonce);
         //$annoncesSelonCat=$categorieParAnnonce->findBy(array('nomCategorie'=>'Animaux'));
         //dd('$annoncesSelonCat');

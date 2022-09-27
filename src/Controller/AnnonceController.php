@@ -8,6 +8,8 @@ use App\Entity\Image;
 use App\Entity\Annonce;
 use App\Form\AnnonceType;
 use Cocur\Slugify\Slugify;
+use App\Entity\Reservation;
+use App\Entity\DisponibiliteObjet;
 use App\Repository\ImageRepository;
 use App\Repository\VilleRepository;
 use App\Repository\AnnonceRepository;
@@ -17,6 +19,7 @@ use App\Repository\SousCategorieRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\DisponibiliteObjetRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -24,7 +27,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 class AnnonceController extends AbstractController
 {
     #[Route('annonce', name: 'app_annonce')]
-    public function ajouterAnnonce(Request $request,EntityManagerInterface $manager, UserInterface $utilisateur, TokenStorageInterface $tokenStorage, VilleRepository $repoVille): Response
+    public function ajouterAnnonce(Request $request,EntityManagerInterface $manager, UserInterface $utilisateur, TokenStorageInterface $tokenStorage, VilleRepository $repoVille, DisponibiliteObjetRepository $dispoRepo): Response
     {
         $annonce = new Annonce();
         $form = $this->createForm (AnnonceType::class, $annonce); //création du formulaire
@@ -58,13 +61,36 @@ class AnnonceController extends AbstractController
             $image->move(
                     $this->getParameter('images_directory'),//images_directory se situe dans service.yaml parameters chemin de l'image
                     $fichier
-            );
-            // On crée l'image dans la base de données
-            $img = new Image();
-            $img->setNomImage($fichier);
-            $img->setIdAnnonce($annonce);
-            $manager->persist($img);
-            $manager->flush();
+
+                );
+                // On crée l'image dans la base de données
+                $img = new Image();
+                $img->setNomImage($fichier);
+                $img->setIdAnnonce($annonce);
+                $manager->persist($img);
+                $manager->flush();
+
+                /*$ticket= new Reservation();
+                //$ticket->setDateReservation(new DateTime());
+                $ticket->setIdAnnonce($annonce);
+                
+                //dd($ticket);
+                $manager->persist($ticket);
+
+                //dd($ticket);
+                /*$nomDispo=new DisponibiliteObjet;
+                $nomDispo->setIdReservation($ticket);
+                //$nomDispo->$dispoRepo->getNomDisponibilite('Disponible');
+                //$nomDispo->getNomDisponibilite()->getData('Disponible');
+                dd($nomDispo);
+                $manager->persist($nomDispo);
+                //$manager->flush();
+                //dd($ticket);
+                
+                //$disponibilite->setIdDisponibilite('1');
+                
+                //$dispoRepo->;*/
+
             }
             $manager->persist($annonce);
             $manager->flush(); 
@@ -91,25 +117,25 @@ class AnnonceController extends AbstractController
         ]);
     }
 
-
-
-
-
-
     //pour supprimer une annonce dans mes annonces du dashboard
     #[Route('/dashboard/delete-annonce/{id}', name: 'delete_annonce')]
     public function deleteAnnonce($id, EntityManagerInterface $entityManager, AnnonceRepository $repoAnnonce, ImageRepository $repoImage, UserInterface $utilisateur,): Response
     {
 
     //pour supprimer l'image d'une annonce
-    $imageAnnonce = $repoImage->findOneByIdAnnonce($id);
-    $entityManager->remove($imageAnnonce);
-    $entityManager->flush();
-    //pour supprimer l'annonce de mes annonces
-    $annonce = $repoAnnonce->findOneByIdAnnonce($id);
-    $entityManager->remove($annonce);
-    $entityManager->flush();//supprime l'annonce de la bdd
 
+    $imageAnnonce = $repoImage->findByIdAnnonce($id);
+    $annonce = $repoAnnonce->findOneByIdAnnonce($id);
+//dd($imageAnnonce);
+    if(!empty($imageAnnonce)){
+        foreach ($imageAnnonce as $image) {
+            $entityManager->remove($image);
+            $entityManager->flush();
+        }
+    }
+//dd($annonce);
+$entityManager->remove($annonce);
+$entityManager->flush();
 
     $this->addFlash('message', "<script>Swal.fire({
                 text: 'Ton annonce a bien été supprimée.',

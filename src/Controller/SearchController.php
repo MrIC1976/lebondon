@@ -22,7 +22,7 @@ class SearchController extends AbstractController
         $formRecherche = $this->createForm (SearchAnnonceType::class); //création du formulaire
         $search = $formRecherche->handleRequest($request);
 
-        //dd($formRecherche);
+        dd($search);
         //permet de récupérer les données saisis dans le formulaire
         if ( $formRecherche->isSubmitted() && $formRecherche->isValid()) {
             //on recherceh les annonces correspondant aux mots clés

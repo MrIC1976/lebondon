@@ -70,11 +70,13 @@
 													</div>
 													<div class="Goodup-grid-thumb">
 														<a href="single-listing-detail-2.html" class="d-block text-center m-auto">
+															
 															{% if annonce.nomImage == null %}
 																<img src="assets/img/logoComplet.png" class="card-img-top" alt="">
 															{% else %}
 																<img src="image/{{annonce.nomImage}}" class="card-img-top" alt="">
 															{% endif %}
+
 														</a>
 													</div>
 												</div>
@@ -103,7 +105,7 @@
 													</div>
 													<div class="Goodup-grid-footer py-2 px-3">
 														<div class="Goodup-ft-first">
-															<a href="half-map-search-2.html"><div class="cats-ico bg-2"></div><span class="cats-title">{{annonce[0].idSousCategorie.idCategorie.nomCategorie}}</span></a>
+															<a href="half-map-search-2.html"><div class="cats-ico bg-2"></div><span class="cats-title">{{annonce[0].idSousCategorie.nomSousCategorie}}</span></a>
 														</div>
 														<div class="Goodup-ft-last">
 															<div class="Goodup-inline">
