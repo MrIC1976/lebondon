@@ -101,7 +101,6 @@ class AnnonceController extends AbstractController
                 imageWidth: 300,
                 imageHeight: 200,
                 imageAlt: 'logo Lebondon',
-
                 })</script>");
 
             return $this->redirectToRoute('app_dashboard'); //redirection vers dashboard  
@@ -121,7 +120,6 @@ class AnnonceController extends AbstractController
     #[Route('/dashboard/delete-annonce/{id}', name: 'delete_annonce')]
     public function deleteAnnonce($id, EntityManagerInterface $entityManager, AnnonceRepository $repoAnnonce, ImageRepository $repoImage, UserInterface $utilisateur,): Response
     {
-
     //pour supprimer l'image d'une annonce
 
     $imageAnnonce = $repoImage->findByIdAnnonce($id);
@@ -144,16 +142,8 @@ $entityManager->flush();
                 imageHeight: 200,
                 imageAlt: 'logo Lebondon',
                 })</script>");
-                
-
     return $this->redirectToRoute('app_dashboard');
 }
-
-
-
-
-
-
 
     //pour afficher la vue de l'annonce dans mes annonces du dashboard
     #[Route('/view-annonce/{id}', name: 'view-annonce')]

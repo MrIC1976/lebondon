@@ -70,35 +70,39 @@ public function forgottenPassword(
                 $user->getMailUtilisateur(),
                 'Réinitialisation de mot de passe',
                 'password_reset',
-                $context
-            );
-
-                $this->addFlash('success', "<script>Swal.fire({
-                    title: 'Email envoyé avec succès.',
-                    text: 'Vous allez le reçevoir dans quelques instants sur votre boite mail.',
+                $context,
+                $this->addFlash(
+                    'success',
+                    "<script>Swal.fire({
+                    title: 'Vous venez de recevoir un email',
+                    text: 'Merci de cliquer sur le lien pour réinitialiser votre mot de passe.',
                     imageUrl: ('/assets/img/logoComplet.png'),
                     imageWidth: 300,
                     imageHeight: 200,
                     imageAlt: 'logo Lebondon',
-                    })</script>");
-                return $this->redirectToRoute('app_connexion');
+                    })</script>"),
+            );   
+            return $this->redirectToRoute('app_connexion');    
+            }else{
+
+            $this->addFlash(
+                'message2',
+                    "<script>Swal.fire({
+                    title: 'Oups',
+                    text: 'Cette adresse mail n\'est pas reconnue',
+                    imageUrl: ('/assets/img/logoComplet.png'),
+                    imageWidth: 300,
+                    imageHeight: 200,
+                    imageAlt: 'logo Lebondon',
+                    })</script>",
+            );
+            return $this->redirectToRoute('app_connexion');     
         }
-        // $user est null
-        $this->addFlash(
-            'message',
-            "<script> Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'l'adresse mail n\'a pas été reconnue',
-                    showConfirmButton: true,
-            })</script>"
-        );
-        
-        return $this->redirectToRoute('app_connexion');
     }
 
     return $this->render('accueil/reset_password_request.html.twig', [
-        'requestPassForm' => $form->createView()
+        'requestPassForm' => $form->createView(),
+        
     ]);
 }
 
@@ -151,7 +155,5 @@ public function resetPass(
     $this->addFlash('danger', 'Jeton invalide');
     return $this->redirectToRoute('app_connexion');
 }
-
-
 
 }
