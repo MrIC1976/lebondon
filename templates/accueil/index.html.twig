@@ -3,7 +3,7 @@
 {% block title %}Lebondon{% endblock %}
 
 {% block body %}
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@2.2.0/dist/axentix.min.css">
 {% include 'commun/navbarNonConnecte.html.twig' %}
 
 <div class="home-banner arriere-plan">			
@@ -109,7 +109,7 @@
 														</div>
 														<div class="Goodup-ft-last">
 															<div class="Goodup-inline">
-																<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-envelope position-absolute"></i></button></div>
+																<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-envelope position-absolute" data-target="modale-contact"></i></button></div>
 																<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-heart-filled position-absolute"></i></button></div>
 															</div>
 														</div>
@@ -174,11 +174,41 @@
 {% endfor %}
 </div>
 	</section>
-	<!-- ======================= Listing Categories End ======================== -->
-<!-- footer -->
-					<div class="row">
+				<div class="row">
 						<div class="col-md-12">
 							<div class="py-3">© Lebondon 2022</div>
 						</div>
 					</div>
+
+					<div class="modal shadow-1 white modal-falling" id="modale-contact" data-ax="modal">
+  <div class="modal-header">Contacter l'annonceur</div>
+  <div class="divider"></div>
+  {{ form_start(form) }}
+  <div class="modal-content">
+  {{ form_widget(form.title) }}
+  {{ form_row(form.email) }}
+  {{ form_row(form.message) }}
+  </div>
+
+  <div class="divider"></div>
+  <div class="modal-footer">
+	<button class="btn btn-danger">Envoyer</button>
+    <button data-target="modale-contact" class="ml-auto btn shadow-1 rounded-1 btn btn-danger">Fermer</button>
+  </div>
+  {{ form_end(form) }}
+</div>
+	
+	<!-- ======================= Listing Categories End ======================== -->
+<!-- footer -->
+	
+{% endblock %}
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/axentix@2.2.0/dist/axentix.min.js"></script>
+<script>
+	window.onload = () => {
+		document.querySelector("#annonce_contact_title").value = "{{ annonce[0].titreAnnonce }}"
+	}
+	let modal = new Axentix.Modal('#modale-contact');
+	
+</script>
 {% endblock %}

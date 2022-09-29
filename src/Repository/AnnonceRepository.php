@@ -145,6 +145,7 @@ class AnnonceRepository extends ServiceEntityRepository
         ;
     }
 
+    
     public function categorieSelonAnnonce(): array
     {
         return $this->createQueryBuilder('a')

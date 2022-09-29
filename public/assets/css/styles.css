@@ -403,7 +403,7 @@ ul.icons_lists.colors li:before{
     font-size:14px !important;
 }
 .fs-md {
-    font-size:16px !important;
+    font-size:35px !important;
 }
 .fs-lg {
     font-size:20px !important;
@@ -2671,7 +2671,7 @@ span.expiration {
 }
 /*------ transparent --------*/
 .header.header-transparent {
-    background: transparent;
+    background-color: #fff;
     position: absolute;
     top: 0;
     left: 0;
@@ -7756,7 +7756,7 @@ footer.skin-dark-footer ul.footer-bottom-social li a:hover, footer.skin-dark-foo
 		height: 100vh;
 	}
 	.banner_title {
-		font-size: 50px;
+		font-size: 70px;
 		line-height: 1.2;
 	}
 	.w3-ch-sideBar {
@@ -8210,7 +8210,7 @@ Bottom To top Button Design
 }
 
 .arriere-plan{
-    background: url(../img/image-site2.jpg) no-repeat center fixed; 
+    background: url(../img/image-site.jpg) no-repeat center fixed; 
     -webkit-background-size: cover; /* pour anciens Chrome et Safari /
     background-size: cover; / version standardisée */
 }
