@@ -124,16 +124,16 @@ class AnnonceController extends AbstractController
 
     $imageAnnonce = $repoImage->findByIdAnnonce($id);
     $annonce = $repoAnnonce->findOneByIdAnnonce($id);
-//dd($imageAnnonce);
+    //dd($imageAnnonce);
     if(!empty($imageAnnonce)){
         foreach ($imageAnnonce as $image) {
             $entityManager->remove($image);
             $entityManager->flush();
         }
     }
-//dd($annonce);
-$entityManager->remove($annonce);
-$entityManager->flush();
+    //dd($annonce);
+    $entityManager->remove($annonce);
+    $entityManager->flush();
 
     $this->addFlash('message', "<script>Swal.fire({
                 text: 'Ton annonce a bien été supprimée.',
@@ -160,12 +160,6 @@ $entityManager->flush();
         //dd($imageAnnonce)
         ]);
     }
-
-
-
-
-
-
 
     //pour afficher la vue de l'annonce dans mes annonces du dashboard
     #[Route('/update-annonce/{id}', name: 'update-article')]
@@ -216,14 +210,14 @@ $entityManager->flush();
                 })</script>");
 
             return $this->redirectToRoute("app_dashboard");
-        }
+            }
 
-        return $this->render('annonce/update-annonce.html.twig', [
+            return $this->render('annonce/update-annonce.html.twig', [
             'annonce' => $annonce,
             'form' => $form->createView(),
             'pseudo' => $utilisateur->getPseudoUtilisateur(),
             'photoUtilisateur' => $utilisateur->getPhotoUtilisateur(),
-        ]);
+            ]);
     }
 }
 
