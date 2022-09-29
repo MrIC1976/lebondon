@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+
 use App\Entity\SousCategorie;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<SousCategorie>
@@ -85,4 +86,17 @@ class SousCategorieRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function affichageSousCategorieSelonCategorie($nomCategorie): array
+{
+    return $this->createQueryBuilder('s')
+        ->addSelect('categorie.nomCategorie')
+        ->andWhere('categorie.nomCategorie = :nomCategorie')
+        ->setParameter('nomCategorie', $nomCategorie)
+        ->Join('App\Entity\Categorie', 'categorie', 'WITH', 'categorie.idCategorie = s.idCategorie')
+        ->getQuery()
+        ->getResult()
+    ;
+}
+
+
 }

@@ -29,28 +29,34 @@ use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationExtension;
 
 class SearchAnnonceType extends AbstractType
 {
+    private $categorieRepository;
+
+    public function __construct( CategorieRepository $categorieRepository, SousCategorieRepository $sousCategorieRepository)
+
+    {
+        $this->CategorieRepository = $categorieRepository;
+        $this->SousCategorieRepository = $sousCategorieRepository;
+    }
+   //formbuilder permet de creer le formulaire 
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-
+        $formFactory = Forms::createFormFactoryBuilder()
+    ->addExtension(new HttpFoundationExtension())
+    ->getFormFactory();
+    
         $builder
             ->add('mots', SearchType::class, [
                 'label'=>false,
+                'mapped'=>false,
+                'required'=>false,
                 'attr'=>[
                     'class' => 'form-control rounded',
                     'placeholder' => 'Entrez un ou plusieurs mots-clés!'
                 ]
             ])
-            //->add('titreAnnonce')
             //->add('slugAnnonce')
             //->add('descriptionAnnonce')
-            /*->add('titreAnnonce', TextType::class,[
-                //'mapped' => false,
-                'label' => false,
-                'required' => false,
-                //'placeholder' => 'Entrez le numéro et le nom de rue ici !',
-                'attr' => ['class' => 'form-control rounded']
-                ])*/
             ->add('adresse', TextType::class,[
                 'label' => false,
                 'required' => false,
@@ -60,7 +66,7 @@ class SearchAnnonceType extends AbstractType
                 ])
             ->add('ville', TextType::class,[
                 //'class' => Ville::class,
-                //'mapped' => false,
+                'mapped' => false,
                 //'choice_label' => 'nomVille',
                 'label' => false,
                 'required' => false,
@@ -69,7 +75,7 @@ class SearchAnnonceType extends AbstractType
                 ])
             ->add('departement', EntityType::class,[
                 'class' => Departement::class,
-                //'mapped' => false,
+                'mapped' => false,
                 'choice_label' => 'nomDepartement',
                 'label' => false,
                 'help' => 'Nord',
@@ -80,62 +86,26 @@ class SearchAnnonceType extends AbstractType
            // ->add('dateCreationAnnonce')
             //->add('idUtilisateur')
             //->add('idVille')
-            /*->add('idEtat', ChoiceType::class,[
-                'choices' => [
-                    array_combine(EtatObjet::class->findbynomEtat, EtatObjet::class)
-                    '1' => '1',
-                    '2' => '2',
-                    '3' => '3',
-                    '4' => '4',
-                    '6' => '6',
-                    '7' => '7'
-                    'Neuf' => 'Neuf',
-                    'Comme neuf' => 'Comme neuf',
-                    'Bon état' => 'Bon état',
-                    'Etat correct' => 'Etat correct',
-                    'Abimé' => 'Abimé',
-                    'Très abimé' => 'Très abimé'
-
-                ],
+            ->add('idEtat', EntityType::class,[
+                'class' => EtatObjet::class,
+                'placeholder' => 'Etat de l\'objet',
+                'choice_label' => 'nomEtat', 
                 'label' => false,
-                'multiple' => true,
+                //'multiple' => true,
+                'required' => false,
                 'attr'=> ['class'=> 'form-select text-center mt-1'],
                 ])
-                */
-                ->add('idEtat', EntityType::class,[
-                    'class' => EtatObjet::class,
-                    'placeholder' => 'Etat de l\'objet',
-                    'choice_label' => 'nomEtat', 
-                    'label' => false,
-                    //'multiple' => true,
-                    'required' => false,
-                    'attr'=> ['class'=> 'form-select text-center mt-1'],
-                    ])
-                //'class' => EtatObjet::class,
-                //'placeholder' => 'Dans quel état est votre objet ?',
-                //'choice_label' => 'nomEtat', 
                 
-                ->add('idDisponibilite', EntityType::class,[
-                    'class' => DisponibiliteObjet::class,
-                    'placeholder' => 'Disponibilité de l\'objet',
-                    'choice_label' => 'nomDisponibilite', 
-                    'label' => false,
-                    //'mapped' => false,
-                    'multiple' => false,
-                    'required' => false,
-                    'attr'=> ['class'=> 'form-select text-center mt-1'],
-                    ])
-
-                /*->add('disponibilite', ChoiceType::class,
-                    array(
-                        'choices' => array(
-                            'Licence 1'    => $this->getUser()->setid_niveau(1),
-                            'Licence 2' => '',
-                            'Licence 3' => '',
-                            'Master 1' => '',
-                            'Master 2' => '',
-                    )));*/
-                
+            ->add('idDisponibilite', EntityType::class,[
+                'class' => DisponibiliteObjet::class,
+                'placeholder' => 'Disponibilité de l\'objet',
+                'choice_label' => 'nomDisponibilite', 
+                'label' => false,
+                'mapped' => false,
+                'multiple' => false,
+                'required' => false,
+                'attr'=> ['class'=> 'form-select text-center mt-1'],
+                ])
 
             ->add('rechercher', SubmitType::class,[
                 'attr'=> ['class'=> 'btn theme-bg text-light rounded full-width'],
@@ -156,26 +126,27 @@ class SearchAnnonceType extends AbstractType
 
                 //$formModifier = function(FormInterface $form, Categorie $categorie=null){ 
             
-                //$sousCategories = (null === $categorie ? [] : $this->SousCategorieRepository->findByIdCategorie($categorie));
+                //$sousCategories = null === $categorie ? [] : $this->SousCategorieRepository->findByIdCategorie($categorie);
                 
                 //$form
-                ->add('idSousCategorie', EntityType::class, [
-                'class' => SousCategorie::class,
-                'placeholder' => 'Choisissez la sous-catégorie',
-                'choice_label' => 'nomSousCategorie', 
-                //'disabled' => true,
-                //'choices' => $sousCategories,//$this->SousCategorieRepository->findAllOrderByAsc(),
-                'multiple' => false,
-                // 'expanded' => true,
-                'label' => false,
-                'required' => false,
-                'attr'=> ['class'=> 'form-select text-center mt-1'
-                ] ] );
-       // };
-        /*$builder->addEventListener(
-            FormEvents::PRE_SET_DATA,
+                /*->add('idSousCategorie', EntityType::class, [
+                    'class' => SousCategorie::class,
+                    'placeholder' => 'Choisissez la sous-catégorie',
+                    'choice_label' => 'nomSousCategorie',
+                    //'disabled' => true,
+                    //'choices' => $sousCategories,
+                    'multiple' => false,
+                    // 'expanded' => true,
+                    'label' => false,
+                    'attr'=> ['class'=> 'form-select text-center mt-1'
+                    ] ] );*/
+        //}
+        ;
+       /* $builder->addEventListener(
+            FormEvents::PRE_SET_DATA, 
             function (FormEvent $event) use ($formModifier) {
                 $data = $event->getData();
+                //dd($data);
                 $formModifier($event->getForm(), $data->getIdSousCategorie());
             }
         );
@@ -191,7 +162,7 @@ class SearchAnnonceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            
+            'data_class' => Annonce::class,
         ]);
     }
 }

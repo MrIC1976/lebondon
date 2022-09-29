@@ -61,7 +61,6 @@ class AnnonceController extends AbstractController
             $image->move(
                     $this->getParameter('images_directory'),//images_directory se situe dans service.yaml parameters chemin de l'image
                     $fichier
-
                 );
                 // On crée l'image dans la base de données
                 $img = new Image();
@@ -156,8 +155,6 @@ class AnnonceController extends AbstractController
         'controller_name' => 'AnnonceController',
         "viewAnnonce" => $viewAnnonce,
         "imageAnnonce" => $imageAnnonce,
-        //dd($viewAnnonce),
-        //dd($imageAnnonce)
         ]);
     }
 
