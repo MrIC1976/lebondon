@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Utilisateur;
-use App\Form\AnnonceContactType;
 use App\Repository\ImageRepository;
 use App\Repository\VilleRepository;
 use App\Controller\AccueilController;

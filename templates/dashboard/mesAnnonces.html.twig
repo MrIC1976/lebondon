@@ -56,17 +56,16 @@
 									<h3 class="mb-0 ft-medium fs-md"><i
 											class="fa fa-file-alt me-2 theme-cl fs-sm"></i>Annonces de
 										{{prenom|capitalize}} {{nom|capitalize}} </h3>
-									<h4 class="mb-0 ft-small fs-sm"> Vous avez {{ contenuAnnonce|length }} annonce(s) en
+									<h4 class="mb-0 ft-small fs-sm"> Vous avez {{ mesAnnonces|length }} annonce(s) en
 										ligne</h4>
 								</div>
 							</div>
-		{% for annonce in derniereAnnonce %}
+{% for annonce in mesAnnonces %}
 							<div class="dashboard-list-wraps-body py-3 px-3">
 								<div class="dashboard-listing-wraps">
 									<!-- Single Listing Item -->
 									<div class="dsd-single-listing-wraps">
 										<div class="dsd-single-lst-thumb border border-secondary">
-
 											{% if annonce.nomImage == null %}
 											<img src="assets/img/logoComplet.png" class="card-img-top" alt="">
 											{% else %}
@@ -82,11 +81,13 @@
 												class="lni lni-map-marker me-1"></i>{{annonce.nomVille|capitalize}}
 										</span>
 										<br>
-										<span><i class="fas fa-list"></i> {{annonce.nomCategorie|capitalize}}
-											{{annonce.nomSousCategorie|capitalize}}</span>
+										<span><i class="fas fa-list"></i> 
+										{{annonce.nomCategorie|capitalize}} ->
+										{{annonce.nomSousCategorie|capitalize}}
+										</span>
+										
 										<div>
 											<div class="Goodup-ft-first">
-
 												{{ annonce[0].descriptionAnnonce|length > 75 ?
 												annonce[0].descriptionAnnonce|striptags|slice(0, 100) ~ '...' :
 												annonce[0].descriptionAnnonce|raw }}
@@ -100,14 +101,11 @@
 											<a href="/dashboard/delete-annonce/{{annonce[0].idAnnonce}}"
 												class="btn btn-delete"><i class="fas fa-trash me-1"></i>Supprimer</a>
 										</div>
-
 									</div>
 								</div>
-
 							</div>
 {% endfor %}
-						</div>
-						
+						</div>	
 					</div>
 				</div>
 			</div>
