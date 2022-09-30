@@ -150,7 +150,7 @@ class AnnonceType extends AbstractType
                 'attr'=> ['class'=> 'form-select text-center mt-1']
                 ]);
 
-                $formModifier = function(FormInterface $form, Categorie $categorie=null){ 
+                $formModifier = function(FormInterface $form, Categorie $categorie = null){ 
             
                 $sousCategories = null === $categorie ? [] : $this->SousCategorieRepository->findByIdCategorie($categorie);
                 
@@ -171,6 +171,7 @@ class AnnonceType extends AbstractType
             FormEvents::PRE_SET_DATA,
             function (FormEvent $event) use ($formModifier) {
                 $data = $event->getData();
+                dd($data);
                 $formModifier($event->getForm(), $data->getIdSousCategorie());
             }
         );

@@ -85,23 +85,16 @@ class DashboardController extends AbstractController
     public function mesAnnonces(UserInterface $utilisateur, AnnonceRepository $annonceRepo, ImageRepository $repoImage): Response
     {
         $style2 = 'active';
-        $annonces = $annonceRepo->findByIdUtilisateur($utilisateur);
-        //dd($annonces);
-        $imageAnnonces = $repoImage->findByIdAnnonce($annonces);
-       //dd($imageAnnonces);
         $annonceUtilisateur = $annonceRepo->infoAnnonce($utilisateur);
-       //dd($annonceUtilisateur);
 
         return $this->render('dashboard/mesAnnonces.html.twig', [
             'controller_name' => 'DashboardController',
             'pseudo' => $utilisateur->getPseudoUtilisateur(),
             'prenom' => $utilisateur->getPrenomUtilisateur(),
             'nom' => $utilisateur->getNomUtilisateur(),
-            'contenuAnnonce' => $annonces,   
-            'imageAnnonce' => $imageAnnonces,
             'style2' => $style2,
             'photoUtilisateur' => $utilisateur->getPhotoUtilisateur(),
-            'derniereAnnonce' => $annonceUtilisateur,
+            'mesAnnonces' => $annonceUtilisateur,
         ]);
     }
 }

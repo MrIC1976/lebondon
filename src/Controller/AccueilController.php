@@ -32,9 +32,6 @@ class AccueilController extends AbstractController
 
         //dd($derniereAnnonce);
         //dd($categorieParAnnonce);
-        //$annoncesSelonCat=$categorieParAnnonce->findBy(array('nomCategorie'=>'Animaux'));
-        //dd('$annoncesSelonCat');
-        
         $form = $this->createForm(AnnonceContactType::class);
         $contact = $form->handleRequest($request);
 
