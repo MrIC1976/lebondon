@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Utilisateur;
+use App\Form\AnnonceContactType;
 use App\Repository\ImageRepository;
 use App\Repository\VilleRepository;
 use App\Controller\AccueilController;
@@ -31,9 +32,6 @@ class AccueilController extends AbstractController
 
         //dd($derniereAnnonce);
         //dd($categorieParAnnonce);
-        //$annoncesSelonCat=$categorieParAnnonce->findBy(array('nomCategorie'=>'Animaux'));
-        //dd('$annoncesSelonCat');
-        
         $form = $this->createForm(AnnonceContactType::class);
         $contact = $form->handleRequest($request);
 

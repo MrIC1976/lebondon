@@ -131,12 +131,12 @@
 												<div class="Goodup-featured-tag">trop tard</div>
 											</div>
 											<div class="Goodup-grid-thumb">
-														<a href="single-listing-detail-2.html" class="d-block text-center m-auto">
-														 {# {% if annonce.nomImage == null %} 
-																<img src="assets/img/logoComplet.png" class="card-img-top" alt="">
-															{% else %}
-																<img src="image/{{annonce.nomImage}}" class="card-img-top" alt="">
-															{% endif %} alt="image"></a>#}
+											<a href="/view-annonce/{{annonce.idAnnonce}}" class="d-block text-center m-auto">
+											{% for item in image %}
+												{% if (item.idAnnonce.idAnnonce == annonce.idAnnonce)%}
+													<img src="image/{{item.nomImage}}" class="card-img-top" alt="">	
+												{% endif %}
+											{% endfor %}
 											</div>
 										</div>
 										
@@ -144,7 +144,7 @@
 											<div class="Goodup-caption px-3 py-2">
 												<div class="Goodup-author"><a href="author-detail.html"><img src="image/{{annonce.idUtilisateur.photoUtilisateur}}" class="img-fluid circle"  alt="{{annonce.idUtilisateur.pseudoUtilisateur}}" /></a></div>
 												<div class="Goodup-cates"><a href="search.html">Wedding</a></div>
-												<h4 class="mb-0 ft-medium medium"><a href="listing-search-v1.html" class="text-dark fs-md">{{annonce.titreAnnonce}}<span class="verified-badge"><i class="fas fa-check-circle"></i></span></a></h4>
+<h4 class="mb-0 ft-medium medium"><a href="/view-annonce/{{annonce.idAnnonce}}" class="text-dark fs-md">{{annonce.titreAnnonce}}<span class="verified-badge"><i class="fas fa-check-circle"></i></span></a></h4>
 												<div class="Goodup-middle-caption mt-3">
 													<div class="Goodup-location"><i class="fas fa-map-marker-alt"></i>{{annonce.idVille.nomVille}}
 													</div>

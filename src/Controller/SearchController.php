@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Annonce;
 use App\Form\AnnonceType;
 use App\Form\SearchAnnonceType;
+use App\Repository\ImageRepository;
 use App\Repository\AnnonceRepository;
 use App\Repository\SousCategorieRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,8 +16,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class SearchController extends AbstractController
 {
     #[Route('/recherche', name: 'app_search')]//on crée la route
-    public function index(AnnonceRepository $annonceRepo, Request $request, SousCategorieRepository $sousCatRepo): Response//request permet de recupérer les info saisi dans le formulaire
+    public function index(AnnonceRepository $annonceRepo, Request $request, ImageRepository $imageRepo,SousCategorieRepository $sousCatRepo): Response//request permet de recupérer les info saisi dans le formulaire
     {
+        
         $annonces = $annonceRepo-> findAll();
         //dd($annonces);
         //$informationAnnonce = $annonceRepo->infoAnnonceRecherche();//permet de recuperer un tableau avec toutes les infos des annonces (cf annonceRepository)
@@ -26,13 +28,18 @@ class SearchController extends AbstractController
         
         if ($formRecherche->isSubmitted() && $formRecherche->isValid()) {
             //on recherche les annonces correspondant aux mots clés
-            //$critere = $formRecherche->getData();
-            //dd($critere);
-            $annonces = $annonceRepo->rechercheAnnonce($search->get('mots')->getData());
-            dd($annonces);
-            //dd($annonce);
+            $annonces = $annonceRepo->rechercheAnnonce( 
+                $search->get('mots')->getData(), 
+                $search->get('idCategorie')->getData(),
+                $search->get('idEtat')->getData(),  
+            );
+            //dd($annonces);
             //return $this->redirectToRoute('app_dashboard');
+            $image = $imageRepo-> findByIdAnnonce($annonces);
         }
+        $image = $imageRepo-> findByIdAnnonce($annonces) ;
+        //dd($annonces);
+        //dd($image);
         /*if ( $formRecherche->isSubmitted()) {
         $nomCategorie = $search['idCategorie']->getData();
         $catSelectionnee=$nomCategorie->getIdCategorie();
@@ -49,18 +56,14 @@ class SearchController extends AbstractController
             echo '<br>';
         }*/
         //dd($nomSousCatSelectionnee);
-        
-        //dd($search);
-        //permet de récupérer les données saisis dans le formulaire
-
 
         return $this->render('searchAnnonce/index.html.twig', [ //on lie le controller à la vue
             'controller_name' => 'SearchController',
             //'infoAnnonce' => $informationAnnonce,
             'annonces' => $annonces,
             'formRecherche' => $formRecherche->createView(),// on envoie à la vue
-            //dd($informationAnnonce)
             //'sousCategorie'=>$sousCats
+            'image' => $image
         ]);
     }
 }

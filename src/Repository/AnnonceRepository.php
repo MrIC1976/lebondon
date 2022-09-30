@@ -190,25 +190,29 @@ class AnnonceRepository extends ServiceEntityRepository
      * Recherche les annonces en fonction du formulaire
      * @return void 
      */
-    public function rechercheAnnonce($mots){
+    public function rechercheAnnonce($mots = null, $categorie = null, $etat = null){
         $query = $this->createQueryBuilder('a');
         //$query->where('a.active = 1'); si on active cettte ligne il faut mettre and Where 2 ligne en
         if($mots != null){
             $query->where('MATCH_AGAINST(a.titreAnnonce, a.descriptionAnnonce) AGAINST 
             (:mots boolean)>0') //MATCH_AGAINST on le retrouve dans config/doctrine.yaml,
                 ->setParameter('mots', $mots);
-               //$query->leftJoin('image.idSousCategorie', 's');
         }
-        /*if($sousCategorie != null){
+        if($categorie != null){
             $query->leftJoin('a.idSousCategorie', 's');
-            $query->andWhere('s.id = :id')
-                ->setParameter('id', $sousCategorie);
-        }*/
+            $query->leftJoin('s.idCategorie', 'c');
+            $query->andWhere('c.nomCategorie = :nom')
+                ->setParameter('nom', $categorie);
+        }
+        if($etat != null){
+            $query->leftJoin('a.idEtat', 'e');
+            $query->andWhere('e.nomEtat = :etat')
+                ->setParameter('etat', $etat);
+        }
         return $query->getQuery()->getResult();
     }
 
-
-   /* public function rechercheAnnonce($critere): array
+/* public function rechercheAnnonce($critere): array
     {
         return $this->createQueryBuilder('a')
             
