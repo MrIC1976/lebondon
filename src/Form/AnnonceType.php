@@ -82,7 +82,7 @@ class AnnonceType extends AbstractType
                 'label' => "Ajoutez 1 ou plusieurs photos de votre don. Pour selectionner plusieurs photos, restez appuyer sur ctrl puis clic gauche sur chaque photo puis ouvrir." ,
                 "mapped" => false, // permet d'indiquer à symfony que cet input ne correspond à aucun champ de notre entité
                 "multiple" => true, // permet d'uploader plusieurs fichiers à la fois 
-                'required' => false,// permet de rendre non obligatoire l'ajout d'image
+                'required' => true,// permet de rendre non obligatoire l'ajout d'image
                 /*'constraints' => [
                     new Image([
                         'maxSize' => '5M',
@@ -90,8 +90,6 @@ class AnnonceType extends AbstractType
                     ],*/
                 'attr' => ['class' => 'form-control rounded dropzone dz-clickable'],
                 ])
-
-
 
             ->add('adresse', TextType::class,[
                 'label' => false,
@@ -171,7 +169,7 @@ class AnnonceType extends AbstractType
             FormEvents::PRE_SET_DATA,
             function (FormEvent $event) use ($formModifier) {
                 $data = $event->getData();
-                dd($data);
+                //dd($data);
                 $formModifier($event->getForm(), $data->getIdSousCategorie());
             }
         );

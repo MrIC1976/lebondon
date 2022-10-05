@@ -15,23 +15,28 @@
 					<h1 class="banner_title ft-bold mb-1">Bienvenue sur LE BON DON</h1>
 					<h2 class="fs-md ft-medium">Donnez une seconde vie à vos objets</h2>
 				</div>
-
-				<form class="main-search-wrap fl-wrap">
+{{ form_start(formSearch) }}	
+				<div class="main-search-wrap fl-wrap">
 					<div class="main-search-item">
 						<span class="search-tag"><i class="lni lni-keyboard"></i></span>
-						<input type="text" class="form-control radius" style="font-size:18px" placeholder="Objet recherché" />
+						
+						<div style="font-size:18px" >
+					{{ form_row(formSearch.mots) }}
+						</div>
+					
 					</div>
 					<div class="main-search-item">
 						<span class="search-tag"><i class="lni lni-map-marker"></i></span>
 						<input type="text" class="form-control" style="font-size:18px" placeholder="Saisissez la ville" />
 					</div>
 					<div class="main-search-item">
-						<!--dropdown ===========CATEGORIE============ -->			
+						{{ form_row(formSearch.categorie) }} 
 					</div>
 					<div class="main-search-button">
-						<button class="btn full-width theme-bg text-white size" style="font-size:18px" type="button">Rechercher</button>
+						{{ form_row(formSearch.rechercher) }}	
 					</div>
-				</form>
+				</div>
+{{ form_end(formSearch) }}
 			</div>
 		</div>
 	</div>
@@ -71,12 +76,11 @@
 													<div class="Goodup-grid-thumb">
 														<a href="single-listing-detail-2.html" class="d-block text-center m-auto">
 															
-															{% if annonce.nomImage == null %}
-																<img src="assets/img/logoComplet.png" class="card-img-top" alt="">
-															{% else %}
-																<img src="image/{{annonce.nomImage}}" class="card-img-top" alt="">
-															{% endif %}
-
+											{% for item in imag %}
+												{% if (item.idAnnonce.idAnnonce == annonce.idAnnonce)%}
+													<img src="image/{{item.nomImage}}" class="card-img-top" alt="">	
+												{% endif %}
+											{% endfor %}
 														</a>
 													</div>
 												</div>
@@ -84,28 +88,28 @@
 													<div class="Goodup-caption px-3 py-2">
 														<div class="Goodup-author">
 															<a href="author-detail.html">
-																<img src="image/{{annonce[0].idUtilisateur.photoUtilisateur}}" 
+																<img src="image/{{annonce.idUtilisateur.photoUtilisateur}}" 
 																		class="img-fluid circle" 
-																		alt="{{annonce[0].idUtilisateur.pseudoUtilisateur}}">
+																		alt="{{annonce.idUtilisateur.pseudoUtilisateur}}">
 															</a>
 														</div>
 														<h4 class="mb-0 ft-medium medium">
 															<a href="single-listing-detail-2.html" 
-																class="text-dark fs-md">{{annonce[0].titreAnnonce}}
+																class="text-dark fs-md">{{annonce.titreAnnonce}}
 																</a>
 														</h4>
 														<div class="Goodup-location">
 															<i class="fas fa-map-marker-alt me-1 theme-cl">
 															</i>
-															{{annonce[0].idVille.nomVille}}
+															{{annonce.idVille.nomVille}}
 														</div> 
 														<div class="Goodup-middle-caption mt-3">
-															{{ annonce[0].descriptionAnnonce|length > 75 ? annonce[0].descriptionAnnonce|striptags|slice(0, 100) ~ '...' : annonce[0].descriptionAnnonce|raw  }}
+															{{ annonce.descriptionAnnonce|length > 75 ? annonce.descriptionAnnonce|striptags|slice(0, 100) ~ '...' : annonce.descriptionAnnonce|raw  }}
 														</div>
 													</div>
 													<div class="Goodup-grid-footer py-2 px-3">
 														<div class="Goodup-ft-first">
-															<a href="half-map-search-2.html"><div class="cats-ico bg-2"></div><span class="cats-title">{{annonce[0].idSousCategorie.nomSousCategorie}}</span></a>
+															<a href="half-map-search-2.html"><div class="cats-ico bg-2"></div><span class="cats-title">{{annonce.idSousCategorie.nomSousCategorie}}</span></a>
 														</div>
 														<div class="Goodup-ft-last">
 															<div class="Goodup-inline">

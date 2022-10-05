@@ -90,10 +90,8 @@ class AnnonceRepository extends ServiceEntityRepository
     public function getHuitDernieresAnnonces(): array
     {
         return $this->createQueryBuilder('a')
-            ->addSelect('image.nomImage')
-            ->Join('App\Entity\Image', 'image', 'WITH', 'image.idAnnonce = a.idAnnonce')
             ->orderBy('a.idAnnonce', 'DESC')
-            ->setMaxResults(12)
+            ->setMaxResults(8)
             ->getQuery()
             ->getResult()
         ;
@@ -192,25 +190,30 @@ class AnnonceRepository extends ServiceEntityRepository
      */
     public function rechercheAnnonce($mots = null, $categorie = null, $etat = null){
         $query = $this->createQueryBuilder('a');
-        //$query->where('a.active = 1'); si on active cettte ligne il faut mettre and Where 2 ligne en
+        
         if($mots != null){
             $query->where('MATCH_AGAINST(a.titreAnnonce, a.descriptionAnnonce) AGAINST 
             (:mots boolean)>0') //MATCH_AGAINST on le retrouve dans config/doctrine.yaml,
                 ->setParameter('mots', $mots);
         }
         if($categorie != null){
-            $query->leftJoin('a.idSousCategorie', 's');
-            $query->leftJoin('s.idCategorie', 'c');
-            $query->andWhere('c.nomCategorie = :nom')
-                ->setParameter('nom', $categorie);
+            $query->join('a.idSousCategorie', 's')
+                ->join('s.idCategorie', 'c')
+                ->andWhere('c.idCategorie = :id')
+                ->setParameter('id', $categorie);
         }
         if($etat != null){
             $query->leftJoin('a.idEtat', 'e');
-            $query->andWhere('e.nomEtat = :etat')
-                ->setParameter('etat', $etat);
+            $query->andWhere('e.idEtat = :id')
+                ->setParameter('id', $etat);
         }
-        return $query->getQuery()->getResult();
+        return 
+            $query
+                ->getQuery()->getResult();
     }
+
+    
+
 
 /* public function rechercheAnnonce($critere): array
     {

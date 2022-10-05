@@ -28,17 +28,19 @@ class SearchController extends AbstractController
         
         if ($formRecherche->isSubmitted() && $formRecherche->isValid()) {
             //on recherche les annonces correspondant aux mots clés
+            
             $annonces = $annonceRepo->rechercheAnnonce( 
                 $search->get('mots')->getData(), 
-                $search->get('idCategorie')->getData(),
-                $search->get('idEtat')->getData(),  
+                $search->get('categorie')->getData(),
+                $search->get('idEtat')->getData()  
+                
             );
-            //dd($annonces);
-            //return $this->redirectToRoute('app_dashboard');
-            $image = $imageRepo-> findByIdAnnonce($annonces);
+            $imag = $imageRepo -> obtenirImageParAnnonce();
+            //dd($imag);
         }
-        $image = $imageRepo-> findByIdAnnonce($annonces) ;
-        //dd($annonces);
+        $imag = $imageRepo -> obtenirImageParAnnonce();
+        //$image = $imageRepo-> findByIdAnnonce($annonces) ;
+        
         //dd($image);
         /*if ( $formRecherche->isSubmitted()) {
         $nomCategorie = $search['idCategorie']->getData();
@@ -63,7 +65,7 @@ class SearchController extends AbstractController
             'annonces' => $annonces,
             'formRecherche' => $formRecherche->createView(),// on envoie à la vue
             //'sousCategorie'=>$sousCats
-            'image' => $image
+            'image' => $imag
         ]);
     }
 }
