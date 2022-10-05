@@ -20,8 +20,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationExtension;
@@ -57,10 +60,10 @@ class SearchAnnonceType extends AbstractType
             ])
             //->add('slugAnnonce')
             //->add('descriptionAnnonce')
-            ->add('adresse', TextType::class,[
+            ->add('adresse', HiddenType::class,[
                 'label' => false,
                 'required' => false,
-                'help' => 'rue ...',
+               //'help' => 'rue ...',
                 //'placeholder' => 'Entrez le numéro et le nom de rue ici !',
                 'attr' => ['class' => 'form-control rounded']
                 ])
@@ -70,9 +73,21 @@ class SearchAnnonceType extends AbstractType
                 //'choice_label' => 'nomVille',
                 'label' => false,
                 'required' => false,
-                'help' => 'Paris',
+                
                 'attr' => ['class' => 'form-control rounded']
                 ])
+            /*->add('distance', RangeType::class,[
+                    'mapped' => false,
+                    'label' => false,
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'form-control rounded',
+                        'min' => 5,
+                        'max' => 200  
+                    ],
+                    ])*/
+                
+
             ->add('departement', EntityType::class,[
                 'class' => Departement::class,
                 'mapped' => false,
@@ -83,7 +98,7 @@ class SearchAnnonceType extends AbstractType
                 'attr' => ['class' => 'form-control rounded']
                 ])
 
-           // ->add('dateCreationAnnonce')
+            
             //->add('idUtilisateur')
             //->add('idVille')
             ->add('idEtat', EntityType::class,[
@@ -112,7 +127,7 @@ class SearchAnnonceType extends AbstractType
                 'label' => 'Valider le don'
                 ])
 
-            ->add('idCategorie', EntityType::class, [
+            ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
                 'mapped' => false,
                 'choice_label' => "nomCategorie",

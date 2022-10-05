@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Utilisateur;
+use App\Form\AccueilSearchType;
 use App\Form\AnnonceContactType;
 use App\Repository\ImageRepository;
 use App\Repository\VilleRepository;
@@ -29,12 +30,35 @@ class AccueilController extends AbstractController
         $annonces = $annonceRepo->findAll();
         $derniereAnnonce = $annonceRepo->getHuitDernieresAnnonces();
         $categorieParAnnonce = $annonceRepo->categorieSelonAnnonce();
+        $image = $imageRepo->obtenirImageParAnnonce(); 
 
         //dd($derniereAnnonce);
         //dd($categorieParAnnonce);
         $form = $this->createForm(AnnonceContactType::class);
         $contact = $form->handleRequest($request);
-
+      
+        
+        $formSearch = $this->createForm(AccueilSearchType::class);
+        $search = $formSearch->handleRequest($request);
+        //dd($formSearch);
+        if($formSearch->isSubmitted() &&  $formSearch->isValid()){
+            $annonces = $annonceRepo->rechercheAnnonce( 
+                $search->get('mots')->getData(), 
+                $search->get('categorie')->getData(),
+                $search->get('idEtat')->getData() 
+            );
+            $imag = $imageRepo -> obtenirImageParAnnonce();
+            //dd($annonces);
+            return $this->
+            render('searchAnnonce/index.html.twig', [ //on lie le controller à la vue
+                'annonces' => $annonces,
+                'formRecherche' => $formSearch->createView(),
+                'image' => $imag
+            ]);
+            redirectToRoute('app_search');
+        ;
+        }
+        
         if($form->isSubmitted() &&  $form->isValid()){
             //on crée le mail
             $email = (new TemplatedEmail())
@@ -54,16 +78,18 @@ class AccueilController extends AbstractController
                 $this->addFlash('message', 'Votre email a bien été envoyé');
                 return $this->redirectToRoute('app_accueil');
         }
-
-
         return $this->render('Accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
             'derniereAnnonce' => $derniereAnnonce,
             'NbreAnnonceParCategorie' => $categorieParAnnonce,
             'annonce' => $annonces,
-            'form' => $form->createView()
+            'imag' => $image,
+            'form' => $form->createView(),
+            'formSearch' => $formSearch->createView(),// on envoie à la vue     
         ]);
     }
+ 
+
 }
 
 

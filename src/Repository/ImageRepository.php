@@ -40,6 +40,7 @@ class ImageRepository extends ServiceEntityRepository
         }
     }
 
+
    /* public function findByIdAnnonce($idAnnonce): array
     {
         return $this->createQueryBuilder('i')
@@ -82,8 +83,7 @@ public function obtenirImageParAnnonce(): array
 {
     return $this->createQueryBuilder('i')
         ->groupBy('i.idAnnonce')
-        -> join('App\Entity\Annonce', 'annonce', 'WITH', 'annonce.idAnnonce = i.idAnnonce' )
-        ->setMaxResults(1)
+        ->leftjoin('App\Entity\Annonce', 'annonce', 'WITH', 'annonce.idAnnonce = i.idAnnonce' )
         ->getQuery()
         ->getResult()
     ;
