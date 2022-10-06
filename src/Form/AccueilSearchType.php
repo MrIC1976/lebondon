@@ -32,7 +32,7 @@ class AccueilSearchType extends AbstractType
             'placeholder' => 'Choisissez la catégorie',            
             // 'expanded' => true,
             'label' => false,
-            'attr'=> ['class'=> 'form-select text-center mt-1'],
+            'attr'=> ['class'=> 'form-select'],
             'required' => false,
             ])
             
@@ -43,7 +43,7 @@ class AccueilSearchType extends AbstractType
             'label' => false,
             //'multiple' => true,
             'required' => false,
-            'attr'=> ['class'=> 'form-select text-center mt-1'],
+            'attr'=> ['class'=> 'form-select'],
             ])
             
         ->add('adresse', HiddenType::class,[
@@ -80,7 +80,7 @@ class AccueilSearchType extends AbstractType
 
         ->add('rechercher', SubmitType::class,[
             'attr'=> ['class'=> 'btn full-width theme-bg text-white size font-size:18px'],
-            'label' => 'Valider le don'
+            'label' => 'Rechercher'
         ])
         ;
     }

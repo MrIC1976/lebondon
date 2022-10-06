@@ -14,17 +14,12 @@ class ResetPasswordRequestFormType extends AbstractType
     {
         $builder
             ->add('mailUtilisateur', EmailType::class, [
-                'label' => 'Adresse mail',
-
+                'label' => 'Ton adresse mail',
                 'attr' => [
                     'placeholder' => 'exemple@email.fr',
-                    'class' => 'form-control rounded',
-                    
-
+                    'class' => 'form-control rounded mt-4',
                 ]
-            ])
-        
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -32,7 +32,7 @@
 
 						<div
 							class="sidebar_header d-flex align-items-center justify-content-between px-4 py-3 br-bottom">
-							<h4 class="ft-medium fs-lg mb-0">Filtres</h4>
+							<h4 class="ft-medivaliderum fs-lg mb-0">Filtres</h4>
 							<div class="ssh-header">
 								<a href="{{ path('app_search')}}" class="clear_all ft-medium text-muted">Effacer</a>
 								<a href="#search_open" data-bs-toggle="collapse" aria-expanded="false" role="button"
@@ -369,15 +369,7 @@
 			</div>
 		</div>
 
-		<div class="footer-bottom br-top">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-lg-12 col-md-12 text-center">
-						<p class="mb-0">© 2022 Goodup. Designd By <a href="https://themezhub.com">ThemezHub</a>.</p>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 	</footer>
 	<!-- ============================ Footer End ================================== -->
 
@@ -450,7 +442,12 @@
 <!-- End Wrapper -->
 <!-- ============================================================== -->
 
-
+<!-- footer -->
+<div class="row">
+	<div class="col-md-12 text-center">
+		<div class="py-3">© Lebondon 2022</div>
+	</div>
+</div>
 
 --------------------------------------autocompletion categorie sous categorie--------------------------------------
 
@@ -480,10 +477,5 @@ $(html.responseText).find('#searchAnnonce_idSousCategorie')
 #}
 
 
-<!-- footer -->
-<div class="row">
-	<div class="col-md-12">
-		<div class="py-3">© Lebondon 2022</div>
-	</div>
-</div>
+
 {% endblock %}
