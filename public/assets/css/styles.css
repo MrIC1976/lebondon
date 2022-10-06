@@ -403,6 +403,9 @@ ul.icons_lists.colors li:before{
     font-size:14px !important;
 }
 .fs-md {
+    font-size:18px !important;
+}
+.sloganSite{
     font-size:35px !important;
 }
 .fs-lg {
@@ -8251,3 +8254,4 @@ Bottom To top Button Design
     margin-top: 20px;
     font-family: 'Jost', sans-serif;
 }
+

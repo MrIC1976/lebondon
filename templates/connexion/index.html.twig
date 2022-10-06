@@ -11,17 +11,17 @@
 				<div class="container">
 					<form method="post" action="{{path('app_connexion')}}">
 						<div class="row align-items-start justify-content-center">
-							<div class="col-xl-5 col-lg-8 col-md-12">
+							<div class="col-xl-5 mt-5">
 								<div class="signup-screen-wrap">
 									<div class="signup-screen-single">
 										<div class="text-center mb-4">
-										<h4 class="m-0 ft-medium">Connectez-vous</h4>
+										<h4 class="m-0 ft-medium mt-4 mb-4">Connectez-vous</h4>
 										</div>
 										<div class="form-group">
-											<label class="mb-1">Adresse mail</label>
+											<label class="mb-2">Adresse mail</label>
 											<input type="email" class="form-control rounded" name="_username" id="floatingInput" placeholder="Saisissez votre adresse mail">
 										<div class="input-group">
-											<label id="" class="mb-1">Mot de passe</label>
+											<label id="" class="mb-2 mt-5">Mot de passe</label>
 										</div>
 										<div class="input-group mb-5">
 											<input type="password" name="_password" id="floatingPassword" class="form-control rounded" data-toggle="password" placeholder="Saisissez votre mot de passe">
@@ -43,22 +43,21 @@
 										<div class="form-group">
 											<input type="hidden" name="_target_path" value="{{path('app_dashboard')}}" />
 											<input type="hidden" name="_csrf_token" value="{{csrf_token('authenticate')}}" >
-											<button type="submit" class="btn btn-md full-width theme-bg text-light rounded ft-medium">Connecter</button>
+											<button type="submit" class="btn btn-md full-width theme-bg text-light rounded ft-medium mt-3">Connecter</button>
 										</div>
-										<div class="form-group text-center mb-0">
-											<p class="extra">Ou se connecter avec </p>
-											<div class="option-log">
-												<div class="single-log-opt"><a href="javascript:void(0);" class="log-btn"><img src="assets/img/google.png" class="img-fluid" alt="" />Google</a></div>
-												<div class="single-log-opt"><a href="javascript:void(0);" class="log-btn"><img src="assets/img/facebook.png" class="img-fluid" alt="" />Facebook</a></div>
-										</div>
-									</div>						
 										<div class="form-group text-center mt-4 mb-0">
-											<p class="mb-0">Vous n'avez pas encore de compte ? <a href="{{ path('app_inscription') }}" class="ft-medium text-success">S'inscrire</a></p>
+											<p class="mb-4">Vous n'avez pas encore de compte ? <a href="{{ path('app_inscription') }}" class="ft-medium text-success">S'inscrire</a></p>
 										</div>
+									</div>													
 								</div>
 							</div>
 						</div>
 					</form>
+				</div>
+				<div class="row">
+						<div class="col-lg-12 text-center">
+							<div class="py-3">© Lebondon 2022</div>
+						</div>
 				</div>
 			</section>
 			<!-- ======================= Login End ======================== -->
@@ -85,11 +84,6 @@
 {% for message2 in app.flashes('message2') %}
     {{ message2|raw }}
 {% endfor %}
-<!-- footer -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="py-3">© Lebondon 2022</div>
-						</div>
-					</div>
+
 {% endblock %}
 

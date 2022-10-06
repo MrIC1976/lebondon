@@ -18,8 +18,8 @@ class ResetPasswordFormType extends AbstractType
             'invalid_message' => 'Vos mots de passe ne sont pas identiques.',
             'options' => ['attr' => ['class' => 'password-field']],
             'required' => true,
-            'first_options'  => ['attr' => ['class' => 'form-control'], 'label'=> false],
-            'second_options' => ['attr' => ['class' => 'form-control'], 'label'=> false],
+            'first_options'  => ['attr' => ['class' => 'form-control mt-4'], 'label'=> false],
+            'second_options' => ['attr' => ['class' => 'form-control mt-4'], 'label'=> false],
         ])
         ;
     }

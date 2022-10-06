@@ -596,8 +596,8 @@ class ComposerStaticInit684f003dd2f8bf0f248af24b88bd2a34
         ),
         'Doctrine\\Common\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
-            1 => __DIR__ . '/..' . '/doctrine/common/src',
+            0 => __DIR__ . '/..' . '/doctrine/common/src',
+            1 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
         ),
         'Doctrine\\Bundle\\MigrationsBundle\\' => 
         array (
@@ -652,6 +652,8 @@ class ComposerStaticInit684f003dd2f8bf0f248af24b88bd2a34
         'App\\Entity\\Utilisateur' => __DIR__ . '/../..' . '/src/Entity/Utilisateur.php',
         'App\\Entity\\Ville' => __DIR__ . '/../..' . '/src/Entity/Ville.php',
         'App\\Extensions\\Doctrine\\MatchAgainst' => __DIR__ . '/../..' . '/src/Extensions/Doctrine/MatchAgainst.php',
+        'App\\Form\\AccueilSearchType' => __DIR__ . '/../..' . '/src/Form/AccueilSearchType.php',
+        'App\\Form\\AnnonceContactType' => __DIR__ . '/../..' . '/src/Form/AnnonceContactType.php',
         'App\\Form\\AnnonceType' => __DIR__ . '/../..' . '/src/Form/AnnonceType.php',
         'App\\Form\\AvatarFormType' => __DIR__ . '/../..' . '/src/Form/AvatarFormType.php',
         'App\\Form\\ChangementMDPType' => __DIR__ . '/../..' . '/src/Form/ChangementMDPType.php',
@@ -844,6 +846,7 @@ class ComposerStaticInit684f003dd2f8bf0f248af24b88bd2a34
         'Doctrine\\Common\\Collections\\Expr\\ExpressionVisitor' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Expr/ExpressionVisitor.php',
         'Doctrine\\Common\\Collections\\Expr\\Value' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Expr/Value.php',
         'Doctrine\\Common\\Collections\\ExpressionBuilder' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/ExpressionBuilder.php',
+        'Doctrine\\Common\\Collections\\ReadableCollection' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/ReadableCollection.php',
         'Doctrine\\Common\\Collections\\Selectable' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php',
         'Doctrine\\Common\\CommonException' => __DIR__ . '/..' . '/doctrine/common/src/CommonException.php',
         'Doctrine\\Common\\Comparable' => __DIR__ . '/..' . '/doctrine/common/src/Comparable.php',

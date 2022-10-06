@@ -25,9 +25,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AccueilController extends AbstractController
 {
     #[Route('/', name: 'app_accueil')]
-    public function index(request $request, EntityManagerInterface $manager, AnnonceRepository $annonceRepo, ImageRepository $imageRepo, UtilisateurRepository $utilisateurRepo, VilleRepository $villeRepo, CategorieRepository $categorieRepo, MailerInterface $mailer): Response
+    public function dernieresAnnoncesPubliees(request $request, EntityManagerInterface $manager, AnnonceRepository $annonceRepo, ImageRepository $imageRepo, UtilisateurRepository $utilisateurRepo, VilleRepository $villeRepo, CategorieRepository $categorieRepo, MailerInterface $mailer): Response
     {
         $annonces = $annonceRepo->findAll();
+        //dd($annonces);
         $derniereAnnonce = $annonceRepo->getHuitDernieresAnnonces();
         $categorieParAnnonce = $annonceRepo->categorieSelonAnnonce();
         $image = $imageRepo->obtenirImageParAnnonce(); 

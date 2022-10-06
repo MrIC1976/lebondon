@@ -124,7 +124,7 @@ class SearchAnnonceType extends AbstractType
 
             ->add('rechercher', SubmitType::class,[
                 'attr'=> ['class'=> 'btn theme-bg text-light rounded full-width'],
-                'label' => 'Valider le don'
+                'label' => 'Rechercher'
                 ])
 
             ->add('categorie', EntityType::class, [
