@@ -3,6 +3,7 @@
 
 var $categorie = $('#annonce_idCategorie');
 // Quand la categorie est sélectionné...
+
 $categorie.change(function() {
 // ... récupère le formulaire correspondant.
 var $form = $(this).closest('form');

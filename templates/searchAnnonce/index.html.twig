@@ -3,7 +3,9 @@
 {% block title %}Lebondon{% endblock %}
 
 {% block body %}
-
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
 <!-- ============================================================== -->
 <!-- Preloader - style you can find in spinners.css -->
 <!-- ============================================================== -->
@@ -66,8 +68,10 @@
 											<div class="mb-3">
 												<label for="exampleFormControlInput1" class="form-label">Où
 													recherchez-vous?</label>
+												<div>{{ form_row(formRecherche.adresse) }}</div>
 												<div>{{ form_row(formRecherche.ville) }}</div>
-												
+												<div>{{ form_row(formRecherche.cp) }}</div>
+												<div>{{ form_row(formRecherche.codeInsee) }}</div>
 											</div>
 										</div>
 									{#  <div class="inner_widget_link">
@@ -86,14 +90,8 @@
 										</div>
 										<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 											<div class="form-group">
-												<label class="mb-1"></label>
-
-												<!--% 
-														if search_annonce[idCategorie] != null %}
-																% for nomSouscat in sousCategorie %}
-																	{nomSouscat.nomSousCategorie}}
-																% endfor %}
-														% endif %}-->
+												<label class="mb-1">Sous-catégories :</label>
+												{# {{ form_row(formRecherche.idSouscategorie) }} #}	
 											</div>
 										</div>
 										<!-- Disponibilité -->
@@ -171,7 +169,7 @@
 													class="fas fa-map-marker-alt"></i>{{annonce.idVille.nomVille}}
 											</div>
 											<div class="Goodup-location"><i
-													class="fas fa-list"></i>{{annonce.idSousCategorie.nomSousCategorie}}
+													class="fas fa-list"></i>{{annonce.idSousCategorie.nomSousCategorie}}idSousCategorie
 											</div>
 											<div class="Goodup-location"><i
 													class="fas fa-list"></i>{{annonce.idEtat.nomEtat}}
@@ -444,38 +442,10 @@
 
 <!-- footer -->
 <div class="row">
-	<div class="col-md-12 text-center">
+	<div class="col-md-12">
 		<div class="py-3">© Lebondon 2022</div>
 	</div>
 </div>
 
---------------------------------------autocompletion categorie sous categorie--------------------------------------
-
-var $categorie = $('#searchAnnonce_idCategorie');
-// Quand la categorie est sélectionné...
-$categorie.change(function() {
-// ... récupère le formulaire correspondant.
-var $form = $(this).closest('form');
-// Simulez les données du formulaire, mais n'incluez que la valeur categorie sélectionnée.
-var data = {};
-data[$categorie.attr('name')] = $categorie.val();
-// Soumettez les données via AJAX au chemin d'action du formulaire
-$.ajax({
-url : $form.attr('action'),
-type: $form.attr('method'),
-data : data,
-complete: function(html) {
-// Remplacer le champ de position actuelle ...
-$('#searchAnnonce_idSousCategorie').replaceWith(
-// ... avec celui renvoyé par la réponse AJAX.
-$(html.responseText).find('#searchAnnonce_idSousCategorie')
-);
-// Le champ Position affiche maintenant les positions appropriées.
-}
-});
-});
-#}
-
-
-
+<script src="assets/js/searchAnnonce.js"></script>
 {% endblock %}

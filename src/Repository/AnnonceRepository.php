@@ -188,7 +188,7 @@ class AnnonceRepository extends ServiceEntityRepository
      * Recherche les annonces en fonction du formulaire
      * @return void 
      */
-    public function rechercheAnnonce($mots = null, $categorie = null, $etat = null){
+    public function rechercheAnnonce($mots = null, $categorie = null, $etat = null, $minLon = null, $maxLon = null, $minLat = null, $maxLat = null){
         $query = $this->createQueryBuilder('a');
         
         if($mots != null){
@@ -207,13 +207,35 @@ class AnnonceRepository extends ServiceEntityRepository
             $query->andWhere('e.idEtat = :id')
                 ->setParameter('id', $etat);
         }
-        return 
-            $query
-                ->getQuery()->getResult();
+        if($minLon != null){
+            $query->where('ville.longitude BETWEEN :minLon AND :maxLon')
+                    ->andWhere('ville.latitude BETWEEN :minLat AND :maxLat')
+                    ->setParameter(':minLon', $minLon)
+                    ->setParameter(':maxLon', $maxLon)
+                    ->setParameter(':minLat', $minLat)
+                    ->setParameter(':maxLat', $maxLat)
+                    ->Join('App\Entity\ville', 'ville', 'WITH', 'ville.idVille = a.idVille');
+        }
     }
 
     
-
+    public function findIdVilleSelonDistance2($minLon, $maxLon, $minLat, $maxLat): array
+    {
+        return $this->createQueryBuilder('a')
+            //->select('v.idVille')
+            ->select('ville.idVille')
+            //->addSelect('annonce')
+            ->where('ville.longitude BETWEEN :minLon AND :maxLon')
+            ->andWhere('ville.latitude BETWEEN :minLat AND :maxLat')
+            ->setParameter(':minLon', $minLon)
+            ->setParameter(':maxLon', $maxLon)
+            ->setParameter(':minLat', $minLat)
+            ->setParameter(':maxLat', $maxLat)
+            ->Join('App\Entity\ville', 'ville', 'WITH', 'ville.idVille = a.idVille')
+            ->getQuery()
+            ->getResult();
+            
+    }
 
 /* public function rechercheAnnonce($critere): array
     {
