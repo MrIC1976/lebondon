@@ -63,20 +63,37 @@ class SearchAnnonceType extends AbstractType
             ->add('adresse', HiddenType::class,[
                 'label' => false,
                 'required' => false,
-               //'help' => 'rue ...',
                 //'placeholder' => 'Entrez le numéro et le nom de rue ici !',
                 'attr' => ['class' => 'form-control rounded']
                 ])
+
             ->add('ville', TextType::class,[
                 //'class' => Ville::class,
                 'mapped' => false,
                 //'choice_label' => 'nomVille',
                 'label' => false,
                 'required' => false,
-                
                 'attr' => ['class' => 'form-control rounded']
                 ])
-            /*->add('distance', RangeType::class,[
+
+
+            ->add('cp', HiddenType::class,[
+                //'class' => Ville::class,
+                'mapped' => false,
+                //'choice_label' => 'nomVille',
+                'label' => false,
+                'required' => false,
+                'attr' => ['class' => 'form-control rounded']
+                ])
+                
+            ->add('codeInsee', HiddenType::class,[
+                'mapped' => false,
+                'label' => false,
+                'required' => false,
+                'attr' => ['class' => 'form-control rounded']
+                ])
+
+            ->add('distance', RangeType::class,[
                     'mapped' => false,
                     'label' => false,
                     'required' => false,
@@ -85,26 +102,25 @@ class SearchAnnonceType extends AbstractType
                         'min' => 5,
                         'max' => 200  
                     ],
-                    ])*/
+                    ])
                 
 
-            ->add('departement', EntityType::class,[
-                'class' => Departement::class,
+            ->add('departement', hiddenType::class,[
+                //'class' => Departement::class,
                 'mapped' => false,
-                'choice_label' => 'nomDepartement',
-                'label' => false,
+                //'choice_label' => 'nomDepartement',
+                //'label' => false,
                 'help' => 'Nord',
                 'required' => false,
                 'attr' => ['class' => 'form-control rounded']
                 ])
 
-            
             //->add('idUtilisateur')
             //->add('idVille')
             ->add('idEtat', EntityType::class,[
                 'class' => EtatObjet::class,
                 'placeholder' => 'Etat de l\'objet',
-                'choice_label' => 'nomEtat', 
+                'choice_label' => 'nomEtat',
                 'label' => false,
                 //'multiple' => true,
                 'required' => false,

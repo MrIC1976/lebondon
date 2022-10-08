@@ -8,6 +8,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -54,13 +56,44 @@ class AccueilSearchType extends AbstractType
             'attr' => ['class' => 'form-control rounded']
             ])
         
-        ->add('ville', HiddenType::class,[
+        ->add('ville', TextType::class,[
+            //'class' => Ville::class,
+            'mapped' => false,
+            //'choice_label' => 'nomVille',
             'label' => false,
             'required' => false,
-            'help' => 'Paris',
+            'attr' => [
+                'class' => 'form-control rounded font-size:18px',
+                'placeholder' => 'Saisir la ville'            
+            ]
+            ])
+        
+        ->add('cp', HiddenType::class,[
+            //'class' => Ville::class,                'mapped' => false,
+           //'choice_label' => 'nomVille',
+            'label' => false,
+            'required' => false,                
+            'attr' => ['class' => 'form-control rounded']
+            ])
+                
+        ->add('codeInsee', HiddenType::class,[
+            'mapped' => false,
+            'label' => false,
+            'required' => false,
             'attr' => ['class' => 'form-control rounded']
             ])
 
+        ->add('distance', RangeType::class,[
+                'mapped' => false,
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control rounded',
+                    'min' => 5,
+                    'max' => 200  
+                ],
+                ])
+               
         ->add('departement', HiddenType::class,[
             //'class' => Departement::class,
             //'choice_label' => 'nomDepartement',

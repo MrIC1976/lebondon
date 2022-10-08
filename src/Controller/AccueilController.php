@@ -30,10 +30,11 @@ class AccueilController extends AbstractController
         $annonces = $annonceRepo->findAll();
         //dd($annonces);
         $derniereAnnonce = $annonceRepo->getHuitDernieresAnnonces();
+        //dd($derniereAnnonce);
         $categorieParAnnonce = $annonceRepo->categorieSelonAnnonce();
         $image = $imageRepo->obtenirImageParAnnonce(); 
 
-        //dd($derniereAnnonce);
+        
         //dd($categorieParAnnonce);
         $form = $this->createForm(AnnonceContactType::class);
         $contact = $form->handleRequest($request);
@@ -43,10 +44,45 @@ class AccueilController extends AbstractController
         $search = $formSearch->handleRequest($request);
         //dd($formSearch);
         if($formSearch->isSubmitted() &&  $formSearch->isValid()){
+            
+            $villeRecherche=$formSearch -> get('ville') -> getData(); //on recupere la ville saisi
+            
+            if ($villeRecherche != Null)
+            {
+
+            $distanceChoisi = $formSearch -> get('distance') -> getData();
+            //dd($distanceChoisi);
+            
+            $coordonneeVille=$villeRepo -> findCoordonneeByNomVille($villeRecherche); //on va chercher les coordonnée de cette ville saisi dans la BDD
+            //dd($coordonneeVille);
+            $latitude=$coordonneeVille[0]->getLatitude(); //dans le tableau $coordonneeVille on recupere la latitude
+            //dd($latitudeVille);
+            $longitude=$coordonneeVille[0]->getLongitude();//dans le tableau $coordonneeVille on recupere la longitude de la ville saisi par l'i=utilisateur
+            $radEarth = 6371;  //rayon de la terre en km
+            $rad = $distanceChoisi; 
+            //first-cut bounding box (in degrees)
+            $maxLat = $latitude + rad2deg($rad/$radEarth);
+            $minLat = $latitude - rad2deg($rad/$radEarth);
+//compensate for degrees longitude getting smaller with increasing latitude
+            $maxLon = $longitude + rad2deg($rad/$radEarth/cos(deg2rad($latitude)));
+            $minLon = $longitude - rad2deg($rad/$radEarth/cos(deg2rad($latitude)));
+//dd($minLon);
+            $maxLat=number_format((float)$maxLat, 6, '.', '');
+            $minLat=number_format((float)$minLat, 6, '.', '');
+            $maxLon=number_format((float)$maxLon, 6, '.', '');
+            $minLon=number_format((float)$minLon, 6, '.', '');
+            //dd($minLon);
+
+            $annoncesAutour=$annonceRepo->findIdVilleSelonDistance2($minLon, $maxLon, $minLat, $maxLat);
+            //dd($annoncesAutour);
+
+            
+            }
             $annonces = $annonceRepo->rechercheAnnonce( 
                 $search->get('mots')->getData(), 
                 $search->get('categorie')->getData(),
-                $search->get('idEtat')->getData() 
+                $search->get('idEtat')->getData(),
+                $minLon, $maxLon, $minLat, $maxLat
             );
             $imag = $imageRepo -> obtenirImageParAnnonce();
             //dd($annonces);

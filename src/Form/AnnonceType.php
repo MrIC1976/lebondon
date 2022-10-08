@@ -117,7 +117,7 @@ class AnnonceType extends AbstractType
                 'attr' => ['class' => 'form-control rounded']
                 ])
                 
-            ->add('codeInsee', hiddenType::class,[
+            ->add('codeInsee', HiddenType::class,[
                 'mapped' => false,
                 'label' => false,
                 'required' => false,
