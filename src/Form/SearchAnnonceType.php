@@ -93,7 +93,7 @@ class SearchAnnonceType extends AbstractType
                 'attr' => ['class' => 'form-control rounded']
                 ])
 
-            /*->add('distance', RangeType::class,[
+            ->add('distance', RangeType::class,[
                     'mapped' => false,
                     'label' => false,
                     'required' => false,
@@ -102,14 +102,14 @@ class SearchAnnonceType extends AbstractType
                         'min' => 5,
                         'max' => 200  
                     ],
-                    ])*/
+                    ])
                 
 
-            ->add('departement', EntityType::class,[
-                'class' => Departement::class,
+            ->add('departement', hiddenType::class,[
+                //'class' => Departement::class,
                 'mapped' => false,
-                'choice_label' => 'nomDepartement',
-                'label' => false,
+                //'choice_label' => 'nomDepartement',
+                //'label' => false,
                 'help' => 'Nord',
                 'required' => false,
                 'attr' => ['class' => 'form-control rounded']

@@ -25,23 +25,27 @@ class SearchController extends AbstractController
         //$informationAnnonce = $annonceRepo->infoAnnonceRecherche();//permet de recuperer un tableau avec toutes les infos des annonces (cf annonceRepository)
         //dd($informationAnnonce);
         $formRecherche = $this->createForm (SearchAnnonceType::class); //création du formulaire
+        //dd($formRecherche);
         $search = $formRecherche->handleRequest($request);
         
         
         if ($formRecherche->isSubmitted() && $formRecherche->isValid()) { //si le formulaire est soumis
             //on recherche les annonces correspondant aux mots clés
             $villeRecherche=$formRecherche -> get('ville') -> getData(); //on recupere la ville saisi
-           // dd($villeRecherche);
+            
+            if ($villeRecherche != Null)
+            {
+
+            $distanceChoisi = $formRecherche -> get('distance') -> getData();
+            //dd($distanceChoisi);
+            
             $coordonneeVille=$villeRepo -> findCoordonneeByNomVille($villeRecherche); //on va chercher les coordonnée de cette ville saisi dans la BDD
             //dd($coordonneeVille);
             $latitude=$coordonneeVille[0]->getLatitude(); //dans le tableau $coordonneeVille on recupere la latitude
             //dd($latitudeVille);
             $longitude=$coordonneeVille[0]->getLongitude();//dans le tableau $coordonneeVille on recupere la longitude de la ville saisi par l'i=utilisateur
-            //dd($longitudeVille);
-            //$rayonVille=$villeRepo->findClostestTo($latitudeVille, $longitudeVille);
-            //dd($rayonVille);
-            $radEarth = 3960;  //earth's mean radius
-            $rad = '10';//100 miles
+            $radEarth = 6371;  //rayon de la terre en km
+            $rad = $distanceChoisi; 
             //first-cut bounding box (in degrees)
             $maxLat = $latitude + rad2deg($rad/$radEarth);
             $minLat = $latitude - rad2deg($rad/$radEarth);
@@ -57,13 +61,10 @@ class SearchController extends AbstractController
 
             $annoncesAutour=$annonceRepo->findIdVilleSelonDistance2($minLon, $maxLon, $minLat, $maxLat);
             //dd($annoncesAutour);
-            /*foreach($annoncesAutour as $annonceAutour){
-                $annonceAutour['idVille']->getData();
-                dd($annonceAutour);
-            }*/
-            //dd($annoncesAutour);
-//on obtient l'id des villes pour les annonces se situant à 10 miles de la ville dans la page de recherche
             
+//on obtient l'id des villes pour les annonces se situant à 10 miles de la ville dans la page de recherche
+        }
+        //dd($minLon);
             $annonces = $annonceRepo->rechercheAnnonce( 
                 $search->get('mots')->getData(), 
                 $search->get('categorie')->getData(),

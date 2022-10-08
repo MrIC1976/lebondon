@@ -4,6 +4,9 @@
 
 {% block body %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@2.2.0/dist/axentix.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
 {% include 'commun/navbarNonConnecte.html.twig' %}
 
 <div class="home-banner arriere-plan">			
@@ -18,13 +21,15 @@
 				<div class="main-search-wrap fl-wrap">
 					<div class="main-search-item">
 						<span class="search-tag"><i class="lni lni-keyboard"></i></span>
-						<div style="font-size:18px" >
+						<div style="font-size:10px" >
 						{{ form_row(formSearch.mots) }}
 						</div>	
 					</div>
 					<div class="main-search-item">
 						<span class="search-tag"><i class="lni lni-map-marker"></i></span>
-						<input type="text" class="form-control" style="font-size:18px" placeholder="Saisissez la ville" />
+						{{ form_row(formSearch.ville) }} 
+						{{ form_row(formSearch.distance) }} 
+						<p id="valeurDistance"></p>	
 					</div>
 					<div class="main-search-item">
 						{{ form_row(formSearch.categorie) }} 
@@ -205,6 +210,7 @@
 	
 {% endblock %}
 {% block javascripts %}
+<script src="assets/js/accueilSearch.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axentix@2.2.0/dist/axentix.min.js"></script>
 <script>
 	window.onload = () => {

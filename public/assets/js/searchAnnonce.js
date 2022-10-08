@@ -153,3 +153,18 @@ $("#search_annonce_adresse").autocomplete({
       $('#search_annonce_cp').val(ui.item.postcode);
     }
     });
+
+    //----------------------------------------------------------------
+    
+
+    /*let champVille = document.getElementById('search_annonce_ville')*/
+    let champDistance = document.getElementById('search_annonce_distance')
+    /*champVille.addEventListener()
+    if (champVille == null){
+        champDistance=Disabled
+    }*/
+
+    champDistance.addEventListener("change", function(){
+        distance = this.value
+        valeurDistance.innerText = "Dans un rayon de " + distance + " km"
+    })
